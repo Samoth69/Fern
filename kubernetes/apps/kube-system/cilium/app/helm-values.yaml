@@ -40,7 +40,8 @@ loadBalancer:
   acceleration: native
 localRedirectPolicy: true
 operator:
-  replicas: 2
+  # TODO: add more
+  replicas: 1
   rollOutPods: true
   prometheus:
     enabled: true
