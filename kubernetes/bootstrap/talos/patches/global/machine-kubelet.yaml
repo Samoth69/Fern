@@ -1,0 +1,13 @@
+machine:
+  kubelet:
+    nodeIP:
+      validSubnets:
+        - 192.168.1.0/24
+    extraMounts:
+      - destination: /var/mnt/sdb/longhorn
+        type: bind
+        source: /var/mnt/sdb/longhorn
+        options:
+          - bind
+          - rshared
+          - rw

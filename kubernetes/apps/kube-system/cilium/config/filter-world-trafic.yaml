@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: filter-world-trafic
+spec:
+  endpointSelector:
+    matchExpressions:
+      - key: "io.kubernetes.pod.namespace"
+        operator: "NotIn"
+        values:
+        - "kube-system"
+  ingress:
+    - fromEntities:
+        - kube-apiserver
+        - ingress
+        - cluster
+  egress:
+    - toEntities:
+        - world
+      toPorts:
+      - ports:
+        - port: "443"
+          protocol: "TCP"
+        - port: "443"
+          protocol: "UDP"
+    - toEntities:
+        - kube-apiserver
+        - ingress
+        - cluster

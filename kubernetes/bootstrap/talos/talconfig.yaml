@@ -1,0 +1,107 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
+# renovate: datasource=docker depName=ghcr.io/siderolabs/installer
+talosVersion: v1.10.1
+# renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
+kubernetesVersion: v1.33.0
+
+clusterName: fern
+endpoint: https://192.168.0.43:6443
+
+clusterPodNets:
+  - "10.69.0.0/16"
+  - "2a01:e0a:5c9:f0a0:1069::/112"
+clusterSvcNets:
+  - "10.96.0.0/16"
+  - "2a01:e0a:5c9:f0a0:1096::/112"
+
+additionalApiServerCertSans: &sans
+  - "192.168.0.43"
+  - "127.0.0.1"
+additionalMachineCertSans: *sans
+
+# Disable built-in Flannel to use Cilium
+cniConfig:
+  name: none
+
+nodes:
+  - hostname: "fern-akame"
+    ipAddress: "192.168.0.40"
+    installDisk: "/dev/sda"
+    machineSpec:
+      secureboot: true
+    talosImageURL: factory.talos.dev/nocloud-installer-secureboot/47f718feafaf5934d42735b54da7805fa768627393a4318a0c2d47fd5b1ecb79
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "bc:24:11:e6:a8:d6"
+        dhcpOptions:
+          ipv6: true
+        addresses:
+          - "192.168.0.40/24"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "192.168.0.1"
+        mtu: 1500
+        vip:
+          ip: "192.168.0.43"
+  # - hostname: "k3s-2"
+  #   ipAddress: "192.168.1.12"
+  #   installDisk: "/dev/sda"
+  #   machineSpec:
+  #     secureboot: false
+  #   talosImageURL: factory.talos.dev/installer/aaafc937bd215b9f17980fe8ff2ea197f835e06c57aa46a01d3dc2e6e8f494d8
+  #   controlPlane: true
+  #   machineDisks:
+  #     - device: /dev/sdb
+  #       partitions:
+  #         - mountpoint: /var/mnt/sdb
+  #   networkInterfaces:
+  #     - deviceSelector:
+  #         hardwareAddr: "bc:24:11:00:01:12"
+  #       dhcp: false
+  #       addresses:
+  #         - "192.168.1.12/24"
+  #       routes:
+  #         - network: "0.0.0.0/0"
+  #           gateway: "192.168.1.1"
+  #       mtu: 1500
+  #       vip:
+  #         ip: "192.168.1.5"
+  # - hostname: "k3s-3"
+  #   ipAddress: "192.168.1.13"
+  #   installDisk: "/dev/sda"
+  #   machineSpec:
+  #     secureboot: false
+  #   talosImageURL: factory.talos.dev/installer/aaafc937bd215b9f17980fe8ff2ea197f835e06c57aa46a01d3dc2e6e8f494d8
+  #   controlPlane: true
+  #   machineDisks:
+  #     - device: /dev/sdb
+  #       partitions:
+  #         - mountpoint: /var/mnt/sdb
+  #   networkInterfaces:
+  #     - deviceSelector:
+  #         hardwareAddr: "bc:24:11:00:01:13"
+  #       dhcp: false
+  #       addresses:
+  #         - "192.168.1.13/24"
+  #       routes:
+  #         - network: "0.0.0.0/0"
+  #           gateway: "192.168.1.1"
+  #       mtu: 1500
+  #       vip:
+  #         ip: "192.168.1.5"
+
+# Global patches
+patches:
+  - "@./patches/global/machine-files.yaml"
+  - "@./patches/global/machine-kubelet.yaml"
+  - "@./patches/global/machine-network.yaml"
+  - "@./patches/global/machine-sysctls.yaml"
+  - "@./patches/global/machine-time.yaml"
+
+# Controller patches
+controlPlane:
+  patches:
+    - "@./patches/controller/admission-controller-patch.yaml"
+    - "@./patches/controller/cluster.yaml"
+
