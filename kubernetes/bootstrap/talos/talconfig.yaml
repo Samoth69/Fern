@@ -9,10 +9,8 @@ endpoint: https://192.168.0.43:6443
 
 clusterPodNets:
   - "10.69.0.0/16"
-  - "2a01:e0a:5c9:f0a0:1069::/112"
 clusterSvcNets:
   - "10.96.0.0/16"
-  - "2a01:e0a:5c9:f0a0:1096::/112"
 
 additionalApiServerCertSans: &sans
   - "192.168.0.43"
@@ -24,7 +22,7 @@ cniConfig:
   name: none
 
 nodes:
-  - hostname: "fern-akame"
+  - hostname: fern-akame
     ipAddress: "192.168.0.40"
     installDisk: "/dev/sda"
     machineSpec:
@@ -34,8 +32,7 @@ nodes:
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "bc:24:11:e6:a8:d6"
-        dhcpOptions:
-          ipv6: true
+        dhcp: false
         addresses:
           - "192.168.0.40/24"
         routes:

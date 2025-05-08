@@ -18,6 +18,8 @@ dashboards:
   enabled: true
 externalIPs:
   enabled: true
+hostFirewall:
+  enabled: true
 hubble:
   enabled: true
   relay:

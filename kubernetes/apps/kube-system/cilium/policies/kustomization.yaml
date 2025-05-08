@@ -5,5 +5,4 @@ kind: Kustomization
 resources:
   - ./l2announcementpolicy.yaml
   - ./loadbalancerippool.yaml
-  - ./filter-world-trafic.yaml
-  - ./intercept-all-dns.yaml
+  - ./host-firewall.yaml

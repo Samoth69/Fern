@@ -25,7 +25,7 @@ tasks:
   apply-node:
     desc: Apply Talos config to a node [IP=required] [HOSTNAME=required]
     cmds:
-      - talosctl --nodes {{.IP}} apply-config --mode={{.MODE}} --file {{.TALHELPER_CLUSTER_DIR}}/kubernetes-{{.HOSTNAME}}.yaml
+      - talosctl --nodes {{.IP}} apply-config --mode={{.MODE}} --file {{.TALHELPER_CLUSTER_DIR}}/fern-{{.HOSTNAME}}.yaml
       - talosctl --nodes {{.IP}} health --wait-timeout=10m --server=false
     vars:
       MODE: '{{.MODE | default "auto"}}'
@@ -34,7 +34,7 @@ tasks:
     preconditions:
       - talosctl --nodes {{.IP}} get machineconfig
       - talosctl config info
-      - test -f {{.TALHELPER_CLUSTER_DIR}}/kubernetes-{{.HOSTNAME}}.yaml
+      - test -f {{.TALHELPER_CLUSTER_DIR}}/fern-{{.HOSTNAME}}.yaml
       - test -f {{.TALOSCONFIG}}
       - which talosctl yq
 

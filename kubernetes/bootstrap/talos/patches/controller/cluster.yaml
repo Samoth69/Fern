@@ -1,17 +1,37 @@
 cluster:
   allowSchedulingOnControlPlanes: true
-  controllerManager:
-    extraArgs:
-      bind-address: 0.0.0.0
+  apiServer:
+    disablePodSecurityPolicy: true
+    admissionControl:
+      - name: PodSecurity # Name is the name of the admission controller.
+        # Configuration is an embedded configuration object to be used as the plugin's
+        configuration:
+          apiVersion: pod-security.admission.config.k8s.io/v1
+          defaults:
+            audit: restricted
+            audit-version: latest
+            enforce: baseline
+            enforce-version: latest
+            warn: restricted
+            warn-version: latest
+          exemptions:
+            namespaces:
+              - kube-system
+            runtimeClasses: []
+            usernames: []
+          kind: PodSecurityConfiguration
+  # controllerManager:
+  #   extraArgs:
+  #     bind-address: 0.0.0.0
   coreDNS:
     disabled: true
-  etcd:
-    extraArgs:
-      listen-metrics-urls: http://0.0.0.0:2381
-    advertisedSubnets:
-      - 192.168.1.0/24
+  # etcd:
+  #   extraArgs:
+  #     listen-metrics-urls: http://0.0.0.0:2381
+  #   advertisedSubnets:
+  #     - 192.168.0.0/24
   proxy:
     disabled: true
-  scheduler:
-    extraArgs:
-      bind-address: 0.0.0.0
+  # scheduler:
+  #   extraArgs:
+  #     bind-address: 0.0.0.0

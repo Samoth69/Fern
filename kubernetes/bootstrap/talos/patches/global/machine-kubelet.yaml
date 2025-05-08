@@ -1,12 +1,12 @@
 machine:
   kubelet:
-    nodeIP:
-      validSubnets:
-        - 192.168.1.0/24
+    # nodeIP:
+    #   validSubnets:
+    #     - 192.168.0.0/24
     extraMounts:
-      - destination: /var/mnt/sdb/longhorn
+      - destination: /var/openebs/local
         type: bind
-        source: /var/mnt/sdb/longhorn
+        source: /var/openebs/local
         options:
           - bind
           - rshared
