@@ -9,6 +9,6 @@ instance:
     - notification-controller
   sync:
     kind: GitRepository
-    url: "https://github.com/Samoth69/Milim.git"
+    url: "https://github.com/Samoth69/Fern.git"
     ref: refs/heads/main
     path: kubernetes/flux/cluster
