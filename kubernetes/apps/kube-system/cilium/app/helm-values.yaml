@@ -55,7 +55,8 @@ prometheus:
     enabled: true
     trustCRDsExist: true
 rollOutCiliumPods: true
-routingMode: native
+# Encapsulation is mandatory because one node with its Realtek network card doesn't support XDP
+routingMode: tunnel
 securityContext:
   capabilities:
     ciliumAgent:
