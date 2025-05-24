@@ -6,27 +6,48 @@ If you want to deploy something similar, have a look [here](https://github.com/o
 
 ## Nodes
 
+| Name   | Type               | SchematicId                                                      | CPU | RAM  |
+|--------|--------------------|------------------------------------------------------------------|-----|------|
+| Akame  | VM                 | a7bcadbc1b6d03c0e687be3a5d9789ef7113362a6a1a038653dfd16283a92b6b | 8   | 32GB |
+| Felix  | Metal - UM773 Lite | 91de3ae80d181b2791d17a27d6374eaa2832c1726bf61d94e7266dd406c1a7a7 | 16  | 64GB |
+| Nagumo | Metal - UM870 Slim | 91de3ae80d181b2791d17a27d6374eaa2832c1726bf61d94e7266dd406c1a7a7 | 16  | 96GB |
+
 ## Akame
-
-(Virtual machine)
-
-`47f718feafaf5934d42735b54da7805fa768627393a4318a0c2d47fd5b1ecb79`
 
 ```
 customization:
     systemExtensions:
         officialExtensions:
-            - siderolabs/btrfs
             - siderolabs/qemu-guest-agent
+            - siderolabs/util-linux-tools
+```
+
+## Felix & Nagumo
+
+```
+customization:
+    extraKernelArgs:
+        - cpufreq.default_governor=performance
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/amd-ucode
+            - siderolabs/amdgpu
+            - siderolabs/realtek-firmware
             - siderolabs/util-linux-tools
 ```
 
 ## Init
 
-```
+```bash
 mise trust
 pip install pipx
 mise install
+
+task bootstrap:init-secrets
+# update .sops.yaml with the age public key
+task bootstrap:init-sops
+task bootstrap:talos
+task bootstrap:apps
 ```
 
 ## usefull commands

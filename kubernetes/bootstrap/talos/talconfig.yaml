@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
 # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
-talosVersion: v1.10.1
+talosVersion: v1.10.2
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.33.0
+kubernetesVersion: v1.33.1
 
 clusterName: fern
 endpoint: https://192.168.0.43:6443
@@ -41,52 +41,47 @@ nodes:
         mtu: 1500
         vip:
           ip: "192.168.0.43"
-  # - hostname: "k3s-2"
-  #   ipAddress: "192.168.1.12"
-  #   installDisk: "/dev/sda"
-  #   machineSpec:
-  #     secureboot: false
-  #   talosImageURL: factory.talos.dev/installer/aaafc937bd215b9f17980fe8ff2ea197f835e06c57aa46a01d3dc2e6e8f494d8
-  #   controlPlane: true
-  #   machineDisks:
-  #     - device: /dev/sdb
-  #       partitions:
-  #         - mountpoint: /var/mnt/sdb
-  #   networkInterfaces:
-  #     - deviceSelector:
-  #         hardwareAddr: "bc:24:11:00:01:12"
-  #       dhcp: false
-  #       addresses:
-  #         - "192.168.1.12/24"
-  #       routes:
-  #         - network: "0.0.0.0/0"
-  #           gateway: "192.168.1.1"
-  #       mtu: 1500
-  #       vip:
-  #         ip: "192.168.1.5"
-  # - hostname: "k3s-3"
-  #   ipAddress: "192.168.1.13"
-  #   installDisk: "/dev/sda"
-  #   machineSpec:
-  #     secureboot: false
-  #   talosImageURL: factory.talos.dev/installer/aaafc937bd215b9f17980fe8ff2ea197f835e06c57aa46a01d3dc2e6e8f494d8
-  #   controlPlane: true
-  #   machineDisks:
-  #     - device: /dev/sdb
-  #       partitions:
-  #         - mountpoint: /var/mnt/sdb
-  #   networkInterfaces:
-  #     - deviceSelector:
-  #         hardwareAddr: "bc:24:11:00:01:13"
-  #       dhcp: false
-  #       addresses:
-  #         - "192.168.1.13/24"
-  #       routes:
-  #         - network: "0.0.0.0/0"
-  #           gateway: "192.168.1.1"
-  #       mtu: 1500
-  #       vip:
-  #         ip: "192.168.1.5"
+  - hostname: fern-felix
+    ipAddress: "192.168.0.41"
+    installDiskSelector:
+      model: Crucial*
+      type: ssd
+    machineSpec:
+      secureboot: true
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/91de3ae80d181b2791d17a27d6374eaa2832c1726bf61d94e7266dd406c1a7a7
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "58:47:ca:73:c9:84"
+        dhcp: false
+        addresses:
+          - "192.168.0.41/24"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "192.168.0.1"
+        mtu: 1500
+        vip:
+          ip: "192.168.0.43"
+  - hostname: fern-nagumo
+    ipAddress: "192.168.0.42"
+    installDiskSelector:
+      size: <= 1.1TiB # we want to target the smallerish disk
+    machineSpec:
+      secureboot: true
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/91de3ae80d181b2791d17a27d6374eaa2832c1726bf61d94e7266dd406c1a7a7
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "58:47:ca:7a:0e:8c"
+        dhcp: false
+        addresses:
+          - "192.168.0.42/24"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "192.168.0.1"
+        mtu: 1500
+        vip:
+          ip: "192.168.0.43"
 
 # Global patches
 patches:
