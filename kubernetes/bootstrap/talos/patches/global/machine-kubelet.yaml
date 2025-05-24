@@ -1,8 +1,8 @@
 machine:
   kubelet:
-    # nodeIP:
-    #   validSubnets:
-    #     - 192.168.0.0/24
+    nodeIP:
+      validSubnets:
+        - 192.168.0.0/24
     extraMounts:
       - destination: /var/openebs/local
         type: bind
