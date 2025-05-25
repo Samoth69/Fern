@@ -26,6 +26,10 @@ spec:
         provider: host
         connections:
           requireMsgr2: true
+      mgr:
+        modules:
+          - name: prometheus
+            enabled: true
       resources:
         mgr:
           requests:
