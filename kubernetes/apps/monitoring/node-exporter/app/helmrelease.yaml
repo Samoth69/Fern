@@ -35,12 +35,6 @@ spec:
             sourceLabels:
               - __meta_kubernetes_pod_node_name
             targetLabel: nodename
-          - action: replace
-            regex: (.*)
-            replacement: $1.bjw-s.internal:9100
-            sourceLabels:
-              - kubernetes_node
-            targetLabel: instance
 
     resources:
       requests:
