@@ -3,14 +3,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app openebs
+  name: &app rook-ceph
   namespace: flux-system
 spec:
   targetNamespace: storage
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/storage/openebs/app
+  path: ./kubernetes/apps/storage/rook-ceph/operator
   prune: false
   sourceRef:
     kind: GitRepository
