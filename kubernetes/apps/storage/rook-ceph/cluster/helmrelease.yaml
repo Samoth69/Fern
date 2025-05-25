@@ -74,16 +74,16 @@ spec:
           failureDomain: host
           replicated:
             size: 2
-          storageClass:
-            enabled: true
-            name: ceph-block
-            isDefault: true
-            reclaimPolicy: Delete
-            allowVolumeExpansion: true
-            volumeBindingMode: Immediate
-            parameters:
-              imageFormat: "2"
-              imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
+        storageClass:
+          enabled: true
+          name: ceph-block
+          isDefault: true
+          reclaimPolicy: Delete
+          allowVolumeExpansion: true
+          volumeBindingMode: Immediate
+          parameters:
+            imageFormat: "2"
+            imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
     cephFileSystems:
       - name: ceph-filesystem
         spec:
