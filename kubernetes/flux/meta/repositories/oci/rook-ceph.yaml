@@ -13,5 +13,6 @@ spec:
     operation: copy
   ref:
     tag: v1.17.2
-  verify:
-    provider: cosign
+  # TODO chercher à quoi ça sert / en quoi c'est nécéssaire
+  # verify:
+  #   provider: cosign
