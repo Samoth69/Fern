@@ -40,4 +40,3 @@ spec:
   timeout: 5m
   dependsOn:
     - name: rook-ceph
-      namespace: storage
