@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./openebs/ks.yaml
+  - ./rook-ceph/ks.yaml
