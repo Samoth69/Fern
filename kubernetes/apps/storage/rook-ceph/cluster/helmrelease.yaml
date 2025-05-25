@@ -1,0 +1,104 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: rook-ceph-cluster
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: rook-ceph-cluster
+    namespace: flux-system
+  values:
+    operatorNamespace: storage
+    monitoring:
+      enabled: true
+      createPrometheusRules: true
+    toolbox:
+      enabled: true
+    cephClusterSpec:
+      cephConfig:
+        global:
+          bdev_enable_discard: "true" # quote
+          bdev_async_discard_threads: "1" # quote
+      network:
+        provider: host
+        connections:
+          requireMsgr2: true
+      resources:
+        mgr:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+          limits:
+            memory: 2Gi
+        mon:
+          requests:
+            cpu: 50m
+            memory: 512Mi
+          limits:
+            memory: 1Gi
+        osd:
+          requests:
+            cpu: 500m
+            memory: 2Gi
+          limits:
+            memory: 6Gi
+        mgr-sidecar:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            memory: 256Mi
+      storage:
+        useAllNodes: false
+        useAllDevices: false
+        config:
+          osdsPerDevice: "1"
+        nodes:
+          - name: "fern-akame"
+            devices:
+              # full nvme drive passthrough by proxmox
+              - name: "sdb"
+                deviceClass: nvme
+          - name: "fern-felix"
+            devices:
+              - name: "nvme0n1"
+          - name: "fern-nagumo"
+            devices:
+              - name: "nvme0n1"
+    cephBlockPools:
+      - name: ceph-blockpool
+        spec:
+          failureDomain: host
+          replicated:
+            size: 2
+          storageClass:
+            enabled: true
+            name: ceph-block
+            isDefault: true
+            reclaimPolicy: Delete
+            allowVolumeExpansion: true
+            volumeBindingMode: Immediate
+            parameters:
+              imageFormat: "2"
+              imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
+    cephFileSystems:
+      - name: ceph-filesystem
+        spec:
+          metadataPool:
+            replicated:
+              size: 2
+          dataPools:
+            - failureDomain: host
+              replicated:
+                size: 2
+          metadataServer:
+            resources:
+              limits:
+                memory: "4Gi"
+              requests:
+                cpu: "10m"
+                memory: "128Mi"
+    cephObjectStores: []

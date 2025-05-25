@@ -1,0 +1,18 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/ocirepository-source-v1beta2.json
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: rook-ceph-cluster
+  namespace: flux-system
+spec:
+  interval: 1h
+  url: oci://ghcr.io/rook/rook-ceph-cluster
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
+  ref:
+    tag: v1.17.2
+  # TODO chercher à quoi ça sert / en quoi c'est nécéssaire
+  # verify:
+  #   provider: cosign
