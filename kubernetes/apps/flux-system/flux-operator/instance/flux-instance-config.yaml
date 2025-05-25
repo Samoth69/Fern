@@ -1,5 +1,7 @@
 apiVersion: fluxcd.controlplane.io/v1
 kind: FluxInstance
+metadata:
+  name: flux-instance-config
 spec:
   kustomize:
     patches:
