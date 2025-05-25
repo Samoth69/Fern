@@ -37,8 +37,6 @@ l2announcements:
   enabled: true
 loadBalancer:
   algorithm: maglev
-  # Mandatory since Realtek driver doesn't support native XDP
-  # acceleration: best-effort
 localRedirectPolicy: true
 operator:
   # TODO: add more
