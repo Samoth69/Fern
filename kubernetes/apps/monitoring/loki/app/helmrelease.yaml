@@ -57,7 +57,7 @@ spec:
       replicas: 1
       persistence:
         enabled: true
-        storageClass: csi-rbd-sc
+        storageClass: ceph-block
         size: 50Gi
     gateway:
       replicas: 0

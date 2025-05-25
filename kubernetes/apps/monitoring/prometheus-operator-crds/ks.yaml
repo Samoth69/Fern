@@ -6,11 +6,11 @@ metadata:
   name: &app prometheus-operator-crds
   namespace: flux-system
 spec:
-  targetNamespace: observability
+  targetNamespace: monitoring
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/observability/prometheus-operator-crds/app
+  path: ./kubernetes/apps/monitoring/prometheus-operator-crds/app
   prune: false # never should be deleted
   sourceRef:
     kind: GitRepository

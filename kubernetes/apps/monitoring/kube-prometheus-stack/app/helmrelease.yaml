@@ -27,7 +27,7 @@ spec:
       retries: 3
   dependsOn:
     - name: prometheus-operator-crds
-      namespace: observability
+      namespace: monitoring
   values:
     crds:
       enabled: false
@@ -36,18 +36,18 @@ spec:
       ingress:
         enabled: true
         ingressClassName: traefik-internal
-        hosts: ["alertmanager.milim.samoth.eu"]
+        hosts: ["alertmanager.fern.samoth.eu"]
         pathType: Prefix
       alertmanagerSpec:
         alertmanagerConfiguration:
           name: alertmanager
           global:
             resolveTimeout: 5m
-        externalUrl: https://alertmanager.milim.samoth.eu
+        externalUrl: https://alertmanager.fern.samoth.eu
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: longhorn
+              storageClassName: ceph-block
               resources:
                 requests:
                   storage: 1Gi
@@ -71,7 +71,7 @@ spec:
       ingress:
         enabled: true
         ingressClassName: traefik-internal
-        hosts: ["prometheus.milim.samoth.eu"]
+        hosts: ["prometheus.fern.samoth.eu"]
         pathType: Prefix
       prometheusSpec:
         podMonitorSelectorNilUsesHelmValues: false
@@ -93,7 +93,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: longhorn
+              storageClassName: ceph-block
               resources:
                 requests:
                   storage: 50Gi
