@@ -18,6 +18,7 @@ cluster:
             namespaces:
               - kube-system
               - storage
+              - system-priv
             runtimeClasses: []
             usernames: []
           kind: PodSecurityConfiguration
