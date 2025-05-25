@@ -102,6 +102,8 @@ spec:
               replicated:
                 size: 2
           metadataServer:
+            activeCount: 1
+            activeStandby: true
             resources:
               limits:
                 memory: "4Gi"
