@@ -9,7 +9,6 @@ spec:
   chartRef:
     kind: OCIRepository
     name: rook-ceph-cluster
-    namespace: flux-system
   values:
     operatorNamespace: storage
     monitoring:

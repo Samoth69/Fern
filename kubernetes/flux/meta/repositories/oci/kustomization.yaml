@@ -2,13 +2,4 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-resources:
-  - ./grafana.yaml
-  - ./loki.yaml
-  - ./node-exporter.yaml
-  - ./prometheus-community.yaml
-  - ./rook-ceph-cluster.yaml
-  - ./rook-ceph.yaml
-  - ./snapshot-controller.yaml
-  - ./spegel.yaml
-  - ./stakater.yaml
+resources: []

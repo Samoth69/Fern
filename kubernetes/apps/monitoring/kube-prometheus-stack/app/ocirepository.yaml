@@ -3,7 +3,12 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
-  name: stakater
+  name: kube-prometheus-stack
 spec:
   interval: 1h
-  url: oci://ghcr.io/stakater/charts
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
+  ref:
+    tag: 72.6.2
+  url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack

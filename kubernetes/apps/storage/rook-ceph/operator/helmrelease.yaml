@@ -10,7 +10,6 @@ spec:
   chartRef:
     kind: OCIRepository
     name: rook-ceph
-    namespace: flux-system
   values:
     crds:
       enabled: true
