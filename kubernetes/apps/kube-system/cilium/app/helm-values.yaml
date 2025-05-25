@@ -39,8 +39,7 @@ loadBalancer:
   algorithm: maglev
 localRedirectPolicy: true
 operator:
-  # TODO: add more
-  replicas: 1
+  replicas: 2
   rollOutPods: true
   prometheus:
     enabled: true
