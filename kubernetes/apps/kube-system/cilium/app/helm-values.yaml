@@ -9,7 +9,7 @@ cgroup:
     enabled: false
   hostRoot: /sys/fs/cgroup
 # NOTE: devices might need to be set if you have more than one active NIC on your hosts
-devices: eno+ eth+ br+
+# devices: eno+ eth+
 endpointRoutes:
   enabled: true
 envoy:
@@ -37,7 +37,8 @@ l2announcements:
   enabled: true
 loadBalancer:
   algorithm: maglev
-  acceleration: best-effort
+  # Mandatory since Realtek driver doesn't support native XDP
+  # acceleration: best-effort
 localRedirectPolicy: true
 operator:
   # TODO: add more
