@@ -15,9 +15,6 @@
     "prEditedNotification",
     "prIgnoreNotification"
   ],
-  "schedule": [
-    "every weekend"
-  ],
   "ignorePaths": [
     "**/*.sops.*"
   ],
