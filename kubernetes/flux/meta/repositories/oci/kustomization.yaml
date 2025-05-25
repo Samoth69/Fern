@@ -5,6 +5,6 @@ kind: Kustomization
 resources:
   - ./grafana.yaml
   - ./loki.yaml
-  - ./rook-ceph.yaml
   - ./rook-ceph-cluster.yaml
+  - ./rook-ceph.yaml
   - ./snapshot-controller.yaml

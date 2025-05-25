@@ -13,7 +13,6 @@ resources:
   # - ./crunchydata.yaml
   - ./external-secrets.yaml
   # - ./forgejo.yaml
-  # - ./grafana.yaml
   # - ./harbor.yaml
   - ./jetstack.yaml
   - ./openebs.yaml
