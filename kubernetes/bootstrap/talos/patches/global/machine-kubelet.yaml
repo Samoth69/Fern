@@ -5,6 +5,7 @@ machine:
     nodeIP:
       validSubnets:
         - 192.168.0.0/24
+        - fe80::/64
     extraMounts:
       - destination: /var/openebs/local
         type: bind
