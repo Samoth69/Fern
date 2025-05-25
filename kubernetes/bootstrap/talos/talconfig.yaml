@@ -9,10 +9,8 @@ endpoint: https://192.168.0.43:6443
 
 clusterPodNets:
   - "10.69.0.0/16"
-  - "fc00:69::/64"
 clusterSvcNets:
-  - "10.96.0.0/16"
-  - "fc00:96::/64"
+  - "10.96.0.0/12"
 
 additionalApiServerCertSans: &sans
   - "192.168.0.43"
@@ -29,7 +27,7 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/nocloud-installer-secureboot/47f718feafaf5934d42735b54da7805fa768627393a4318a0c2d47fd5b1ecb79
+    talosImageURL: factory.talos.dev/nocloud-installer-secureboot/d554aa32ea9938eeba316629df75cbaa0968e4a52e14673a3e647bbe98ec09f7
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -50,7 +48,7 @@ nodes:
       type: ssd
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/91de3ae80d181b2791d17a27d6374eaa2832c1726bf61d94e7266dd406c1a7a7
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -70,7 +68,7 @@ nodes:
       size: <= 1.1TiB # we want to target the smallerish disk
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/91de3ae80d181b2791d17a27d6374eaa2832c1726bf61d94e7266dd406c1a7a7
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd
     controlPlane: true
     networkInterfaces:
       - deviceSelector:

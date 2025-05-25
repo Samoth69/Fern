@@ -8,14 +8,16 @@ If you want to deploy something similar, have a look [here](https://github.com/o
 
 | Name   | Type               | SchematicId                                                      | CPU | RAM  |
 |--------|--------------------|------------------------------------------------------------------|-----|------|
-| Akame  | VM                 | a7bcadbc1b6d03c0e687be3a5d9789ef7113362a6a1a038653dfd16283a92b6b | 8   | 32GB |
-| Felix  | Metal - UM773 Lite | 91de3ae80d181b2791d17a27d6374eaa2832c1726bf61d94e7266dd406c1a7a7 | 16  | 64GB |
-| Nagumo | Metal - UM870 Slim | 91de3ae80d181b2791d17a27d6374eaa2832c1726bf61d94e7266dd406c1a7a7 | 16  | 96GB |
+| Akame  | VM                 | d554aa32ea9938eeba316629df75cbaa0968e4a52e14673a3e647bbe98ec09f7 | 8   | 32GB |
+| Felix  | Metal - UM773 Lite | eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd | 16  | 64GB |
+| Nagumo | Metal - UM870 Slim | eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd | 16  | 96GB |
 
 ## Akame
 
 ```
 customization:
+    extraKernelArgs:
+        - ipv6.disable=1
     systemExtensions:
         officialExtensions:
             - siderolabs/qemu-guest-agent
@@ -28,6 +30,7 @@ customization:
 customization:
     extraKernelArgs:
         - cpufreq.default_governor=performance
+        - ipv6.disable=1
     systemExtensions:
         officialExtensions:
             - siderolabs/amd-ucode
