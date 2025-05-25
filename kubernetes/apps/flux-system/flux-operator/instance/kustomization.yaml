@@ -5,7 +5,6 @@ kind: Kustomization
 resources:
   - ./ocirepository.yaml
   - ./helmrelease.yaml
-  - ./flux-instance-config.yaml
 configMapGenerator:
   - name: flux-instance-helm-values
     files:
