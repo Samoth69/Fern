@@ -6,5 +6,5 @@ metadata:
   name: spegel
 spec:
   type: oci
-  interval: 5m
+  interval: 1h
   url: oci://ghcr.io/spegel-org/helm-charts
