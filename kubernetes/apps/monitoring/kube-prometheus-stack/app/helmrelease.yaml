@@ -77,6 +77,9 @@ spec:
         - 192.168.0.40
         - 192.168.0.41
         - 192.168.0.42
+      service:
+        port: 2381
+        targetPort: 2381
 
     kubelet:
       enabled: true
