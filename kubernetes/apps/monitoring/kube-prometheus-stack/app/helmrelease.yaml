@@ -22,6 +22,8 @@ spec:
   dependsOn:
     - name: prometheus-operator-crds
       namespace: monitoring
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
   values:
     crds:
       enabled: false
@@ -55,9 +57,8 @@ spec:
             memory: 32Mi
 
     kubeApiServer:
+      enabled: true
       serviceMonitor:
-        selector:
-          k8s-app: kube-apiserver
         metricRelabelings:
           # Drop high cardinality labels
           - action: drop
@@ -93,7 +94,7 @@ spec:
       enabled: false
 
     kubeStateMetrics:
-      enabled: false
+      enabled: true
 
     nodeExporter:
       enabled: false
