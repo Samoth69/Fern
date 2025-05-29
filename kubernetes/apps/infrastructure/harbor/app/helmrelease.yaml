@@ -25,6 +25,9 @@ spec:
       # we do not want harbor internal cert
       tls:
         enabled: false
+    ipFamily:
+      ipv6:
+        enabled: false
     database:
       type: external
       external:
