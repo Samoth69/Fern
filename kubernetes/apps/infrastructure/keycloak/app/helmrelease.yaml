@@ -36,5 +36,5 @@ spec:
       host: keycloak-primary.database.svc
       user: keycloak
       database: keycloak
-      existingSecret: keycloak-database-secret
+      existingSecret: keycloak-pguser-keycloak
       existingSecretPasswordKey: password
