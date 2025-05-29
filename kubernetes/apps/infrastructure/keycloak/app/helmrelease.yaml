@@ -1,0 +1,40 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: keycloak
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: keycloak
+  values:
+    replicaCount: 2
+    auth:
+      adminUser: admin
+      existingSecret: keycloak-admin-secret
+      passwordSecretKey: password
+    production: true
+    proxyHeaders: xforwarded
+    resources:
+      requests:
+        cpu: 10m
+        memory: 666Mi
+      limits:
+        memory: 2048Mi
+    ingress:
+      enabled: true
+      hostname: keycloak.fern.samoth.eu
+    networkPolicy:
+      kubeAPIServerPorts: [6443]
+    metrics:
+      enabled: true
+    postgresql:
+      enabled: false
+    externalDatabase:
+      host: keycloak-primary.database.svc
+      user: keycloak
+      database: keycloak
+      existingSecret: keycloak-database-secret
+      existingSecretPasswordKey: password

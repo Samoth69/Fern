@@ -1,0 +1,107 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/postgres-operator.crunchydata.com/postgrescluster_v1beta1.json
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
+metadata:
+  name: ${APP}
+spec:
+  backups:
+    pgbackrest:
+      configuration: &customBackrestConfig
+        - secret:
+            name: ${APP}-s3-backup
+      global: &globalBackrestConfig
+        repo1-s3-uri-style: path
+        repo1-path: /pgbackrest/postgres-operator/fern/${APP}
+        repo1-retention-full: "14"
+        repo1-retention-full-type: count
+      jobs:
+        ttlSecondsAfterFinished: 60
+      manual:
+        repoName: repo1
+        options:
+         - --type=full
+      metadata:
+        labels:
+          app.kubernetes.io/name: ${APP}-crunchy-postgres-backup
+      repos:
+        - name: repo1
+          s3: &s3
+            bucket: crunchy-postgres-backups
+            endpoint: https://truenas.samoth.eu:9000
+            region: us-east-1
+          schedules:
+            full: "0 1 * * *" # every day at 01:00
+            differential: "0 */3 * * *" # every 3 hours
+            # incremental: "0 * * * *" # every hours
+  dataSource:
+    pgbackrest:
+      stanza: db
+      configuration: *customBackrestConfig
+      global: *globalBackrestConfig
+      repo:
+        name: repo1
+        s3: *s3
+
+  postgresVersion: 17
+
+  metadata:
+    labels:
+      crunchy-userinit.ramblurr.github.com/enabled: "true"
+      crunchy-userinit.ramblurr.github.com/superuser: postgres
+
+  patroni:
+    dynamicConfiguration:
+      synchronous_mode: true
+      postgresql:
+        parameters:
+          max_wal_size: 5GB
+          synchronous_commit: 'on'
+        pg_hba:
+          - hostnossl all all 127.0.0.1/8 md5 # port forwarding without ssl
+          - hostssl all all all md5
+
+
+  instances:
+    - name: pg-instance
+      metadata:
+        labels:
+          app.kubernetes.io/name: ${APP}-crunchy-postgres
+      replicas: 1
+      dataVolumeClaimSpec:
+        accessModes:
+        - "ReadWriteOnce"
+        storageClassName: ceph-block
+        resources:
+          requests:
+            storage: ${POSTGRES_DATA_SIZE:-1Gi}
+      resources:
+        requests:
+          cpu: 10m
+          memory: 64M
+        limits:
+          memory: 1024M
+
+  users:
+    # Superuser
+    - name: postgres
+      databases:
+        - postgres
+      options: SUPERUSER
+      password: &password
+        type: AlphaNumeric
+    # Applications
+    - name: ${APP}
+      databases:
+        - ${APP}
+      password: *password
+
+  monitoring:
+    pgmonitor:
+      exporter:
+        resources:
+          requests:
+            cpu: 10m
+            memory: 64M
+          limits:
+            memory: 512M
