@@ -1,0 +1,62 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: harbor
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: harbor
+      version: 1.17.1
+      sourceRef:
+        kind: HelmRepository
+        name: harbor
+        namespace: flux-system
+      interval: 5m
+  values:
+    imagePullPolicy: Always
+    externalURL: https://harbor.fern.samoth.eu
+    expose:
+      ingress:
+        hosts:
+          core: harbor.fern.samoth.eu
+        className: traefik-internal
+      # we do not want harbor internal cert
+      tls:
+        enabled: false
+    database:
+      type: external
+      external:
+        host: harbor-primary
+        username: harbor
+        coreDatabase: harbor
+        existingSecret: harbor-pguser-harbor
+        sslmode: require
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    trivy:
+      resources:
+        requests:
+          cpu: 10m
+          memory: 256Mi
+    core:
+      replicas: 2
+      affinity: &affinity
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+           - topologyKey: "kubernetes.io/hostname"
+    registry:
+      replicas: 2
+      affinity: *affinity
+    persistence:
+      persistentVolumeClaim:
+        registry:
+          existingClaim: harbor-registry
+        jobservice:
+          jobLog:
+            storageClass: ceph-filesystem
+            accessMode: ReadWriteMany

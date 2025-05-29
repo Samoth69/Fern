@@ -7,7 +7,7 @@ resources:
   - ./crunchy-postgres-operator/ks.yaml
   - ./userinit-controller/ks.yaml
   - ./keycloak/ks.yaml
+  - ./harbor/ks.yaml
   # - ./forgejo/ks.yaml
-  # - ./harbor/ks.yaml
   # - ./rabbitmq-operator/ks.yaml
   # - ./woodpecker/ks.yaml
