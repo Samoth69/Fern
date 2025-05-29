@@ -5,13 +5,13 @@ metadata:
   name: &appname userinit-controller
   namespace: flux-system
 spec:
-  targetNamespace: database
+  targetNamespace: infrastructure
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
   interval: 30m
   timeout: 5m
-  path: ./kubernetes/apps/database/userinit-controller/app
+  path: ./kubernetes/apps/infrastructure/userinit-controller/app
   prune: true
   sourceRef:
     kind: GitRepository
