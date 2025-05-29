@@ -23,7 +23,7 @@ spec:
         cpu: 10m
         memory: 666Mi
       limits:
-        memory: 2048Mi
+        memory: 4096Mi
     ingress:
       enabled: true
       hostname: keycloak.fern.samoth.eu
