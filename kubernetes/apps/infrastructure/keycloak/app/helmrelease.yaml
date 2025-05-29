@@ -33,7 +33,7 @@ spec:
     postgresql:
       enabled: false
     externalDatabase:
-      host: keycloak-primary.database.svc
+      host: keycloak-primary
       user: keycloak
       database: keycloak
       existingSecret: keycloak-pguser-keycloak
