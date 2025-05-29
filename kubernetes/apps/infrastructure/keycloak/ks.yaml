@@ -19,7 +19,7 @@ spec:
   dependsOn:
     - name: crunchy-postgres-operator
   components:
-    - ../../../components/postgresql/
+    - ../../../../components/postgresql/
   postBuild:
     substitute:
       APP: *appname
