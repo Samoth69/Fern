@@ -9,7 +9,7 @@ spec:
     pgbackrest:
       configuration: &customBackrestConfig
         - secret:
-            name: ${APP}-s3-backup
+            name: ${APP}-s3-database-backup
       global: &globalBackrestConfig
         repo1-s3-uri-style: path
         repo1-path: /pgbackrest/postgres-operator/fern/${APP}
