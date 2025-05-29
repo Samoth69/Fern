@@ -14,7 +14,7 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
-    singleNamespace: true
+    singleNamespace: false
     debug: false
     disable_check_for_upgrades: true
     install:
