@@ -24,6 +24,8 @@ spec:
           pathType: Prefix
         ingressClassName: traefik-internal
     cephClusterSpec:
+      dashboard:
+        ssl: false
       cephConfig:
         global:
           bdev_enable_discard: "true" # quote
