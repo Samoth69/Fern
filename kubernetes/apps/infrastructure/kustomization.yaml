@@ -8,6 +8,6 @@ resources:
   - ./userinit-controller/ks.yaml
   - ./keycloak/ks.yaml
   - ./harbor/ks.yaml
-  # - ./forgejo/ks.yaml
+  - ./forgejo/ks.yaml
   # - ./rabbitmq-operator/ks.yaml
   # - ./woodpecker/ks.yaml
