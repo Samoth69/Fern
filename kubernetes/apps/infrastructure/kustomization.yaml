@@ -6,8 +6,8 @@ resources:
   - ./namespace.yaml
   - ./crunchy-postgres-operator/ks.yaml
   - ./userinit-controller/ks.yaml
+  - ./keycloak/ks.yaml
   # - ./forgejo/ks.yaml
   # - ./harbor/ks.yaml
-  # - ./keycloak/ks.yaml
   # - ./rabbitmq-operator/ks.yaml
   # - ./woodpecker/ks.yaml
