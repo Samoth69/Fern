@@ -16,6 +16,13 @@ spec:
       createPrometheusRules: true
     toolbox:
       enabled: true
+    ingress:
+      dashboard:
+        host:
+          name: ceph.fern.samoth.eu
+          path: "/"
+          pathType: Prefix
+        ingressClassName: traefik-internal
     cephClusterSpec:
       cephConfig:
         global:
