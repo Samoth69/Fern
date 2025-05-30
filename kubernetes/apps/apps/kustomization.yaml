@@ -6,4 +6,4 @@ resources:
   - ./namespace.yaml
   - ./eso-rb.yaml
   - ./app-internal/ks.yaml
-  - ./pull-secret.sops.yaml
+  - ./ips-harbor-fern.sops.yaml

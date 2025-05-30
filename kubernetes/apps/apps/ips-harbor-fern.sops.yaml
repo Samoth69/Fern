@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
     name: ips-harbor-fern
-    namespace: app
+    namespace: apps
 stringData:
     .dockerconfigjson: ENC[AES256_GCM,data:Te6Oqju+NPamq6V5O7fiIRwGJOsFZMoQ8d+tYm+tjweeNI8zZVcK8XuAgsCLRVaNR72EkcEppyo7FlwhA9Kbohx0vLga5ANEoFZdZpNVIGLaUyN43kQE0oJS3Vr8OSHSOKymn0Ew7s8J8Wl4GzUiJJjhxS7HZFWOJzZj3inenwOwYcMvbwKv,iv:xAcnHA64Jk3X7d2vmNLho289QVA+a5i/sGI0fENirs0=,tag:Aet5sB5j20E7Vb86Vi9zsg==,type:str]
 type: kubernetes.io/dockerconfigjson
@@ -17,8 +17,8 @@ sops:
             aTdqenpSSVRneWhjcHRmZnFyNkZhVEEKHPIvYKlS9Rgn2plB8I00SMBE9GPLzNOZ
             KjyWwQiPnM6TMGv+15Cn+DNSgsNIiGXDaByTat5lyxKhA2mXju3vCg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-05-30T13:01:56Z"
-    mac: ENC[AES256_GCM,data:xeqVwPd7MwFqLRyEn/0QGtVN6trJP0CqfKDgcFxxfal+xpVEqCLFETIWXcyVxEVD8zhmmDEk98cgLY7P4WWHVUWcMYlPp27HOnqiJxumBOyVPQLvg/DaGik1qXnBuQiD2obTpZLXUTr2qjVTEnulHiKD4/Tvwwnpt/CQoaG6PPM=,iv:bYDQ2ARnAZhFNK3jDlujK8oC1BlwJVQbrMYnJyFG0qQ=,tag:/U4wTCYeOVvk5Np+g5bTPQ==,type:str]
+    lastmodified: "2025-05-30T13:04:03Z"
+    mac: ENC[AES256_GCM,data:++TdsMvbpHutDDWnibcC2wFD+LqZOOjHaNepLU5u8LvjLC2VQzfqHJmCDG2KJt+wjQY/MsK6+qfMTgu8Tuvgzf5BAb0UI7CM3ESIbRYIMIHXPYq+5toY1reEovrGyI3aT8Yv1LJYQj1PSkm2EbyBTeQGgpm1V4OwZAQxrdWOGTs=,iv:aPIgzwvzmOPASU6J2Gl26nFkTbIEkhMPQi1k9yvfPZk=,tag:On+uBY01eZZgHgXxdAkFfw==,type:str]
     encrypted_regex: ^(data|stringData)$
     mac_only_encrypted: true
     version: 3.10.2
