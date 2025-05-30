@@ -60,6 +60,8 @@ spec:
           SSL_MODE: require
         admin:
           DEFAULT_EMAIL_NOTIFICATIONS: disabled
+        migrations:
+          ALLOW_LOCALNETWORKS: true
         openid:
           ENABLE_OPENID_SIGNIN: false
         oauth2_client:
