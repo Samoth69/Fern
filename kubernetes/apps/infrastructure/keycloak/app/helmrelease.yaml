@@ -34,7 +34,7 @@ spec:
     postgresql:
       enabled: false
     externalDatabase:
-      host: keycloak-primary
+      host: postgres-infra-primary
       user: keycloak
       database: keycloak
       existingSecret: postgres-infra-pguser-keycloak
