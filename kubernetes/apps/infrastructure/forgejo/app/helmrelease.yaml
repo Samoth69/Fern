@@ -53,7 +53,7 @@ spec:
           OFFLINE_MODE: true
         database:
           DB_TYPE: postgres
-          HOST: forgejo-primary
+          HOST: postgres-infra-primary
           NAME: forgejo
           USER: forgejo
           MAX_OPEN_CONNS: 10
