@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &appname postgres-infra
+  namespace: flux-system
+spec:
+  targetNamespace: infrastructure
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
+  interval: 10m
+  path: ./kubernetes/apps/infrastructure/postgres-infra/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  dependsOn:
+    - name: crunchy-postgres-operator
+  components:
+    - ../../../../components/postgresql/
+  postBuild:
+    substitute:
+      APP: *appname
+      POSTGRES_DATA_SIZE: 20Gi
+  patches:
+    - patch: |
+        - op: remove
+          path: /spec/dataSource
+        - op: replace
+          path: /spec/users/1
+          value:
+            name: forgejo
+            databases:
+              - forgejo
+            password: &password
+              type: AlphaNumeric
+        - op: add
+          path: /spec/users/2
+          value:
+            name: harbor
+            databases:
+              - harbor
+            password: *password
+        - op: add
+          path: /spec/users/3
+          value:
+            name: keycloak
+            databases:
+              - keycloak
+            password: *password
+        - op: add
+          path: /spec/users/4
+          value:
+            name: woodpecker
+            databases:
+              - woodpecker
+            password: *password
+      target:
+        kind: PostgresCluster

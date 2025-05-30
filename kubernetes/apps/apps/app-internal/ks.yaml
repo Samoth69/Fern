@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &appname app-internal
+  namespace: flux-system
+spec:
+  targetNamespace: apps
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
+  interval: 10m
+  path: ./kubernetes/apps/apps/app-internal/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  dependsOn:
+    - name: crunchy-postgres-operator
+  components:
+    - ../../../../components/postgresql/
+  postBuild:
+    substitute:
+      APP: *appname
+      POSTGRES_DATA_SIZE: 20Gi
+  patches:
+    - patch: |
+        - op: remove
+          path: /spec/dataSource
+        - op: replace
+          path: /spec/users/1
+          value:
+            name: rsscachego
+            databases:
+              - rsscachego
+            password:
+              type: AlphaNumeric
+      target:
+        kind: PostgresCluster
