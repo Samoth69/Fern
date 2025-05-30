@@ -9,6 +9,7 @@ serviceMonitor:
 spegel:
   containerdSock: /run/containerd/containerd.sock
   containerdRegistryConfigPath: /etc/cri/conf.d/hosts
+  resolveLatestTag: false
 # Graceful Helmfile to HelmRelease takeover
 commonLabels:
   helm.toolkit.fluxcd.io/name: spegel
