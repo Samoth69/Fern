@@ -10,6 +10,8 @@ spegel:
   containerdSock: /run/containerd/containerd.sock
   containerdRegistryConfigPath: /etc/cri/conf.d/hosts
   resolveLatestTag: false
+  additionalMirrorRegistries:
+    - https://harbor.fern.samoth.eu
 # Graceful Helmfile to HelmRelease takeover
 commonLabels:
   helm.toolkit.fluxcd.io/name: spegel
