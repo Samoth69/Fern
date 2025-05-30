@@ -17,18 +17,5 @@ spec:
     name: flux-system
   wait: true
   dependsOn:
-    - name: crunchy-postgres-operator
     - name: rook-ceph-cluster
     - name: external-secrets
-  components:
-    - ../../../../components/postgresql/
-  postBuild:
-    substitute:
-      APP: *appname
-      POSTGRES_DATA_SIZE: 1Gi
-  patches:
-    - patch: |
-        - op: remove
-          path: /spec/dataSource
-      target:
-        kind: PostgresCluster

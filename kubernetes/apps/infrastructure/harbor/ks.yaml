@@ -17,23 +17,14 @@ spec:
     name: flux-system
   wait: true
   dependsOn:
-    - name: crunchy-postgres-operator
     - name: volsync
   components:
-    - ../../../../components/postgresql/
     - ../../../../components/volsync/
   postBuild:
     substitute:
       APP: *appname
-      POSTGRES_DATA_SIZE: 1Gi
       VOLSYNC_CLAIM: harbor-registry
       VOLSYNC_ACCESSMODES: ReadWriteMany
       VOLSYNC_CAPACITY: 20Gi
       VOLSYNC_STORAGECLASS: ceph-filesystem
       VOLSYNC_SNAPSHOTCLASS: csi-ceph-filesystem
-  patches:
-    - patch: |
-        - op: remove
-          path: /spec/dataSource
-      target:
-        kind: PostgresCluster

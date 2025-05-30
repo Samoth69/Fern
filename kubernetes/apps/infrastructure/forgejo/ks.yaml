@@ -17,20 +17,11 @@ spec:
     name: flux-system
   wait: true
   dependsOn:
-    - name: crunchy-postgres-operator
     - name: volsync
   components:
-    - ../../../../components/postgresql/
     - ../../../../components/volsync/
   postBuild:
     substitute:
       APP: *appname
-      POSTGRES_DATA_SIZE: 1Gi
       VOLSYNC_CLAIM: forgejo
       VOLSYNC_CAPACITY: 10Gi
-  patches:
-    - patch: |
-        - op: remove
-          path: /spec/dataSource
-      target:
-        kind: PostgresCluster

@@ -16,17 +16,3 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
-  dependsOn:
-    - name: crunchy-postgres-operator
-  components:
-    - ../../../../components/postgresql/
-  postBuild:
-    substitute:
-      APP: *appname
-      POSTGRES_DATA_SIZE: 1Gi
-  patches:
-    - patch: |
-        - op: remove
-          path: /spec/dataSource
-      target:
-        kind: PostgresCluster
