@@ -10,5 +10,5 @@ resources:
   - ./keycloak/ks.yaml
   - ./harbor/ks.yaml
   - ./forgejo/ks.yaml
+  - ./woodpecker/ks.yaml
   # - ./rabbitmq-operator/ks.yaml
-  # - ./woodpecker/ks.yaml
