@@ -34,7 +34,14 @@ spec:
             name: rsscachego
             databases:
               - rsscachego
-            password:
+            password: &password
               type: AlphaNumeric
+        - op: add
+          path: /spec/users/2
+          value:
+            name: movtrack6
+            databases:
+              - movtrack6
+            password: *password
       target:
         kind: PostgresCluster

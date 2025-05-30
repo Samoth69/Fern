@@ -5,4 +5,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./eso-rb.yaml
-  # - ./app-internal/ks.yaml
+  - ./app-internal/ks.yaml
