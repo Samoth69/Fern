@@ -34,7 +34,7 @@ spec:
         host: harbor-primary
         username: harbor
         coreDatabase: harbor
-        existingSecret: harbor-pguser-harbor
+        existingSecret: postgres-infra-pguser-harbor
         sslmode: require
     metrics:
       enabled: true

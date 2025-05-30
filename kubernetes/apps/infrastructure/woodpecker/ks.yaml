@@ -19,3 +19,4 @@ spec:
   dependsOn:
     - name: rook-ceph-cluster
     - name: external-secrets
+    - name: postgres-infra

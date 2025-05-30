@@ -109,7 +109,7 @@ spec:
         - name: FORGEJO__DATABASE__PASSWD
           valueFrom:
             secretKeyRef:
-              name: forgejo-pguser-forgejo
+              name: postgres-infra-pguser-forgejo
               key: password
     redis-cluster:
       enabled: false

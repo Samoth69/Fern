@@ -18,6 +18,7 @@ spec:
   wait: true
   dependsOn:
     - name: volsync
+    - name: postgres-infra
   components:
     - ../../../../components/volsync/
   postBuild:
