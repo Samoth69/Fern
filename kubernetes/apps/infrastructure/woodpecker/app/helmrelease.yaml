@@ -1,0 +1,62 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: woodpecker
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: woodpecker
+  values:
+    agent:
+      image:
+        registry: docker.io
+        repository: woodpeckerci/woodpecker-agent
+        tag: v3.6.0-alpine
+      env:
+        WOODPECKER_SERVER: 'woodpecker-server:9000'
+        WOODPECKER_BACKEND: kubernetes
+        WOODPECKER_MAX_WORKFLOWS: 8
+        WOODPECKER_BACKEND_K8S_NAMESPACE: woodpecker
+        WOODPECKER_BACKEND_K8S_STORAGE_CLASS: ceph-filesystem
+        WOODPECKER_BACKEND_K8S_VOLUME_SIZE: 10G
+        WOODPECKER_BACKEND_K8S_STORAGE_RWX: true
+        WOODPECKER_BACKEND_K8S_POD_LABELS: ''
+        WOODPECKER_BACKEND_K8S_POD_ANNOTATIONS: ''
+        # WOODPECKER_BACKEND_K8S_PULL_SECRET_NAMES: ips-harbor-milim
+        WOODPECKER_CONNECT_RETRY_COUNT: '1'
+      persistence:
+        enabled: true
+        size: 128Mi
+        storageClass: ceph-block
+      networkPolicy:
+        enabled: true
+    server:
+      image:
+        registry: docker.io
+        repository: woodpeckerci/woodpecker-server
+        tag: v3.6.0-alpine
+      env:
+        WOODPECKER_DATABASE_DRIVER: postgres
+        WOODPECKER_FORGEJO: true
+        WOODPECKER_FORGEJO_URL: https://forgejo.fern.samoth.eu/
+        WOODPECKER_OPEN: false
+        WOODPECKER_ADMIN: samoth
+        WOODPECKER_HOST: https://woodpecker.fern.samoth.eu
+        WOODPECKER_DISABLE_USER_AGENT_REGISTRATION: true
+      extraSecretNamesForEnvFrom:
+        - woodpecker-database-secret
+        - woodpecker-server-secret
+      persistentVolume:
+        enabled: false
+      ingress:
+        enabled: true
+        ingressClassName: traefik-internal
+        hosts:
+          - host: woodpecker.fern.samoth.eu
+            paths:
+            - path: /
+      networkPolicy:
+        enabled: false
