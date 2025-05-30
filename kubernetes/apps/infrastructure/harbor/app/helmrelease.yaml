@@ -31,7 +31,7 @@ spec:
     database:
       type: external
       external:
-        host: harbor-primary
+        host: postgres-infra-primary
         username: harbor
         coreDatabase: harbor
         existingSecret: postgres-infra-pguser-harbor
