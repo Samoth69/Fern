@@ -6,7 +6,6 @@ resources:
   - ./namespace.yaml
   - ./external-secrets/ks.yaml
   - ./eso-rb.yaml
-  - ./secretstore.yaml
   - ./crunchy-postgres-operator/ks.yaml
   - ./userinit-controller/ks.yaml
   - ./keycloak/ks.yaml
