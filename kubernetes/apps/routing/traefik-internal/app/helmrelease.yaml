@@ -46,14 +46,10 @@ spec:
     service:
       annotations:
         "lbipam.cilium.io/ips": "192.168.0.44"
-    affinity:
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: '{{ template "traefik.name" . }}'
-                  app.kubernetes.io/instance: '{{ .Release.Name }}-{{ include "traefik.namespace" . }}'
-              topologyKey: kubernetes.io/hostname
     priorityClassName: high-priority
+    metrics:
+      prometheus:
+        service:
+          enabled: true
+        serviceMonitor:
+          enabled: true
