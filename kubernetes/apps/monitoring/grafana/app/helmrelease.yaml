@@ -114,15 +114,20 @@ spec:
               path: /var/lib/grafana/dashboards/postgres
     dashboards:
       default:
-        harbor:
-          # renovate: depName="Harbor"
-          gnetId: 16003
-          revision: 2
+        cert-manager:
+          # renovate: depName="Cert-manager-Kubernetes"
+          gnetId: 20842
+          revision: 3
           datasource: Prometheus
         external-dns:
           # renovate: depName="External-dns"
           gnetId: 15038
           revision: 3
+          datasource: Prometheus
+        harbor:
+          # renovate: depName="Harbor"
+          gnetId: 16003
+          revision: 2
           datasource: Prometheus
         miniflux:
           url: https://raw.githubusercontent.com/miniflux/v2/main/contrib/grafana/dashboard.json
@@ -165,11 +170,6 @@ spec:
           # renovate: depName="Ceph - Pools"
           gnetId: 5342
           revision: 9
-          datasource: Prometheus
-        cert-manager:
-          # renovate: depName="Cert-manager-Kubernetes"
-          gnetId: 20842
-          revision: 3
           datasource: Prometheus
       flux:
         flux-cluster:
