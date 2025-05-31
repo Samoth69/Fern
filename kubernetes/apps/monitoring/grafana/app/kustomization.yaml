@@ -6,3 +6,4 @@ resources:
   - ./ocirepository.yaml
   - ./grafana-admin-secret.sops.yaml
   - ./helmrelease.yaml
+  - ./dashboards
