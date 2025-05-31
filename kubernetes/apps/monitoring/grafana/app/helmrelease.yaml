@@ -146,8 +146,8 @@ spec:
           revision: 6
           datasource: Prometheus
         traefik:
-          # renovate: depName="Traefik Official Standalone Dashboard"
-          gnetId: 17346
+          # renovate: depName="Traefik Official Kubernetes Dashboard"
+          gnetId: 17347
           revision: 9
           datasource: Prometheus
       ceph:
