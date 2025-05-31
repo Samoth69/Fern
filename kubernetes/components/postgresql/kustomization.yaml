@@ -5,3 +5,4 @@ kind: Component
 resources:
   - ./s3-secret.sops.yaml
   - ./cluster.yaml
+  - ./podmonitor.yaml
