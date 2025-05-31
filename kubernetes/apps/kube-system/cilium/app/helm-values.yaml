@@ -16,6 +16,8 @@ envoy:
   enabled: false
 dashboards:
   enabled: true
+  annotations:
+    grafana_folder: Cilium
 externalIPs:
   enabled: true
 hostFirewall:
@@ -66,6 +68,8 @@ operator:
       enabled: true
   dashboards:
     enabled: true
+    annotations:
+      grafana_folder: Cilium
 prometheus:
   enabled: true
   serviceMonitor:
