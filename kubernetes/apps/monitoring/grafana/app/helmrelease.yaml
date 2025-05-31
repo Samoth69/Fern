@@ -140,11 +140,6 @@ spec:
         node-feature-discovery:
           url: https://raw.githubusercontent.com/kubernetes-sigs/node-feature-discovery/master/examples/grafana-dashboard.json
           datasource: Prometheus
-        postgresql:
-          # renovate: depName="PostgreSQL Database"
-          gnetId: 9628
-          revision: 8
-          datasource: Prometheus
         prometheus:
           # renovate: depName="Prometheus"
           gnetId: 19105
@@ -213,6 +208,12 @@ spec:
           # renovate: depName="K8s / Storage / Volumes / Cluster"
           gnetId: 11454
           revision: 14
+          datasource: Prometheus
+      postgres:
+        postgresql:
+          # renovate: depName="PostgreSQL Database"
+          gnetId: 9628
+          revision: 8
           datasource: Prometheus
     sidecar:
       dashboards:
