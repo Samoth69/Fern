@@ -15,7 +15,7 @@ spec:
               "__meta_kubernetes_namespace",
               "__meta_kubernetes_pod_label_postgres_operator_crunchydata_com_cluster",
             ]
-          targetLabel: ${APP}
+          targetLabel: pg_cluster
           separator: "/"
           replacement: "$1$2"
         - sourceLabels:
