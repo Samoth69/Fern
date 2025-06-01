@@ -1,0 +1,41 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: argocd
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: argo-cd
+      version: 8.0.14
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: argocd
+  values:
+    global:
+      domain: argocd.fern.samoth.eu
+      addPrometheusAnnotations: true
+
+    configs:
+      cm:
+        admin.enabled: false
+        statusbadge.enabled: true
+        oidc.config: |
+          name: Keycloak
+          issuer: https://keycloak.fern.samoth.eu/admin/fern
+          clientID: argocd
+          clientSecret: $argocd-custom-secret:oidc.keycloak.clientSecret
+          requestedScopes: ["openid", "profile", "email", "groups"]
+      params:
+        server.insecure: true
+      rbac:
+        policy.csv: |
+          g, ArgoCDAdmins, role:admin
+
+    server:
+      ingress:
+        enabled: true
+        ingressClassName: traefik-internal
