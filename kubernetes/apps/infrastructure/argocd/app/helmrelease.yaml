@@ -33,7 +33,7 @@ spec:
         server.insecure: true
       rbac:
         policy.csv: |
-          g, ArgoCDAdmins, role:admin
+          g, argocd-admin, role:admin
 
     server:
       ingress:
