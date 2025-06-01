@@ -25,7 +25,7 @@ spec:
         statusbadge.enabled: true
         oidc.config: |
           name: Keycloak
-          issuer: https://keycloak.fern.samoth.eu/admin/fern
+          issuer: https://keycloak.fern.samoth.eu/realms/fern
           clientID: argocd
           clientSecret: $argocd-custom-secret:oidc.keycloak.clientSecret
           requestedScopes: ["openid", "profile", "email", "groups"]
