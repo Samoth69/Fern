@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps
+spec:
+  project: default
+  source:
+    path: apps
+    repoURL: 'ssh://git@forgejo.fern.samoth.eu:2222/samoth/ArgoCD-Infra.git'
+    targetRevision: HEAD
+  destination:
+    namespace: apps
+    server: 'https://kubernetes.default.svc'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: games
+spec:
+  project: default
+  source:
+    path: games
+    repoURL: 'ssh://git@forgejo.fern.samoth.eu:2222/samoth/ArgoCD-Infra.git'
+    targetRevision: HEAD
+  destination:
+    namespace: games
+    server: 'https://kubernetes.default.svc'
