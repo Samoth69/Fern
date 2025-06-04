@@ -1,23 +1,23 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: curseforge-api
-  namespace: games
+    name: curseforge-api
+    namespace: games
 stringData:
-  token: ENC[AES256_GCM,data:Di6a0r7lk/S4ehHQy36w9Hsrdgylns7elHhdRikASdBuZe2mk9ODQ13o6DsKJT4Ove8+hYdaxS4mooFI,iv:0JsSvrgIp/AHdlRgpmuxur7xtyyoWaVpuvf5WWg3z94=,tag:UWHdlha7jlGCOvPzGq2phQ==,type:str]
+    CF_API_KEY: ENC[AES256_GCM,data:gNO558qcWQhqUiQ2KOHY1Mu8XR0QqxLG38ATNNZ4e8v1qEW39ZJ71gzPdWM5hv/UsoTsya4EBM3XUrGo,iv:UHlI999xmhl/GyRwPHVQyyLcWEaNwS8W3AxNhgDS/Jk=,tag:rqCWWX6T2bpHe5aMh0TQZQ==,type:str]
 sops:
-  age:
-    - recipient: age1dn7j4227qd9msjn6cueaxkut4tnshy4vmqs25gphdpf88ftqnvusll2cqm
-      enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBqZll3T1RtTkxQYUhEYXJN
-        QXlFTnU5OEk1bnk5Njd5U0Qyc2prY0FTbFFVCjNXa25KeWVaRElKcUhXaUFHbHhZ
-        SzBlTmlTVlVIYnBaUE14MEVnKzJVVzAKLS0tIG5lY3dZU3lCUlRsRDRSL0VMMjB3
-        VFExYkV1Q09weEdmKzNzNVBQcWVFR2sKRQIncpRLZTW65068tbKEcRjRa1/AmhV0
-        NmN3uTsnEk2FBQNW6IVyfQMhKb/EmLiFgcaFRQUhopwXEHBUp+iiTg==
-        -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-06-04T21:04:44Z"
-  mac: ENC[AES256_GCM,data:vozeEAeSZWGOdV7HDJ41ckobMYSJ8yJXLmaQxV28fcU2bCT7nxUyhYaYSDt3C7vrWBj9VW4qWnRSr3l4gay14bZ5EloVaHkjyyn6FTK5zGDd/F9o12BAzUVBVawpxaKC9aQGBeu34C4PlyXGGTZOkeYPxADSl2o+FtI9hhxDVfc=,iv:lTidAk8yhEhARu3PV/0nJhv4Uq6XYDqSLjnKmpNt288=,tag:eWlhSKruQ6yOzRCj1el3Yg==,type:str]
-  encrypted_regex: ^(data|stringData)$
-  mac_only_encrypted: true
-  version: 3.10.2
+    age:
+        - recipient: age1dn7j4227qd9msjn6cueaxkut4tnshy4vmqs25gphdpf88ftqnvusll2cqm
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBqZll3T1RtTkxQYUhEYXJN
+            QXlFTnU5OEk1bnk5Njd5U0Qyc2prY0FTbFFVCjNXa25KeWVaRElKcUhXaUFHbHhZ
+            SzBlTmlTVlVIYnBaUE14MEVnKzJVVzAKLS0tIG5lY3dZU3lCUlRsRDRSL0VMMjB3
+            VFExYkV1Q09weEdmKzNzNVBQcWVFR2sKRQIncpRLZTW65068tbKEcRjRa1/AmhV0
+            NmN3uTsnEk2FBQNW6IVyfQMhKb/EmLiFgcaFRQUhopwXEHBUp+iiTg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-04T21:08:27Z"
+    mac: ENC[AES256_GCM,data:YayLAfXcNkXIwuBSs3dol+EM6ZPYp7cZBLwGSHd4XREV0a20outrcBrpPYL/3Fpz42CD52iUeIH/1eQKesvcnsSLYssPOV9cUD/uutM260keklVbtORMC+wsJ/96fuWgkZ9IJJtny0HKJN1hiRj2qE4/tlqP3u1SjJ6eLzlS0tY=,iv:0h04TQaDfcO6nVTMSUvXSQQezBXZ6dBomo3SzoQEM6g=,tag:2C93j1MumMHgmdQz0UfCDQ==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    mac_only_encrypted: true
+    version: 3.10.2
