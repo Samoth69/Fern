@@ -34,7 +34,7 @@ spec:
       params:
         server.insecure: true
         application.namespaces: apps, games
-        applicationsetcontroller.namespaces: apps, games
+        applicationsetcontroller.enable.progressive.syncs: true
       ssh:
         knownHosts: |
           [forgejo.fern.samoth.eu]:2222 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJaP9rrVZsZZCIN8KcG+J4S7acpgSQcdyXdT72p/RXs0
