@@ -51,6 +51,7 @@ spec:
           START_SSH_SERVER: true
           DISABLE_SSH: false
           OFFLINE_MODE: true
+          SSH_SERVER_HOST_KEYS: /ssh/forgejo
         database:
           DB_TYPE: postgres
           HOST: postgres-infra-primary
