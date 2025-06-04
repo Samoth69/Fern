@@ -24,6 +24,7 @@ spec:
         admin.enabled: false
         statusbadge.enabled: true
         timeout.reconciliation: 0
+        kustomize.buildOptions: --enable-helm
         oidc.config: |
           name: Keycloak
           issuer: https://keycloak.fern.samoth.eu/realms/fern
