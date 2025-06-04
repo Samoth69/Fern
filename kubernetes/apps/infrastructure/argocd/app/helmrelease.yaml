@@ -33,7 +33,6 @@ spec:
           requestedScopes: ["openid", "profile", "email", "groups"]
       params:
         server.insecure: true
-        application.namespaces: apps, games
         applicationsetcontroller.enable.progressive.syncs: true
       ssh:
         knownHosts: |

@@ -27,5 +27,5 @@ spec:
     repoURL: 'ssh://git@forgejo.fern.samoth.eu:2222/samoth/ArgoCD-Infra.git'
     targetRevision: HEAD
   destination:
-    namespace: games
+    namespace: infrastructure
     server: 'https://kubernetes.default.svc'
