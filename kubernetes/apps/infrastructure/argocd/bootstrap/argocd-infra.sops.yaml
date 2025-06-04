@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-infra
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: ENC[AES256_GCM,data:iu1U,iv:Kfrxg/Yi+9OorCQkl2YNZPgLrsy1yz32vRfFq8Xh1V8=,tag:p3ZSWgnvae9WTW5d1knUJg==,type:str]
+  url: ENC[AES256_GCM,data:buQXF7fCXy4YtMmyMQCJziRYkIi2NEZhmA+fCwGa+N/W49HWj8klWIJBmiaTmZV0TK7WyLX/nQ==,iv:gMYVuLkpadMTaHslVAUjAMKBNb8aKHHW07VJDhCFNYU=,tag:MLr30fJwS+0KyphebuS4bw==,type:str]
+  sshPrivateKey: ENC[AES256_GCM,data:QRF/S1w0R1Qf8jPRvZfcTRO9h0toPrbgle9ciGSBAAKl1G4wvPV0AklEmwuiZX/Ntotygo4U1hGGyRNbFabfZRblZAu/fMPz4B/MZ7KFUJEY+d5S2AF+0u9zBDzhp1aysm/uzbcW/qzfz/MXo8IZUKUcuxuufO6RinJlgaTSCPPMOfU9iF50BjLJwxIT/FsuNmxJqbt8SsiPC2ZdUZVgp93PShKyb1Mt3T8ZUbPCBLCNTdKBYrNyPYAkNxZ5CuNAZwqEoq40VzCdm6VPG+rpIpskhmBKSl9h2+t4x+VptIVEUrmS8VUPopnkpYE06ajonrRa+lKvz2/uVqS7NFLApqbDnDAXNocOMSczJQmg2LyodngwnivfOMhh8h19WP95oNDc2wuX1AKykseHpNaimKPhyR0cMkUScRWBXfeDSP1yQBEiTkS0uTTxTkCQDDPw7UJzaxcIKrZSrJhK7zgQ/2WUrJ9cIW16W3TS933ZoBdNk2FpDO2gcNwztA4WMjb9lKQgvmq5tcvDXPRgzzCN,iv:NJzINtCuIeLsFbIgH4VXUxXCPMcOl0jttmeHlrH46+E=,tag:9nRy4f7X+kdXM4Rzg16WFQ==,type:str]
+sops:
+  age:
+    - recipient: age1dn7j4227qd9msjn6cueaxkut4tnshy4vmqs25gphdpf88ftqnvusll2cqm
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBJVGtrSHFiaHhDWExoYjBo
+        UmNoU2xhb1ZwVFArZEtNZmtFMjB6OWdFVXp3CjNtWTA1NXNBYThCUWxVd3RSSDFT
+        aThHVWtYSklZRDJIVWd5TzRhU0pPRTQKLS0tIEc1V1NsTGlUakZFRk01SDg0VU91
+        WGd2UFc5QzlKcWZKNFhkZEtNNTdaTEUKhSfVfNwRLsBA7J/DE8M8t68vS/NuL6Bk
+        I+LU0LW3FI2Uv5ZUXU4+Ou0ORWQ5cej1UX07H6kJtOdfudFXum8cdw==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-06-04T16:16:58Z"
+  mac: ENC[AES256_GCM,data:2znym88j3r3I8Wj8Ma4oNxrLcGEGAKKoU5UWznWuj0riApPHOnC17Aysl29CiL3rTm59wDZ9Ucj5+rm23gX8RfKydnMKKMmWRjo0dB+epFAZ+GvZJUk2Bk3fsNWuHOAW8SV8hzOUTDbQZHulzryMOYv8p5yNCxrR912yvVqJkbc=,iv:/8m7SX31Esu+b63WIOWSThAl1UouZZ96UNwoJQc0yAM=,tag:IBMVANihoWYxPGsj0Qnt3w==,type:str]
+  encrypted_regex: ^(data|stringData)$
+  mac_only_encrypted: true
+  version: 3.10.2

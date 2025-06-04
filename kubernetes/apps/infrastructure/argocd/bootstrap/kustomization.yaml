@@ -3,7 +3,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./forgejo-ssh-keys.sops.yaml
-  - ./ocirepository.yaml
-  - ./ingressroutetcp.yaml
-  - ./helmrelease.yaml
+  - ./argocd-infra.sops.yaml

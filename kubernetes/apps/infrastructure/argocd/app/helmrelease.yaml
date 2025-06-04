@@ -23,6 +23,7 @@ spec:
       cm:
         admin.enabled: false
         statusbadge.enabled: true
+        timeout.reconciliation: 0
         oidc.config: |
           name: Keycloak
           issuer: https://keycloak.fern.samoth.eu/realms/fern
@@ -31,6 +32,9 @@ spec:
           requestedScopes: ["openid", "profile", "email", "groups"]
       params:
         server.insecure: true
+      ssh:
+        knownHosts: |
+          [forgejo.fern.samoth.eu]:2222 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJaP9rrVZsZZCIN8KcG+J4S7acpgSQcdyXdT72p/RXs0
       rbac:
         policy.csv: |
           g, argocd-admin, role:admin

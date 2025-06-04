@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: forgejo-ssh-keys
+stringData:
+    forgejo: ENC[AES256_GCM,data:RnYdVxu6+iyOKMzpUMVWDoIgoin/4/r6taJAeKqPmV2XKdrd2c+Nau1p1knAUEhbxxX4Pc0C/RWEuEWzV2mvJL9T2ZXAo8kj/Pk8Y8yngMWOup64j/u9WPQqW0ZedKBx2caitoptyxVm00EFIqLjCTa7fRVgDzKyj+4+fVvtBuWJluh14tnj2T3xYFjJ8LQyuI66iU0GYmRgyg6TlA7Q71pRgdtm1lrQULymn5buskttHya+7GmeYckN6tOmha+VM3sCAKFgOti5Xr+4AHJaMZ0jF9zaifhokeVOGpFjI3B0yGDkIlTWC2iqyTAG3lGZvzT/t+aMUyhYuc08A6AEhmuPoHIvkkARvqWPj7iNE5677lSE59tvRi2syHQaUNE4xjxn1/z4eSWJ8l8HpVegjXJtW2ffKPHG+W8oI6xgAnAsGCiT9Z0E9aMMr+sygv+p/qBW82dAD+YPxwdMRjPS0C3qQwiSrkCX21VR0pS3Lc2FQsei3TYKJtg5Pg/Z10im1ivRQfOKFm2bD+EUxGjc,iv:6jt4Im7YE3ja/NJhJk0+IAtggEhnzS7wsw+q8sJhw70=,tag:rwPbI9ZASJlz5gAvs4VJLw==,type:str]
+    forgejo.pub: ENC[AES256_GCM,data:TKnT9yEJwFb4UBNmP4QwlwVrdTNQzllAmxdi0SN6JwIxWl+UZlDI6ZMw6GXcTao7nnBUdHZxA448MbKMwR6NOIo39qn5tdDBjmHHD7uXAdVl,iv:5Lns29WSNVU7OH50VxVN1q8bs3yzGiXEMxJdu9W3ZF8=,tag:/WdtcTp0NxKWpRkp9RWw8A==,type:str]
+sops:
+    age:
+        - recipient: age1dn7j4227qd9msjn6cueaxkut4tnshy4vmqs25gphdpf88ftqnvusll2cqm
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvSUloQ0FCbld4QnNrc1N1
+            UEU2UWduVmxNdHk5WUhxUlpuNWVSZXhxWFQwCjRISHpFRkJHaTlKUWFCNmg3MlBu
+            SytkT1V1emxjNzIyTmRkR3pSMnM5T00KLS0tIGlpdHM5b0hmTFpuM290c0E5dnZy
+            L3ZtRGF3RzhRYVlndmtham9pZUFneFkKcJvXHp86tEhjWwqgh2t2XPuMHMp8LhiP
+            8pQ2C4F4/FaPQtBwD+nayVvYxdebLZyBxolhXJcBIe4jcVJNQ3TChg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-04T16:38:05Z"
+    mac: ENC[AES256_GCM,data:IkDdo0oH2SarA8ax20bmMmXhuoMr3/rUJtoMvqH5BN4JOKjRPuhm6FaBBBDYceR/yE6/KYOZD76vK1MOD2zYZom1uq6NIQDCQ/WYqyqPpJZ80ieH/9Git7b+FrcrWyyDfV3d/tQPSMmn08Li2ytBJZafIgGe3bfYEBKmz50zWYM=,iv:xfC74NF+XmAmuq+pLBYCN7hKBfv/2bSSZ3ZWM1os5Po=,tag:nZv3upNofDOLD0mvuIuerA==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    mac_only_encrypted: true
+    version: 3.10.2

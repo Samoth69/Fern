@@ -121,3 +121,12 @@ spec:
       enabled: false
     strategy:
       type: Recreate
+    extraVolumes:
+      - name: ssh-key
+        secret:
+          secretName: forgejo-ssh-keys
+    extraContainerVolumeMounts:
+      - name: ssh-key
+        readOnly: true
+        defaultMode: 0400
+        mountPath: /ssh
