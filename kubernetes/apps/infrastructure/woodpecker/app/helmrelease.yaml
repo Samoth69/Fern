@@ -37,7 +37,7 @@ spec:
       image:
         registry: docker.io
         repository: woodpeckerci/woodpecker-server
-        tag: v3.6.0-alpine
+        tag: v3.7.0-alpine
       env:
         WOODPECKER_DATABASE_DRIVER: postgres
         WOODPECKER_FORGEJO: true
