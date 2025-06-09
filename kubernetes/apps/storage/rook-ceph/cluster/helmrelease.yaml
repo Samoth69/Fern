@@ -35,6 +35,9 @@ spec:
           bluestore_slow_ops_warn_lifetime: "7200" # 2h
         mgr:
           mgr/crash/warn_recent_interval: "7200" # 2h
+        mds:
+          # https://github.com/rook/rook/issues/14220#issuecomment-2270086717
+          mds_dir_max_commit_size: "80" # orig: 10
       network:
         provider: host
         connections:
@@ -134,6 +137,16 @@ spec:
           metadataServer:
             activeCount: 1
             activeStandby: true
+            placement:
+              podAntiAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  - labelSelector:
+                      matchExpressions:
+                      - key: app
+                        operator: In
+                        values:
+                        - rook-ceph-mds
+                    topologyKey: "kubernetes.io/hostname"
             resources:
               limits:
                 memory: "4Gi"
