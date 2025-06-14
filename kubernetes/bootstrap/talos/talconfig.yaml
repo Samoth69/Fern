@@ -48,7 +48,7 @@ nodes:
       type: ssd
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/638372b2a4f32c4e45088f26b330f69b3a5128d038a2c120f5f94fea890fdf43
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -68,11 +68,11 @@ nodes:
       size: <= 1.1TiB # we want to target the smallerish disk
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/638372b2a4f32c4e45088f26b330f69b3a5128d038a2c120f5f94fea890fdf43
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "58:47:ca:7a:0e:8c"
+          hardwareAddr: "c8:ff:bf:03:57:4a"
         dhcp: false
         addresses:
           - "192.168.0.42/24"
