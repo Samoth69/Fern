@@ -38,6 +38,12 @@ spec:
         mds:
           # https://github.com/rook/rook/issues/14220#issuecomment-2270086717
           mds_dir_max_commit_size: "80" # orig: 10
+          # https://www.suse.com/fr-fr/support/kb/doc/?id=000019740
+          mds_cache_trim_threshold: "288358" # orig: 262144
+          mds_cache_trim_decay_rate: "0.900000" # orig: 1.000000
+          mds_cache_memory_limit: "4724464025" # orig: 4294967296
+          mds_recall_max_caps: "33000" # orig: 30000
+          mds_recall_max_decay_rate: "1.350000" # orig: 1.500000
       network:
         provider: host
         connections:
