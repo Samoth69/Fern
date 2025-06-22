@@ -13,4 +13,5 @@ spec:
       image:
         registry: ghcr.io
     namespaces:
+      - monitoring
       - monitoring-priv
