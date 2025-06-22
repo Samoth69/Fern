@@ -3,14 +3,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app loki
+  name: &app alloy
   namespace: flux-system
 spec:
   targetNamespace: monitoring
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/monitoring/loki/app
+  path: ./kubernetes/apps/monitoring/alloy/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -18,5 +18,3 @@ spec:
   wait: false
   interval: 30m
   timeout: 5m
-  dependsOn:
-    - name: rook-ceph-cluster
