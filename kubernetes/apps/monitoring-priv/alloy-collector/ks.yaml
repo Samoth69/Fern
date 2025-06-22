@@ -5,7 +5,7 @@ metadata:
   name: &app alloy-collector
   namespace: flux-system
 spec:
-  targetNamespace: monitoring
+  targetNamespace: monitoring-priv
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
