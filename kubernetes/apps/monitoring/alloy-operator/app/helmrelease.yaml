@@ -12,4 +12,5 @@ spec:
     global:
       image:
         registry: ghcr.io
-    ownNamespaceOnly: true
+    namespaces:
+      - monitoring-priv
