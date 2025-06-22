@@ -2,14 +2,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app alloy-operator
+  name: &app alloy-collector
   namespace: flux-system
 spec:
   targetNamespace: monitoring
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/monitoring/alloy-operator/app
+  path: ./kubernetes/apps/monitoring-priv/alloy-collector/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -17,3 +17,5 @@ spec:
   wait: false
   interval: 30m
   timeout: 5m
+  dependsOn:
+    - name: alloy-operator
