@@ -19,6 +19,7 @@ spec:
   values:
     image:
       registry: ghcr.io
+      repository: traefik/traefik
     deployment:
       replicas: 2
     podDisruptionBudget:
