@@ -19,7 +19,7 @@ spec:
       content: |-
         loki.write "dest" {
           endpoint {
-            url = "http://loki-gateway.monitoring.svc/api/v1/push"
+            url = "http://loki-headless.monitoring.svc/loki/api/v1/push"
           }
         }
 
