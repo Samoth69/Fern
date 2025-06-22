@@ -5,9 +5,4 @@ kind: Kustomization
 resources:
   - ./ocirepository.yaml
   - ./helmrelease.yaml
-configMapGenerator:
-  - name: alloy-configmap
-    files:
-      - ./resources/config.alloy
-    options:
-      disableNameSuffixHash: true
+  - ./integration
