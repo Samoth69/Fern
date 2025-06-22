@@ -29,18 +29,37 @@ spec:
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: natel-discrete-panel,pr0ps-trackmap-panel,panodata-map-panel
       GF_SECURITY_ANGULAR_SUPPORT_ENABLED: true
       GF_SERVER_ROOT_URL: https://grafana.fern.samoth.eu
+    extraSecretMounts:
+      - name: auth-generic-oauth-secret-mount
+        secretName: grafana-admin-secret
+        defaultMode: 0440
+        mountPath: /etc/secrets/auth_generic_oauth
+        readOnly: true
     grafana.ini:
       analytics:
         check_for_updates: false
         check_for_plugin_updates: false
         reporting_enabled: false
       auth.anonymous:
-        enabled: true
-        org_id: 1
-        org_name: Main Org.
-        org_role: Viewer
+        enabled: false
       news:
         news_feed_enabled: false
+      auth.generic_oauth:
+        enabled: true
+        name: Keycloak-OAuth
+        allow_sign_up: true
+        client_id: $__file{/etc/secrets/auth_generic_oauth/client_id}
+        client_secret: $__file{/etc/secrets/auth_generic_oauth/client_secret}
+        scopes: openid email profile offline_access roles
+        email_attribute_path: email
+        login_attribute_path: username
+        name_attribute_path: full_name
+        use_refresh_token: true
+        auth_url: https://keycloak.fern.samoth.eu/realms/fern/protocol/openid-connect/auth
+        token_url: https://keycloak.fern.samoth.eu/realms/fern/protocol/openid-connect/token
+        api_url: https://keycloak.fern.samoth.eu/realms/fern/protocol/openid-connect/userinfo
+        role_attribute_path: contains(roles[*], 'grafana-admin') && 'GrafanaAdmin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
+        allow_assign_grafana_admin: true
     datasources:
       datasources.yaml:
         apiVersion: 1
