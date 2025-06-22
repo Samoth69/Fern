@@ -96,8 +96,13 @@ spec:
           }
         }
 
+        // match glob pattern against files
+        local.file_match "pod_logs_matcher" {
+          path_targets = discovery.relabel.pod_logs.output
+        }
+
         loki.source.file "pod_logs" {
-          targets    = discovery.relabel.pod_logs.output
+          targets    = local.file_match.pod_logs_matcher.targets
           forward_to = [loki.process.pod_logs.receiver]
         }
 
