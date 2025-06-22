@@ -25,6 +25,7 @@ spec:
     env:
       GF_DATE_FORMATS_USE_BROWSER_LOCALE: true
       GF_EXPLORE_ENABLED: true
+      GF_NEWS_NEWS_FEED_ENABLED: false
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: natel-discrete-panel,pr0ps-trackmap-panel,panodata-map-panel
       GF_SECURITY_ANGULAR_SUPPORT_ENABLED: true
       GF_SERVER_ROOT_URL: https://grafana.fern.samoth.eu
@@ -132,6 +133,16 @@ spec:
         miniflux:
           url: https://raw.githubusercontent.com/miniflux/v2/main/contrib/grafana/dashboard.json
           datasource: Prometheus
+        smartctl-exporter:
+          # renovate: dashboardName="SMARTctl Exporter Dashboard"
+          gnetId: 22604
+          revision: 2
+          datasource: Prometheus
+        spegel:
+          # renovate: dashboardName="Spegel"
+          gnetId: 18089
+          revision: 1
+          datasource: Prometheus
         node-exporter-full:
           # renovate: depName="Node Exporter Full"
           gnetId: 1860
@@ -150,6 +161,15 @@ spec:
           gnetId: 17347
           revision: 9
           datasource: Prometheus
+        volsync:
+          # renovate: dashboardName="VolSync Dashboard"
+          gnetId: 21356
+          revision: 3
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
+            - name: VAR_REPLICATIONDESTNAME
+              value: ".*-bootstrap"
       ceph:
         ceph-cluster:
           # renovate: depName="Ceph Cluster"
@@ -172,6 +192,9 @@ spec:
           datasource: Prometheus
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
+          datasource: Prometheus
+        flux-logs:
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
           datasource: Prometheus
       kubernetes:
         kubernetes-api-server:
@@ -230,6 +253,7 @@ spec:
         labelValue: ""
     plugins:
       - grafana-clock-panel
+      - grafana-lokiexplore-app
       - grafana-piechart-panel
       - grafana-worldmap-panel
       - natel-discrete-panel

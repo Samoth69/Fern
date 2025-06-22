@@ -5,13 +5,5 @@ kind: Kustomization
 resources:
   - ./cilium.yaml
   - ./coredns.yaml
-  # - ./crunchy-userinit.yaml
-  # - ./crunchydata.yaml
   - ./external-secrets.yaml
-  # - ./forgejo.yaml
-  # - ./harbor.yaml
-  - ./jetstack.yaml
-  - ./openebs.yaml
   - ./metrics-server.yaml
-  - ./traefik.yaml
-  # - ./woodpecker.yaml
