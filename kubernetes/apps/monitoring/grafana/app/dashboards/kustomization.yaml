@@ -17,6 +17,6 @@ generatorOptions:
   disableNameSuffixHash: true
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
+    grafana_folder: Postgres
   labels:
     grafana_dashboard: "true"
-    grafana_folder: Postgres
