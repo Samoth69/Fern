@@ -1,7 +1,7 @@
 apiVersion: collectors.grafana.com/v1alpha1
 kind: Alloy
 metadata:
-  name: allow-collector
+  name: alloy-collector
 spec:
   controller:
     type: daemonset
@@ -19,7 +19,7 @@ spec:
       content: |-
         loki.write "dest" {
           endpoint {
-            url = "http://loki-headless.monitoring.svc/loki/api/v1/push"
+            url = "http://loki-headless.monitoring.svc:3100/loki/api/v1/push"
           }
         }
 
