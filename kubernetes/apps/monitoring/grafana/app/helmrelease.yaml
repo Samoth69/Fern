@@ -58,7 +58,7 @@ spec:
         auth_url: https://keycloak.fern.samoth.eu/realms/fern/protocol/openid-connect/auth
         token_url: https://keycloak.fern.samoth.eu/realms/fern/protocol/openid-connect/token
         api_url: https://keycloak.fern.samoth.eu/realms/fern/protocol/openid-connect/userinfo
-        role_attribute_path: contains(roles[*], 'grafana-admin') && 'GrafanaAdmin' || contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
+        role_attribute_path: contains(realm_access.roles[*], 'grafana-admin') && 'GrafanaAdmin' || 'Viewer'
         allow_assign_grafana_admin: true
     datasources:
       datasources.yaml:
