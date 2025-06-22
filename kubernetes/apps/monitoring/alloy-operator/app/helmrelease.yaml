@@ -13,5 +13,6 @@ spec:
       image:
         registry: ghcr.io
     namespaces:
+      # Mandatory for alloy operator to work properly
       - monitoring
       - monitoring-priv
