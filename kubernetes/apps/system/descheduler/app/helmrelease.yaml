@@ -56,11 +56,6 @@ spec:
                   exclude:
                     - games
                     - storage
-                labelSelector:
-                  matchExpressions:
-                    - key: descheduler
-                      operator: NotIn
-                      values: ignore
           plugins:
             balance:
               enabled:
