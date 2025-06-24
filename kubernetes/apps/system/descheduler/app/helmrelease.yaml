@@ -23,7 +23,6 @@ spec:
         memory: 512Mi
     cmdOptions:
       v: 3
-      dry-run: true
     deschedulerPolicyAPIVersion: descheduler/v1alpha2
     deschedulerPolicy:
       profiles:
@@ -31,9 +30,6 @@ spec:
           pluginConfig:
             - name: DefaultEvictor
               args:
-                evictFailedBarePods: true
-                evictLocalStoragePods: true
-                evictSystemCriticalPods: true
                 nodeFit: true
             - name: RemovePodsViolatingInterPodAntiAffinity
             - name: RemovePodsViolatingNodeAffinity
@@ -60,6 +56,11 @@ spec:
                   exclude:
                     - games
                     - storage
+                labelSelector:
+                  matchExpressions:
+                    - key: descheduler
+                      operator: NotIn
+                      values: ignore
           plugins:
             balance:
               enabled:
