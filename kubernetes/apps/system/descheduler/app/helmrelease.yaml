@@ -57,12 +57,12 @@ spec:
                   memory: 50
                   pods: 50
                 evictableNamespaces:
-                  - apps
-                  - cert-manager
-                  - flux-system
-                  - infrastructure
-                  - routing
-                  - system
+                  - name: apps
+                  - name: cert-manager
+                  - name: flux-system
+                  - name: infrastructure
+                  - name: routing
+                  - name: system
           plugins:
             balance:
               enabled:
