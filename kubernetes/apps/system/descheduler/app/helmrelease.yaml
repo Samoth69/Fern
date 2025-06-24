@@ -57,13 +57,9 @@ spec:
                   memory: 50
                   pods: 50
                 evictableNamespaces:
-                  include:
-                    - apps
-                    - cert-manager
-                    - flux-system
-                    - infrastructure
-                    - routing
-                    - system
+                  exclude:
+                    - games
+                    - storage
           plugins:
             balance:
               enabled:
