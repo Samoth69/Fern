@@ -52,3 +52,28 @@ spec:
             service:
               identifier: app
               port: http
+    networkpolicies:
+      main:
+        enabled: true
+        controller: main
+        policyTypes:
+          - Ingress
+          - Egress
+        rules:
+          ingress:
+            - from:
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: infrastructure
+                podSelector:
+                  matchLabels:
+                    app.kubernetes.io/instance: external-secrets
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: routing
+                podSelector:
+                  matchLabels:
+                    app.kubernetes.io/instance: traefik-internal-routing
+              ports:
+                - protocol: TCP
+                  port: 8200
