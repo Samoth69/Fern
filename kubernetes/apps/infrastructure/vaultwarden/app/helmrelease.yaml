@@ -26,8 +26,8 @@ spec:
               ADMIN_TOKEN:
                 valueFrom:
                   secretKeyRef:
-                    name: admin-token
-                    key: vaultwarden
+                    name: vaultwarden
+                    key: admin-token
               DOMAIN: https://vaultwarden.fern.samoth.eu
               SIGNUPS_ALLOWED: "false"
               INVITATIONS_ALLOWED: "false"
