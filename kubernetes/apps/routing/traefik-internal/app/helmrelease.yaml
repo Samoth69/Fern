@@ -51,6 +51,8 @@ spec:
     priorityClassName: high-priority
     metrics:
       prometheus:
+        # Need to be disabled otherwise flux-local fails
+        disableAPICheck: true
         service:
           enabled: true
         serviceMonitor:
