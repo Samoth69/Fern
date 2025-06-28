@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &name vaultwarden
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 4.1.2
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+
+  values:
+    controllers:
+      app:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/dani-garcia/vaultwarden
+              tag: 1.34.1-alpine
+            env:
+              ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
+              DOMAIN: https://vaultwarden.fern.samoth.eu
+              SIGNUPS_ALLOWED: "false"
+              INVITATIONS_ALLOWED: "false"
+              DATABASE_URL:
+                valueFrom:
+                  secretKeyRef:
+                    name: postgres-infra-pguser-vaultwarden
+                    key: uri
+
+    service:
+      app:
+        controller: app
+        ports:
+          http:
+            port: 80
+    ingress:
+      app:
+        hosts:
+        - host: vaultwarden.fern.samoth.eu
+          paths:
+          - path: /
+            service:
+              identifier: app
+              port: http

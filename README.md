@@ -56,6 +56,8 @@ task bootstrap:apps
 ## usefull commands
 
 ```bash
+# test config
+flux-local test --path kubernetes/flux/cluster --enable-helm --all-namespaces -v
 # force update flux
 flux reconcile source git flux-system
 # get flux objects status

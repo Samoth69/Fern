@@ -57,5 +57,12 @@ spec:
             databases:
               - woodpecker
             password: *password
+        - op: add
+          path: /spec/users/5
+          value:
+            name: vaultwarden
+            databases:
+              - vaultwarden
+            password: *password
       target:
         kind: PostgresCluster
