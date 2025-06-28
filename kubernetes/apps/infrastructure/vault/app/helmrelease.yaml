@@ -18,8 +18,6 @@ spec:
     injector:
       enabled: false
     server:
-      livenessProbe:
-        enabled: true
       ingress:
         enabled: true
         hosts:
