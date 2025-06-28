@@ -15,4 +15,3 @@ resources:
   - ./woodpecker/ks.yaml
   - ./rabbitmq-operator/ks.yaml
   - ./argocd/ks.yaml
-  - ./vault/ks.yaml
