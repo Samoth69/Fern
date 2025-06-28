@@ -30,7 +30,6 @@ spec:
                     key: admin-token
               DOMAIN: https://vaultwarden.fern.samoth.eu
               SIGNUPS_ALLOWED: "false"
-              INVITATIONS_ALLOWED: "false"
               DATABASE_URL:
                 valueFrom:
                   secretKeyRef:
