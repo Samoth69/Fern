@@ -112,15 +112,9 @@ spec:
       ports:
         - protocol: TCP
           port: 8087
+        - protocol: UDP
+          port: 8087
   egress:
-    - to:
-      - namespaceSelector:
-          matchLabels:
-            kubernetes.io/metadata.name: infrastructure
-        podSelector:
-          matchLabels:
-            app.kubernetes.io/instance: vaultwarden
-            app.kubernetes.io/name: vaultwarden
     # Allow internal ingress
     - to:
       - namespaceSelector:
