@@ -109,6 +109,9 @@ spec:
             matchLabels:
               app.kubernetes.io/instance: external-secrets
               app.kubernetes.io/name: external-secrets
+      ports:
+        - protocol: TCP
+          port: 8087
   egress:
     - to:
       - namespaceSelector:
