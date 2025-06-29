@@ -68,12 +68,14 @@ spec:
                 podSelector:
                   matchLabels:
                     app.kubernetes.io/instance: external-secrets
+                    app.kubernetes.io/name: external-secrets
               - namespaceSelector:
                   matchLabels:
                     kubernetes.io/metadata.name: routing
                 podSelector:
                   matchLabels:
                     app.kubernetes.io/instance: traefik-internal-routing
+                    app.kubernetes.io/name: traefik
               ports:
                 - protocol: TCP
                   port: 8200

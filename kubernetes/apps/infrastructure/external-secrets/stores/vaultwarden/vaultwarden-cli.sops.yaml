@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vaultwarden-cli
+type: Opaque
+stringData:
+  host: ENC[AES256_GCM,data:Nf8bUzlbQu0RS6GzzyzPP+n56xc9svDUy0W742fcAv2vng==,iv:YfOLrJA938/Cyb7TGgrSoPtrP/nfPcVYWzHgWRSLjR8=,tag:GcuIOfR8Hc9udAl5ykzdeQ==,type:str]
+  username: ENC[AES256_GCM,data:ReUEHhZxOIdDKfffsuR7Y17MTZiSREvjlw==,iv:zfl6+mK7XSIYUxCBCTPLj2JNSwlRPxP88psOOhKjfqs=,tag:xN1DmB2S2QAbX6OPdyv6qQ==,type:str]
+  password: ENC[AES256_GCM,data:MGKKUv/gOlyuo5qgzBdFBgm5tWWo4J03ah49HmrJw48=,iv:urGN+79ADvPqk+Y0Yv4qeGRWH0tCFSdcP9wdoNyI75k=,tag:dw1WCF82Y3qJ5f4DVqq0sw==,type:str]
+sops:
+  age:
+    - recipient: age1dn7j4227qd9msjn6cueaxkut4tnshy4vmqs25gphdpf88ftqnvusll2cqm
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwdERWZjdZMzVSK0JDUkpD
+        UjZBRHFRc1Z2OUJ0STk2TG9QZmEvUXQ2UHlRCkNhckNiWGNRSGlJQ2dpVTRNc3Vl
+        WkVUOU8yalJ3UVQ2eHBCSHJOOTFueEkKLS0tIE5FejRxanoxcW1YZU5XSnhqSE1w
+        amRlYnpRYnVXT3pJYUFaZmFyeDJYdmsKa+STS+5GpfvyRkDa+WmID6q9xQuVcpY1
+        NttSRPxhPthFBBSO8RUe+kd2vAKfIPceclgmb45eIqXVR69/kHgpww==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-06-29T08:48:19Z"
+  mac: ENC[AES256_GCM,data:ojt4zm/HpVLR09Abys7d431CWbQtO8nMp56ATLfclRYOEEbH7Gdvst/81wBs9Ru1vAWMGo4dAHjamyiU6PSTLnPF+3cJAr2jxRnLoJsszue8JHUYr9K+0pQKYCb8rTD7RfuKAbdFddxYy/K6n0QEeH/DQk37LDn8vZ74mhwLPvI=,iv:MF/MjAQJNsbEio779MMIv+nNHc7lZWyeEzISxU2J4kk=,tag:QyvlTPTcbEhSbjXsGZWY9w==,type:str]
+  encrypted_regex: ^(data|stringData)$
+  mac_only_encrypted: true
+  version: 3.10.2
