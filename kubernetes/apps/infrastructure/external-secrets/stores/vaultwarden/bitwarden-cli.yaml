@@ -120,13 +120,18 @@ spec:
             app.kubernetes.io/name: vaultwarden
     # Allow internal ingress
     - to:
-      - ipBlock:
-          cidr: 192.168.0.44/32
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: routing
+        podSelector:
+          matchLabels:
+            app.kubernetes.io/instance: traefik-internal-routing
+            app.kubernetes.io/name: traefik
       ports:
         - protocol: TCP
-          port: 443
+          port: 8443
         - protocol: UDP
-          port: 443
+          port: 8443
     # Allow kube dns
     - to:
       - namespaceSelector:
