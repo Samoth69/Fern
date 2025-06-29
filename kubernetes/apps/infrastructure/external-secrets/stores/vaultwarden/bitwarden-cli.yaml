@@ -118,6 +118,16 @@ spec:
           matchLabels:
             app.kubernetes.io/instance: vaultwarden
             app.kubernetes.io/name: vaultwarden
+    # Allow internal ingress
+    - to:
+      - ipBlock:
+          cidr: 192.168.0.44/32
+      ports:
+        - protocol: TCP
+          port: 443
+        - protocol: UDP
+          port: 443
+    # Allow kube dns
     - to:
       - namespaceSelector:
           matchLabels:
@@ -127,4 +137,6 @@ spec:
             k8s-app: kube-dns
       ports:
         - protocol: UDP
+          port: 53
+        - protocol: TCP
           port: 53
