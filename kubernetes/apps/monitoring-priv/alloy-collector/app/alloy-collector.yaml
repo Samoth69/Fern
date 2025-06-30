@@ -12,6 +12,8 @@ spec:
   alloy:
     mounts:
       varlog: true
+    extraArgs:
+      - --disable-reporting=true
     extraEnv:
       - name: CLUSTER_NAME
         value: fern
