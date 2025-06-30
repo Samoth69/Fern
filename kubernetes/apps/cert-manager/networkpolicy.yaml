@@ -9,6 +9,8 @@ spec:
     matchLabels:
       {}
   ingress:
+  - fromEntities:
+      - kube-apiserver
   - fromEndpoints:
     - matchLabels:
         k8s:io.kubernetes.pod.namespace: monitoring
