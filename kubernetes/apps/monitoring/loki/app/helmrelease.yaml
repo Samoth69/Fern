@@ -29,6 +29,7 @@ spec:
       auth_enabled: false
       analytics:
         reporting_enabled: false
+        usage_stats_url: ""
       server:
         log_level: info
       commonConfig:
@@ -58,6 +59,9 @@ spec:
         enabled: true
         storageClass: ceph-block
         size: 50Gi
+    compactor:
+      extraArgs:
+        - -reporting.enabled=0
     gateway:
       enabled: false
       replicas: 0
