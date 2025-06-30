@@ -26,5 +26,14 @@ spec:
         - ports:
             - port: "53"
               protocol: ANY
+    - toEndpoints:
+        - matchLabels:
+              k8s:io.kubernetes.pod.namespace: monitoring
+              app.kubernetes.io/instance: loki
+              app.kubernetes.io/name: loki
+      toPorts:
+        - ports:
+            - port: "3100"
+              protocol: ANY
     - toEntities:
       - kube-apiserver
