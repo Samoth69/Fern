@@ -25,6 +25,3 @@ spec:
       enabled: true
       servicemonitor:
         enabled: true
-    webhook:
-      networkPolicy:
-        enabled: true
