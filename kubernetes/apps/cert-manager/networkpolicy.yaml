@@ -9,28 +9,32 @@ spec:
     matchLabels:
       {}
   ingress:
-  - fromEntities:
-      - kube-apiserver
-  - fromEndpoints:
-    - matchLabels:
-        k8s:io.kubernetes.pod.namespace: monitoring
-        app.kubernetes.io/instance: kube-prometheus-stack
-    toPorts:
-      - ports:
-          - port: "9402"
-            protocol: ANY
-        rules:
-          dns:
-            - matchPattern: "*"
-  egress:
-  - toEndpoints:
+    - fromEntities:
+        - kube-apiserver
+      toPorts:
+        - ports:
+            - port: "10250"
+              protocol: ANY
+    - fromEndpoints:
       - matchLabels:
-          k8s:io.kubernetes.pod.namespace: kube-system
-          k8s-app: kube-dns
-    toPorts:
-      - ports:
-          - port: "53"
-            protocol: ANY
-  - toEntities:
-      - kube-apiserver
-      - world
+          k8s:io.kubernetes.pod.namespace: monitoring
+          app.kubernetes.io/instance: kube-prometheus-stack
+      toPorts:
+        - ports:
+            - port: "9402"
+              protocol: ANY
+          rules:
+            dns:
+              - matchPattern: "*"
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: ANY
+    - toEntities:
+        - kube-apiserver
+        - world
