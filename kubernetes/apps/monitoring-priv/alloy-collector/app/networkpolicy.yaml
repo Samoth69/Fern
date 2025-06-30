@@ -26,3 +26,5 @@ spec:
         - ports:
             - port: "53"
               protocol: ANY
+    - toEntities:
+      - kube-apiserver
