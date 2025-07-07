@@ -25,6 +25,8 @@ cluster:
             runtimeClasses: []
             usernames: []
           kind: PodSecurityConfiguration
+    extraArgs:
+      feature-gates: UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true
   controllerManager:
     extraArgs:
       bind-address: 0.0.0.0
