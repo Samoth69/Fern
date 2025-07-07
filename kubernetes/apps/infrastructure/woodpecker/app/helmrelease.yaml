@@ -33,8 +33,6 @@ spec:
         enabled: true
         size: 128Mi
         storageClass: ceph-block
-      networkPolicy:
-        enabled: true
     server:
       image:
         registry: docker.io
@@ -60,5 +58,3 @@ spec:
           - host: woodpecker.fern.samoth.eu
             paths:
             - path: /
-      networkPolicy:
-        enabled: false
