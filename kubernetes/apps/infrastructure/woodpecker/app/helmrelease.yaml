@@ -14,7 +14,7 @@ spec:
       image:
         registry: docker.io
         repository: woodpeckerci/woodpecker-agent
-        tag: v3.7.0-alpine
+        tag: v3.8.0-alpine
       env:
         WOODPECKER_SERVER: 'woodpecker-server:9000'
         WOODPECKER_BACKEND: kubernetes
@@ -37,7 +37,7 @@ spec:
       image:
         registry: docker.io
         repository: woodpeckerci/woodpecker-server
-        tag: v3.7.0-alpine
+        tag: v3.8.0-alpine
       env:
         WOODPECKER_DATABASE_DRIVER: postgres
         WOODPECKER_FORGEJO: true
