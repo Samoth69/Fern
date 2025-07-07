@@ -21,8 +21,6 @@ spec:
           image: moby/buildkit:v0.23.2
           args:
             - --addr
-            - unix:///run/buildkit/buildkitd.sock
-            - --addr
             - tcp://0.0.0.0:1234
             - --tlscacert
             - /certs/ca.pem
