@@ -59,6 +59,10 @@ spec:
             # To change UID/GID, you need to rebuild the image
             runAsUser: 1000
             runAsGroup: 1000
+            capabilities:
+              add:
+                - CAP_SETUID
+                - CAP_SETGID
           ports:
             - containerPort: 1234
           volumeMounts:
