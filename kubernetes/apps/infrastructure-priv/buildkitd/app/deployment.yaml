@@ -15,6 +15,7 @@ spec:
         app: buildkitd
     # see buildkit/docs/rootless.md for caveats of rootless mode
     spec:
+      hostUsers: false
       containers:
         - name: buildkitd
           image: moby/buildkit:v0.23.2-rootless
