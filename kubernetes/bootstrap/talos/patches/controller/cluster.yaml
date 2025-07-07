@@ -17,10 +17,11 @@ cluster:
           exemptions:
             namespaces:
               - kube-system
-              - storage
               - monitoring-priv
+              - storage
               - system-priv
               - infrastructure-priv
+              - woodpecker
             runtimeClasses: []
             usernames: []
           kind: PodSecurityConfiguration
