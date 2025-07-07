@@ -18,7 +18,7 @@ spec:
       hostUsers: false
       containers:
         - name: buildkitd
-          image: moby/buildkit:v0.23.2-rootless
+          image: moby/buildkit:v0.23.2
           args:
             - --addr
             - unix:///run/buildkit/buildkitd.sock
@@ -55,9 +55,6 @@ spec:
             # Needs Kubernetes >= 1.30
             appArmorProfile:
               type: Unconfined
-            # To change UID/GID, you need to rebuild the image
-            runAsUser: 1000
-            runAsGroup: 1000
             # Not really privileged
             privileged: true
           ports:
