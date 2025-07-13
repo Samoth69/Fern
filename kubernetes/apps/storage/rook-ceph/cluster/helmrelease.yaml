@@ -14,6 +14,9 @@ spec:
     monitoring:
       enabled: true
       createPrometheusRules: true
+      prometheusRuleOverrides:
+        CephHealthWarning:
+          for: "60m"
     toolbox:
       enabled: true
     ingress:
