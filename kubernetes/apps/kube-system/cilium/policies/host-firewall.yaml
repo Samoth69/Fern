@@ -10,8 +10,8 @@ spec:
   ingress:
   - fromEntities:
     - cluster
-  - fromCIDR:
-      - ${TRUSTED_CIDR_01}
+  - fromCIDRSet:
+      - cidrGroupRef: group-lan
     toPorts:
     - ports:
       # kubernetes-api-ingress
@@ -23,8 +23,8 @@ spec:
       # trustd-ingress
       - port: "50001"
         protocol: TCP
-  - fromCIDR:
-      - ${TRUSTED_CIDR_01}
+  - fromCIDRSet:
+      - cidrGroupRef: group-lan
     icmps:
       - fields:
           - family: IPv4

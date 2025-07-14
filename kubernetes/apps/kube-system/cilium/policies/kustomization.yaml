@@ -5,4 +5,7 @@ kind: Kustomization
 resources:
   - ./l2announcementpolicy.yaml
   - ./loadbalancerippool.yaml
+  - ./cidr-group-lan.yaml
+  - ./cidr-group-truenas.yaml
   - ./host-firewall.yaml
+  - ./egress

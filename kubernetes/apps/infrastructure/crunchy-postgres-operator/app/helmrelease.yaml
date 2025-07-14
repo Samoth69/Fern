@@ -20,3 +20,7 @@ spec:
     install:
       clusterLabels:
         app.kubernetes.io/name: pgo
+    metadata:
+      labels:
+        egress.samoth.eu/dns: allow
+        egress.samoth.eu/kube-apiserver: allow

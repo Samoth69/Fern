@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: labelled-allow-egress-cluster
+spec:
+  endpointSelector:
+    matchLabels:
+      egress.samoth.eu/cluster: allow
+  egress:
+    - toEntities:
+      - cluster
