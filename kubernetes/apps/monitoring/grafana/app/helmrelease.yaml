@@ -218,6 +218,21 @@ spec:
           url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
           datasource: Prometheus
       kubernetes:
+        kubernetes-hubble-podflows-ns:
+          # renovate: depName="Kubernetes / Networking / Retina (Hubble) / Pod Flows (Namespace)"
+          gnetId: 22899
+          revision: 1
+          datasource: Prometheus
+        kubernetes-hubble-podflows-workload:
+          # renovate: depName="Kubernetes / Networking / Retina (Hubble) / Pod Flows (Workload)"
+          gnetId: 22862
+          revision: 2
+          datasource: Prometheus
+        kubernetes-hubble-dns:
+          # renovate: depName="Kubernetes / Networking / Retina (Hubble) / DNS"
+          gnetId: 22898
+          revision: 1
+          datasource: Prometheus
         kubernetes-api-server:
           # renovate: depName="Kubernetes / System / API Server"
           gnetId: 15761
