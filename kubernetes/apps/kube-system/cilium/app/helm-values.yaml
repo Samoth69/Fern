@@ -52,6 +52,10 @@ hubble:
       server:
         ipv6:
           enabled: false
+    ingress:
+      enabled: true
+      hosts:
+        - hubble.fern.samoth.eu
 ipam:
   mode: kubernetes
 ipv4NativeRoutingCIDR: "10.69.0.0/16"
