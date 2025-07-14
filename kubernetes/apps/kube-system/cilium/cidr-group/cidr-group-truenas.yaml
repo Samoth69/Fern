@@ -5,4 +5,4 @@ metadata:
   name: group-truenas
 spec:
   externalCIDRs:
-    - "${CIDR_TRUENAS}"
+    - ${CIDR_TRUENAS}

@@ -5,4 +5,4 @@ metadata:
   name: group-lan
 spec:
   externalCIDRs:
-    - "${CIDR_LAN}"
+    - ${CIDR_LAN}
