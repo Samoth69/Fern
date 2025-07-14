@@ -32,7 +32,7 @@ hubble:
       - flow
       - port-distribution
       - icmp
-      - http
+      - httpV2
     serviceMonitor:
       enabled: true
     dashboards:
@@ -78,7 +78,7 @@ operator:
     enabled: true
     annotations:
       grafana_folder: Cilium
-policyAuditMode: true
+# policyAuditMode: true
 prometheus:
   enabled: true
   serviceMonitor:
