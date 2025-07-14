@@ -26,7 +26,7 @@ hubble:
   enabled: true
   metrics:
     enabled:
-      - dns:query
+      - dns:query;ignoreAAAA
       - drop
       - tcp
       - flow
@@ -35,6 +35,10 @@ hubble:
       - http
     serviceMonitor:
       enabled: true
+    dashboards:
+      enabled: true
+      annotations:
+        grafana_folder: Cilium
   relay:
     enabled: true
     rollOutPods: true
