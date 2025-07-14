@@ -32,7 +32,6 @@ hubble:
       - flow
       - port-distribution
       - icmp
-      - httpV2
     serviceMonitor:
       enabled: true
     dashboards:
