@@ -78,7 +78,7 @@ operator:
     enabled: true
     annotations:
       grafana_folder: Cilium
-policyEnforcementMode: never
+policyAuditMode: true
 prometheus:
   enabled: true
   serviceMonitor:
