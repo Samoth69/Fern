@@ -32,6 +32,11 @@ spec:
       egress.samoth.eu/internet-cloudflare-api: allow
       egress.samoth.eu/internet-cloudflare-doh: allow
     webhook:
-      podLabels: *labels
+      podLabels:
+        ingress.samoth.eu/prometheus: allow
+        ingress.samoth.eu/kube-apiserver: allow
+        egress.samoth.eu/dns: allow
     cainjector:
-      podLabels: *labels
+      podLabels:
+        ingress.samoth.eu/prometheus: allow
+        egress.samoth.eu/dns: allow
