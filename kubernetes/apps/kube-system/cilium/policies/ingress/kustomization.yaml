@@ -7,3 +7,4 @@ resources:
   - ./labelled-allow-ingress-internal-ingress.yaml
   - ./labelled-allow-ingress-internet.yaml
   - ./labelled-allow-ingress-prometheus.yaml
+  - ./labelled-deny-ingress.yaml
