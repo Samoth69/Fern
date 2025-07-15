@@ -1,14 +1,15 @@
 ---
-commonLabels:
-  app.samoth.eu/instance: flux-instance
-  ingress.samoth.eu/kube-apiserver: allow
-  ingress.samoth.eu/prometheus: allow
-  egress.samoth.eu/dns: allow
-  egress.samoth.eu/kube-apiserver: allow
-  egress.samoth.eu/internet-github: allow
 instance:
   cluster:
     networkPolicy: false
+  commonMetadata:
+    labels:
+      app.samoth.eu/instance: flux-instance
+      ingress.samoth.eu/kube-apiserver: allow
+      ingress.samoth.eu/prometheus: allow
+      egress.samoth.eu/dns: allow
+      egress.samoth.eu/kube-apiserver: allow
+      egress.samoth.eu/internet-github: allow
   components:
     - source-controller
     - kustomize-controller
