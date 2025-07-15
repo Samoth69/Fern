@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/cilium.io/ciliumnetworkpolicy_v2.json
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: cert-manager-network-policy
+spec:
+  endpointSelector:
+    matchLabels: &labels
+      app.kubernetes.io/instance: cert-manager
+  ingress:
+    - fromEndpoints:
+        - matchLabels: *labels
+  egress:
+    - toEndpoints:
+        - matchLabels: *labels
