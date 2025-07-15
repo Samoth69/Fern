@@ -1,6 +1,6 @@
 ---
 commonLabels:
-  app.kubernetes.io/instance: flux-instance
+  app.samoth.eu/instance: flux-instance
   ingress.samoth.eu/kube-apiserver: allow
   ingress.samoth.eu/prometheus: allow
   egress.samoth.eu/dns: allow
