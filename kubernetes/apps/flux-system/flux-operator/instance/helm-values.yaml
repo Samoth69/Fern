@@ -75,14 +75,23 @@ instance:
       # Add labels
       - patch: |
           - op: add
-            path: /spec/template/metadata/labels
-            value:
-              app.kubernetes.io/instance: flux-system
-              ingress.samoth.eu/kube-apiserver: allow
-              ingress.samoth.eu/prometheus: allow
-              egress.samoth.eu/dns: allow
-              egress.samoth.eu/kube-apiserver: allow
-              egress.samoth.eu/internet-github: allow
+            path: /spec/template/metadata/labels/app.kubernetes.io~1instance
+            value: flux-instance
+          - op: add
+            path: /spec/template/metadata/labels/ingress.samoth.eu~1kube-apiserver
+            value: allow
+          - op: add
+            path: /spec/template/metadata/labels/ingress.samoth.eu~1prometheus
+            value: allow
+          - op: add
+            path: /spec/template/metadata/labels/egress.samoth.eu~1dns
+            value: allow
+          - op: add
+            path: /spec/template/metadata/labels/egress.samoth.eu~1kube-apiserver
+            value: allow
+          - op: add
+            path: /spec/template/metadata/labels/egress.samoth.eu~1internet-github
+            value: allow
         target:
           kind: Deployment
           name: "(kustomize-controller|helm-controller|source-controller|notification-controller)"
