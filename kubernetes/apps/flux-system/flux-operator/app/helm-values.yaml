@@ -6,3 +6,9 @@ commonLabels:
   egress.samoth.eu/dns: allow
   egress.samoth.eu/kube-apiserver: allow
   egress.samoth.eu/internet-github: allow
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    memory: 1Gi
