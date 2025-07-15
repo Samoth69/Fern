@@ -90,7 +90,7 @@ instance:
             path: /spec/template/metadata/labels/egress.samoth.eu~1kube-apiserver
             value: allow
           - op: add
-            path: /spec/template/metadata/labels/egress.samoth.eu~1internet
+            path: /spec/template/metadata/labels/egress.samoth.eu~1internet-http
             value: allow
         target:
           kind: Deployment
