@@ -6,6 +6,9 @@ serviceAccount:
 service:
   name: kube-dns
   clusterIP: "10.96.0.10"
+prometheus:
+  service:
+    enabled: true
 replicaCount: 2
 servers:
   - zones:
@@ -49,6 +52,8 @@ tolerations:
   - key: node-role.kubernetes.io/control-plane
     operator: Exists
     effect: NoSchedule
+podDisruptionBudget:
+  minAvailable: 1
 # Graceful Helmfile to HelmRelease takeover
 customLabels:
   helm.toolkit.fluxcd.io/name: coredns
