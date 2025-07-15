@@ -25,3 +25,12 @@ spec:
       enabled: true
       servicemonitor:
         enabled: true
+    podLabels: &labels
+      ingress.samoth.eu/internal-prometheus: allow
+      egress.samoth.eu/dns: allow
+      egress.samoth.eu/kube-apiserver: allow
+      egress.samoth.eu/internet-http: allow
+    webhook:
+      podLabels: *labels
+    cainjector:
+      podLabels: *labels

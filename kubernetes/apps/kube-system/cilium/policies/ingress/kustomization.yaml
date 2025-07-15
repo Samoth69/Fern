@@ -1,0 +1,8 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./labelled-allow-ingress-cluster.yaml
+  - ./labelled-allow-ingress-internal-ingress.yaml
+  - ./labelled-allow-ingress-prometheus.yaml
