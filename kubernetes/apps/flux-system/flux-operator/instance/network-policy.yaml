@@ -6,7 +6,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels: &labels
-      app.kubernetes.io/instance: flux-system
+      app.kubernetes.io/instance: flux-instance
   ingress:
     - fromEndpoints:
         - matchLabels: *labels
