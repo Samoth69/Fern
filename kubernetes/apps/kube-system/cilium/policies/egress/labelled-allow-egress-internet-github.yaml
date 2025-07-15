@@ -13,6 +13,7 @@ spec:
         - matchPattern: "*.github.com"
         - matchPattern: "*.github.dev"
         - matchPattern: "*.github.io"
+        - matchPattern: "ghcr.io"
         - matchPattern: "*.ghcr.io"
         - matchPattern: "*.githubusercontent.com"
       toPorts:
