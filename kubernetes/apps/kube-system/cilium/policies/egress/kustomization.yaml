@@ -6,9 +6,9 @@ resources:
   - ./labelled-allow-egress-cluster.yaml
   - ./labelled-allow-egress-dns.yaml
   - ./labelled-allow-egress-internal-ingress.yaml
-  - ./labelled-allow-egress-internal-cloudflare-api.yaml
-  - ./labelled-allow-egress-internal-cloudflare-doh.yaml
-  - ./labelled-allow-egress-internal-github.yaml
+  - ./labelled-allow-egress-internet-cloudflare-api.yaml
+  - ./labelled-allow-egress-internet-cloudflare-doh.yaml
+  - ./labelled-allow-egress-internet-github.yaml
   - ./labelled-allow-egress-internet-http.yaml
   - ./labelled-allow-egress-internet.yaml
   - ./labelled-allow-egress-kube-apiserver.yaml
