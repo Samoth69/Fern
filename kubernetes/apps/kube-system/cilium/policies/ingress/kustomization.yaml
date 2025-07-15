@@ -5,4 +5,5 @@ kind: Kustomization
 resources:
   - ./labelled-allow-ingress-cluster.yaml
   - ./labelled-allow-ingress-internal-ingress.yaml
+  - ./labelled-allow-ingress-internet.yaml
   - ./labelled-allow-ingress-prometheus.yaml

@@ -6,7 +6,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      egress.samoth.eu/cluster: allow
+      ingress.samoth.eu/cluster: allow
   ingress:
     - fromEntities:
       - cluster
