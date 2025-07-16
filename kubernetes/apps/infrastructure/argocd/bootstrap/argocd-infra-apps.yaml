@@ -11,7 +11,7 @@ spec:
     repoURL: 'ssh://git@forgejo.fern.samoth.eu:2222/samoth/ArgoCD-Infra.git'
     targetRevision: HEAD
   destination:
-    namespace: apps
+    namespace: infrastructure
     server: 'https://kubernetes.default.svc'
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -27,7 +27,7 @@ spec:
     repoURL: 'ssh://git@forgejo.fern.samoth.eu:2222/samoth/ArgoCD-Infra.git'
     targetRevision: HEAD
   destination:
-    namespace: apps-priv
+    namespace: infrastructure
     server: 'https://kubernetes.default.svc'
 ---
 apiVersion: argoproj.io/v1alpha1
