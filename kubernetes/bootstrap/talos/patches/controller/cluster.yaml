@@ -16,12 +16,12 @@ cluster:
             warn-version: latest
           exemptions:
             namespaces:
+              - apps-priv
               - kube-system
               - monitoring-priv
               - storage
               - system-priv
               - infrastructure-priv
-              - woodpecker
             runtimeClasses: []
             usernames: []
           kind: PodSecurityConfiguration

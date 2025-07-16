@@ -6,11 +6,11 @@ If you want to deploy something similar, have a look [here](https://github.com/o
 
 ## Nodes
 
-| Name   | Type               | SchematicId                                                      | CPU | RAM  |
-|--------|--------------------|------------------------------------------------------------------|-----|------|
-| Akame  | VM                 | d554aa32ea9938eeba316629df75cbaa0968e4a52e14673a3e647bbe98ec09f7 | 8   | 32GB |
-| Felix  | Metal - UM773 Lite | eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd | 16  | 64GB |
-| Nagumo | Metal - UM870 Slim | eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd | 16  | 96GB |
+| Name   | Type                                   | SchematicId                                                      | CPU | RAM  |
+|--------|----------------------------------------|------------------------------------------------------------------|-----|------|
+| Akame  | VM                                     | c9b3b8505d39208762ec98b18bb676b8081ff4a43db792f45a17909c33f57140 | 8   | 32GB |
+| Felix  | Metal - UM773 Lite                     | eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd | 16  | 64GB |
+| Nagumo | Metal - ~~UM870 Slim~~ Aoostar WTR PRO | eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd | 16  | 96GB |
 
 ## Akame
 
@@ -20,6 +20,7 @@ customization:
         - ipv6.disable=1
     systemExtensions:
         officialExtensions:
+            - siderolabs/btrfs
             - siderolabs/qemu-guest-agent
             - siderolabs/util-linux-tools
 ```

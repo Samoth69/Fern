@@ -27,7 +27,7 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/nocloud-installer-secureboot/d554aa32ea9938eeba316629df75cbaa0968e4a52e14673a3e647bbe98ec09f7
+    talosImageURL: factory.talos.dev/nocloud-installer-secureboot/c9b3b8505d39208762ec98b18bb676b8081ff4a43db792f45a17909c33f57140
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -41,6 +41,8 @@ nodes:
         mtu: 1500
         vip:
           ip: "192.168.0.43"
+    kernelModules:
+      - name: btrfs
   - hostname: fern-felix
     ipAddress: "192.168.0.41"
     installDiskSelector:
