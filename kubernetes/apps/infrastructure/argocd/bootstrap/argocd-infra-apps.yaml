@@ -17,6 +17,22 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: apps-priv
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    path: apps
+    repoURL: 'ssh://git@forgejo.fern.samoth.eu:2222/samoth/ArgoCD-Infra.git'
+    targetRevision: HEAD
+  destination:
+    namespace: apps-priv
+    server: 'https://kubernetes.default.svc'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: games
   finalizers:
     - resources-finalizer.argocd.argoproj.io
