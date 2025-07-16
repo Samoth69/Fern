@@ -23,7 +23,7 @@ metadata:
 spec:
   project: default
   source:
-    path: apps
+    path: apps-priv
     repoURL: 'ssh://git@forgejo.fern.samoth.eu:2222/samoth/ArgoCD-Infra.git'
     targetRevision: HEAD
   destination:
