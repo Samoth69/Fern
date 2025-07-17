@@ -1,0 +1,30 @@
+machine:
+  # rework this when https://github.com/siderolabs/talos/issues/10995 is done
+  pods:
+    - apiVersion: v1
+      kind: Pod
+      metadata:
+        name: media-mounter
+        namespace: kube-system
+      spec:
+        containers:
+            - command:
+                - sh
+                - -c
+                - |
+                  mkdir -p /host/var/mnt/hdd1
+                  mount -N1 -o autodefrag,compress-force=zstd:9,noatime /dev/sdc1 /var/mnt/hdd1
+              image: debian:bookworm-slim
+              name: mounter
+              securityContext:
+                privileged: true
+              volumeMounts:
+                - mountPath: /host
+                  name: host-root
+        hostNetwork: true
+        hostPID: true
+        restartPolicy: Never
+        volumes:
+            - hostPath:
+                path: /
+              name: host-root
