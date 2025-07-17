@@ -89,57 +89,57 @@ spec:
     app.kubernetes.io/instance: bitwarden-cli
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/refs/heads/master/v1.18.1-standalone-strict/networkpolicy.json
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: bitwarden-cli
-spec:
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/instance: bitwarden-cli
-      app.kubernetes.io/name: bitwarden-cli
-  policyTypes:
-    - Ingress
-    - Egress
-  ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: infrastructure
-          podSelector:
-            matchLabels:
-              app.kubernetes.io/instance: external-secrets
-              app.kubernetes.io/name: external-secrets
-      ports:
-        - protocol: TCP
-          port: 8087
-        - protocol: UDP
-          port: 8087
-  egress:
-    # Allow internal ingress
-    - to:
-      - namespaceSelector:
-          matchLabels:
-            kubernetes.io/metadata.name: routing
-        podSelector:
-          matchLabels:
-            app.kubernetes.io/instance: traefik-internal-routing
-            app.kubernetes.io/name: traefik
-      ports:
-        - protocol: TCP
-          port: 8443
-        - protocol: UDP
-          port: 8443
-    # Allow kube dns
-    - to:
-      - namespaceSelector:
-          matchLabels:
-            kubernetes.io/metadata.name: kube-system
-        podSelector:
-          matchLabels:
-            k8s-app: kube-dns
-      ports:
-        - protocol: UDP
-          port: 53
-        - protocol: TCP
-          port: 53
+# kind: NetworkPolicy
+# apiVersion: networking.k8s.io/v1
+# metadata:
+#   name: bitwarden-cli
+# spec:
+#   podSelector:
+#     matchLabels:
+#       app.kubernetes.io/instance: bitwarden-cli
+#       app.kubernetes.io/name: bitwarden-cli
+#   policyTypes:
+#     - Ingress
+#     - Egress
+#   ingress:
+#     - from:
+#         - namespaceSelector:
+#             matchLabels:
+#               kubernetes.io/metadata.name: infrastructure
+#           podSelector:
+#             matchLabels:
+#               app.kubernetes.io/instance: external-secrets
+#               app.kubernetes.io/name: external-secrets
+#       ports:
+#         - protocol: TCP
+#           port: 8087
+#         - protocol: UDP
+#           port: 8087
+#   egress:
+#     # Allow internal ingress
+#     - to:
+#       - namespaceSelector:
+#           matchLabels:
+#             kubernetes.io/metadata.name: routing
+#         podSelector:
+#           matchLabels:
+#             app.kubernetes.io/instance: traefik-internal-routing
+#             app.kubernetes.io/name: traefik
+#       ports:
+#         - protocol: TCP
+#           port: 8443
+#         - protocol: UDP
+#           port: 8443
+#     # Allow kube dns
+#     - to:
+#       - namespaceSelector:
+#           matchLabels:
+#             kubernetes.io/metadata.name: kube-system
+#         podSelector:
+#           matchLabels:
+#             k8s-app: kube-dns
+#       ports:
+#         - protocol: UDP
+#           port: 53
+#         - protocol: TCP
+#           port: 53
