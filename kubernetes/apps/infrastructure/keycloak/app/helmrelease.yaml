@@ -56,17 +56,6 @@ spec:
               KC_HOSTNAME: https://keycloak.fern.samoth.eu
               KC_HOSTNAME_STRICT: "true"
               KC_HEALTH_ENABLED: "true"
-              KC_CACHE: "ispn"
-              # Use the Kubernetes configuration for distributed caches which is based on DNS
-              KC_CACHE_STACK: "kubernetes"
-              # Instruct JGroups which DNS hostname to use to discover other Keycloak nodes
-              # Needs to be unique for each Keycloak cluster
-              JAVA_OPTS_APPEND: -Djgroups.dns.query="keycloak-discovery" -Djgroups.bind.address=$(POD_IP)
-              # Passing the Pod's IP primary address to the JGroups clustering as this is required in IPv6 only setups
-              POD_IP:
-                valueFrom:
-                  fieldRef:
-                    fieldPath: status.podIP
               KC_HTTP_ENABLED: "true"
               # Traefik headers
               KC_PROXY_HEADERS: xforwarded
