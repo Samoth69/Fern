@@ -112,9 +112,9 @@ spec:
             secretKeyRef:
               name: postgres-infra-pguser-forgejo
               key: password
-    redis-cluster:
+    valkey-cluster:
       enabled: false
-    redis:
+    valkey:
       enabled: false
     postgresql-ha:
       enabled: false
