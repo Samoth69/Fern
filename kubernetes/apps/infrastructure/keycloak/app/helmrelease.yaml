@@ -118,11 +118,11 @@ spec:
                   port: http
 
     rawResources:
+      # Allow Keycloak to communicate with himself
       networkPolicy:
         apiVersion: "cilium.io/v2"
         kind: CiliumNetworkPolicy
         spec:
-          description: Allow Keycloak to communicate with himself
           endpointSelector:
             matchLabels: &labels
               app.kubernetes.io/instance: keycloak
