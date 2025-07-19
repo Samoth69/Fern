@@ -134,7 +134,4 @@ spec:
                   matchLabels:
                     app.kubernetes.io/instance: keycloak
                     app.kubernetes.io/name: keycloak
-              ports:
-                - protocol: TCP
-                  port: 7800
           egress: *rule
