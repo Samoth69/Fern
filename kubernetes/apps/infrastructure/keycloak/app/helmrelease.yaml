@@ -37,7 +37,11 @@ spec:
             image:
               repository: quay.io/keycloak/keycloak
               tag: 26.3.1
-            args: ["start"]
+            args:
+              - start
+              - --optimized
+              - --db
+              - postgres
             env:
               KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
               KC_BOOTSTRAP_ADMIN_PASSWORD:
