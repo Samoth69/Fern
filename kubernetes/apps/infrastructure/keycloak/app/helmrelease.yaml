@@ -1,41 +1,138 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: keycloak
 spec:
   interval: 30m
-  chartRef:
-    kind: OCIRepository
-    name: keycloak
+  chart:
+    spec:
+      chart: app-template
+      version: 4.1.2
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+
   values:
-    replicaCount: 2
-    auth:
-      adminUser: admin
-      existingSecret: keycloak-admin-secret
-      passwordSecretKey: password
-    production: true
-    proxyHeaders: xforwarded
-    podAntiAffinityPreset: hard
-    resources:
-      requests:
-        cpu: 10m
-        memory: 666Mi
-      limits:
-        memory: 4096Mi
+    defaultPodOptions:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: "kubernetes.io/hostname"
+      labels:
+        ingress.samoth.eu/internal-ingress: allow
+        egress.samoth.eu/dns: allow
+        egress.samoth.eu/pg-infrastructure: allow
+
+    controllers:
+      keycloak:
+        type: statefulset
+        replicas: 2
+        rollingUpdate:
+          unavailable: 1
+        containers:
+          keycloak:
+            image:
+              repository: quay.io/keycloak/keycloak
+              tag: 26.3.1
+            args: ["start"]
+            env:
+              # KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
+              # KC_BOOTSTRAP_ADMIN_PASSWORD: "admin"
+              KC_DB_URL:
+                valueFrom:
+                  secretKeyRef:
+                    name: postgres-infra-pguser-keycloak
+                    key: jdbc-uri
+              KC_HOSTNAME: https://keycloak.fern.samoth.eu
+              KC_HOSTNAME_STRICT: "true"
+              KC_HEALTH_ENABLED: "true"
+              KC_CACHE: "ispn"
+              # Use the Kubernetes configuration for distributed caches which is based on DNS
+              KC_CACHE_STACK: "Kubernetes"
+              # Instruct JGroups which DNS hostname to use to discover other Keycloak nodes
+              # Needs to be unique for each Keycloak cluster
+              JAVA_OPTS_APPEND: -Djgroups.dns.query="keycloak-discovery" -Djgroups.bind.address=$(POD_IP)
+              # Passing the Pod's IP primary address to the JGroups clustering as this is required in IPv6 only setups
+              POD_IP:
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+              KC_HTTP_ENABLED: "true"
+              # Traefik headers
+              KC_PROXY_HEADERS: xforwarded
+              # pod network
+              KC_PROXY_TRUSTED_ADDRESSES: "10.69.0.0/16"
+            ports:
+              - name: http
+                containerPort: 8080
+            probes:
+              startup:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health/started
+                    port: 9000
+                  periodSeconds: 1
+                  failureThreshold: 600
+              readiness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health/ready
+                    port: 9000
+                  periodSeconds: 10
+                  failureThreshold: 3
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health/live
+                    port: 9000
+                  periodSeconds: 10
+                  failureThreshold: 3
+            resources:
+              requests:
+                cpu: 10m
+                memory: 666Mi
+              limits:
+                memory: 4096Mi
+
+    service:
+      keycloak:
+        controller: keycloak
+        ports:
+          http:
+            port: 80
+            targetPort: 8080
+
     ingress:
-      enabled: true
-      hostname: keycloak.fern.samoth.eu
-    networkPolicy:
-      kubeAPIServerPorts: [6443]
-    metrics:
-      enabled: true
-    postgresql:
-      enabled: false
-    externalDatabase:
-      host: postgres-infra-primary
-      user: keycloak
-      database: keycloak
-      existingSecret: postgres-infra-pguser-keycloak
-      existingSecretPasswordKey: password
+      keycloak:
+        hosts:
+          - host: keycloak.fern.samoth.eu
+            paths:
+              - path: /
+                service:
+                  identifier: keycloak
+                  port: http
+
+    rawResources:
+      networkPolicy:
+        apiVersion: "cilium.io/v2"
+        kind: CiliumNetworkPolicy
+        spec:
+          description: Allow Keycloak to communicate with himself
+          endpointSelector:
+            matchLabels: &labels
+              app.kubernetes.io/instance: keycloak
+          ingress:
+            - fromEndpoints:
+                - matchLabels: *labels
+          egress:
+            - toEndpoints:
+                - matchLabels: *labels

@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: labelled-allow-egress-pg-infrastructure
+spec:
+  endpointSelector:
+    matchLabels:
+      egress.samoth.eu/pg-infrastructure: allow
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: infrastructure
+            postgres-operator.crunchydata.com/cluster: postgres-infra
+      toPorts:
+        - ports:
+            - port: "5432"
+              protocol: ANY

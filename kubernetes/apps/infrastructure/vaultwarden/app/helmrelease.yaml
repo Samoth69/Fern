@@ -15,6 +15,11 @@ spec:
         name: bjw-s
 
   values:
+    defaultPodOptions:
+      labels:
+        ingress.samoth.eu/internal-ingress: allow
+        egress.samoth.eu/dns: allow
+        egress.samoth.eu/pg-infrastructure: allow
     controllers:
       app:
         containers:
@@ -36,6 +41,11 @@ spec:
                   secretKeyRef:
                     name: postgres-infra-pguser-vaultwarden
                     key: uri
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
 
     service:
       app:
@@ -52,38 +62,3 @@ spec:
             service:
               identifier: app
               port: http
-    networkpolicies:
-      main:
-        enabled: true
-        controller: main
-        policyTypes:
-          - Ingress
-          - Egress
-        rules:
-          ingress:
-            - from:
-              - namespaceSelector:
-                  matchLabels:
-                    kubernetes.io/metadata.name: routing
-                podSelector:
-                  matchLabels:
-                    app.kubernetes.io/instance: traefik-internal-routing
-                    app.kubernetes.io/name: traefik
-              ports:
-                - protocol: TCP
-                  port: 80
-                - protocol: UDP
-                  port: 80
-          egress:
-            - to:
-              - namespaceSelector:
-                  matchLabels:
-                    kubernetes.io/metadata.name: kube-system
-                podSelector:
-                  matchLabels:
-                    k8s-app: kube-dns
-              ports:
-                - protocol: UDP
-                  port: 53
-                - protocol: TCP
-                  port: 53
