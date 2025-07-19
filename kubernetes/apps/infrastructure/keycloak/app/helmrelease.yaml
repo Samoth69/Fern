@@ -117,18 +117,24 @@ spec:
                   identifier: keycloak
                   port: http
 
-    rawResources:
+    networkpolicies:
       # Allow Keycloak to communicate with himself
-      networkPolicy:
-        apiVersion: "cilium.io/v2"
-        kind: CiliumNetworkPolicy
-        spec:
-          endpointSelector:
-            matchLabels: &labels
-              app.kubernetes.io/instance: keycloak
-          ingress:
-            - fromEndpoints:
-                - matchLabels: *labels
-          egress:
-            - toEndpoints:
-                - matchLabels: *labels
+      keycloak:
+        controller: keycloak
+        policyTypes:
+          - Ingress
+          - Egress
+        rules:
+          ingress: &rule
+            - from:
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: infrastructure
+                podSelector:
+                  matchLabels:
+                    app.kubernetes.io/instance: keycloak
+                    app.kubernetes.io/name: keycloak
+              ports:
+                - protocol: TCP
+                  port: 7800
+          egress: *rule
