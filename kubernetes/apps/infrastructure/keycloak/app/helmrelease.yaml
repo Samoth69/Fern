@@ -61,6 +61,7 @@ spec:
               KC_PROXY_HEADERS: xforwarded
               # pod network
               KC_PROXY_TRUSTED_ADDRESSES: "10.69.0.0/16"
+              JAVA_OPTS_APPEND: "-Djgroups.dns.query=keycloak-headless.infrastructure.svc.cluster.local"
             ports:
               - name: http
                 containerPort: 8080
@@ -106,7 +107,7 @@ spec:
           http:
             port: 80
             targetPort: 8080
-      keycloak-headless:
+      headless:
         controller: keycloak
         primary: false
         clusterIP: None
