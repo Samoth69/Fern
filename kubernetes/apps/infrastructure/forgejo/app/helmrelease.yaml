@@ -85,7 +85,7 @@ spec:
           RSA: -1
           DSA: -1
         webhook:
-          ALLOWED_HOST_LIST: private,*.fern.samoth.eu
+          ALLOWED_HOST_LIST: private,*.fern.samoth.eu,discord.com
         cache:
           # https://forgejo.org/docs/latest/admin/recommendations/#cacheadapter
           ADAPTER: twoqueue
