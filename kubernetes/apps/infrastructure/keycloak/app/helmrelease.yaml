@@ -106,6 +106,14 @@ spec:
           http:
             port: 80
             targetPort: 8080
+      keycloak-headless:
+        controller: keycloak
+        primary: false
+        clusterIP: None
+        ports:
+          http:
+            port: 80
+            targetPort: 8080
 
     ingress:
       keycloak:
