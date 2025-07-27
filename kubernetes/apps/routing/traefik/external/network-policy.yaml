@@ -16,4 +16,4 @@ spec:
           protocol: ANY
   egress:
     - toEntities:
-      - ingress
+      - cluster
