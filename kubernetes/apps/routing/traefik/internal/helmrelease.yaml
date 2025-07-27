@@ -43,7 +43,7 @@ spec:
         tls:
           domains:
             - main: "${INTERNAL_DOMAIN}"
-              sans: "[*.${INTERNAL_DOMAIN}]"
+              sans: ["*.${EXTERNAL_DOMAIN}"]
       gittcp:
         port: 2222
         exposedPort: 2222

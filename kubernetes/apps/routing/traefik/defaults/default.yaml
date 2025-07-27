@@ -4,8 +4,8 @@ kind: TLSStore
 metadata:
   name: default
 spec:
-  defaultCertificate:
-    secretName: ${INTERNAL_DOMAIN//./-}-production-tls
+  # defaultCertificate:
+  #   secretName: ${INTERNAL_DOMAIN//./-}-production-tls
   certificates:
     - secretName: ${INTERNAL_DOMAIN//./-}-production-tls
     - secretName: ${EXTERNAL_DOMAIN//./-}-production-tls

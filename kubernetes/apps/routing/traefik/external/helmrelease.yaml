@@ -43,7 +43,7 @@ spec:
         tls:
           domains:
             - main: "${EXTERNAL_DOMAIN}"
-              sans: "[*.${EXTERNAL_DOMAIN}]"
+              sans: ["*.${EXTERNAL_DOMAIN}"]
     service:
       annotations:
         "lbipam.cilium.io/ips": "192.168.0.47"
