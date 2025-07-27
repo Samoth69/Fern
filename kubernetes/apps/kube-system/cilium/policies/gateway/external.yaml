@@ -20,4 +20,4 @@ spec:
       tls:
         certificateRefs:
           - kind: Secret
-            name: ${EXTERNAL_DOMAIN/./-}-production-tls
+            name: ${EXTERNAL_DOMAIN//./-}-production-tls
