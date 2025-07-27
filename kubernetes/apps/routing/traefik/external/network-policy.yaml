@@ -6,7 +6,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/instance: traefik-external-traefik-ingress
+      app.kubernetes.io/instance: traefik-external-routing
   ingress:
     - fromCIDRSet:
       - cidrGroupRef: group-cloudflare

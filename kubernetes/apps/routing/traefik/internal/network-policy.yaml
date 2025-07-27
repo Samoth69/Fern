@@ -6,7 +6,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/instance: traefik-internal-traefik-ingress
+      app.kubernetes.io/instance: traefik-internal-routing
   ingress:
     - fromEntities:
       - cluster

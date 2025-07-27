@@ -31,6 +31,8 @@ spec:
       isDefaultClass: false
       name: &igname traefik-external
     providers:
+      kubernetesCRD:
+        ingressClass: *igname
       kubernetesIngress:
         ingressClass: *igname
     globalArguments: []
