@@ -4,13 +4,14 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: external
-  labels:
-    gateway-name: external
 spec:
   gatewayClassName: cilium
   addresses:
     - type: IPAddress
       value: "192.168.0.47"
+  infrastructure:
+    labels:
+      gateway-name: external
   listeners:
     - name: https
       protocol: HTTPS
