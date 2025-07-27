@@ -31,6 +31,10 @@ spec:
       isDefaultClass: false
       name: traefik-external
     globalArguments: []
+    ingressRoute:
+      dashboard:
+        labels:
+          traefik.samoth.eu/external-ingress-traefik: allow
     ports:
       web:
         # make sure to update the network policy accordingly
