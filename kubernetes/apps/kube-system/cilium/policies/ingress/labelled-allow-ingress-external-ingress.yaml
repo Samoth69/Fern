@@ -8,5 +8,8 @@ spec:
     matchLabels:
       ingress.samoth.eu/external-ingress: allow
   ingress:
-    - fromCIDRSet:
-        - cidrGroupRef: group-cloudflare
+    - fromEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: routing
+            app.kubernetes.io/instance: traefik-external-routing
+            app.kubernetes.io/name: traefik

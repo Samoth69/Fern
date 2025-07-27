@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: traefik-internal
+  name: traefik-external
 spec:
   interval: 30m
   chartRef:
@@ -27,27 +27,21 @@ spec:
       minAvailable: 1
     ingressClass:
       enabled: true
-      isDefaultClass: true
-      name: traefik-internal
+      isDefaultClass: false
+      name: traefik-external
     globalArguments: []
     ports:
       web:
         # make sure to update the network policy accordingly
         port: 8000
+        expose:
+          default: false
       websecure:
         # make sure to update the network policy accordingly
         port: 8443
-      gittcp:
-        port: 2222
-        exposedPort: 2222
-        protocol: TCP
-        expose:
-          default: true
-        tls:
-          enabled: false
     service:
       annotations:
-        "lbipam.cilium.io/ips": "192.168.0.44"
+        "lbipam.cilium.io/ips": "192.168.0.47"
     priorityClassName: high-priority
     metrics:
       prometheus:

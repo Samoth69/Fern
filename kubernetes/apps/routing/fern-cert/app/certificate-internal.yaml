@@ -2,14 +2,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: fern-cert
+  name: "${INTERNAL_DOMAIN//./-}-production"
 spec:
-  secretName: fern-prod-tls-secret
+  secretName: "${INTERNAL_DOMAIN//./-}-production-tls"
   issuerRef:
     kind: Issuer
     name: letsencrypt-prod
-  commonName: "fern.samoth.eu"
+  commonName: "${INTERNAL_DOMAIN}"
   dnsNames:
-    - "fern.samoth.eu"
-    - "*.fern.samoth.eu"
+    - "${INTERNAL_DOMAIN}"
+    - "*.${INTERNAL_DOMAIN}"
   renewBefore: 720h #30d

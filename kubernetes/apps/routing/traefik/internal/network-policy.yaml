@@ -2,7 +2,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: network-policy
+  name: traefik-internal-network-policy
 spec:
   endpointSelector:
     matchLabels:
@@ -18,8 +18,8 @@ spec:
           protocol: ANY
         - port: "8443"
           protocol: ANY
-    - fromCIDR:
-      - 192.168.0.0/23
+    - fromCIDRSet:
+      - cidrGroupRef: group-lan
       toPorts:
       - ports:
         - port: "2222"
