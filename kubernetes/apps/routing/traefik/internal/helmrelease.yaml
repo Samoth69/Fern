@@ -40,6 +40,10 @@ spec:
       websecure:
         # make sure to update the network policy accordingly
         port: 8443
+        tls:
+          domains:
+            - main: "${INTERNAL_DOMAIN}"
+              sans: "[*.${INTERNAL_DOMAIN}]"
       gittcp:
         port: 2222
         exposedPort: 2222
