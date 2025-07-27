@@ -29,8 +29,15 @@ spec:
     ingressClass:
       enabled: true
       isDefaultClass: true
-      name: traefik-internal
+      name: &igname traefik-internal
+    providers:
+      kubernetesIngress:
+        ingressClass: *igname
     globalArguments: []
+    ingressRoute:
+      dashboard:
+        labels:
+          internal.traefik.samoth.eu/ingress: allow
     ports:
       web:
         # make sure to update the network policy accordingly

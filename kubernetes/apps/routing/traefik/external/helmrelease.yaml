@@ -29,12 +29,15 @@ spec:
     ingressClass:
       enabled: true
       isDefaultClass: false
-      name: traefik-external
+      name: &igname traefik-external
+    providers:
+      kubernetesIngress:
+        ingressClass: *igname
     globalArguments: []
     ingressRoute:
       dashboard:
         labels:
-          traefik.samoth.eu/external-ingress-traefik: allow
+          external.traefik.samoth.eu/ingress: allow
     ports:
       web:
         # make sure to update the network policy accordingly
