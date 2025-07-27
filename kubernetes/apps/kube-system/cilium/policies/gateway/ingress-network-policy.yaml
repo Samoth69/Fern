@@ -8,7 +8,9 @@ spec:
     matchExpressions:
       - key: reserved:ingress
         operator: Exists
+      - key: gateway-name:external
+        operator: Exists
   ingress:
     - fromCIDRSet:
-      - cidrGroupRef: group-lan
+      # - cidrGroupRef: group-lan
       - cidrGroupRef: group-cloudflare

@@ -13,3 +13,6 @@ spec:
             k8s:io.kubernetes.pod.namespace: routing
             app.kubernetes.io/instance: traefik-internal-routing
             app.kubernetes.io/name: traefik
+    # TODO est-ce que ça sert vraiment ?
+    - fromCIDRSet:
+      - cidrGroupRef: group-lan

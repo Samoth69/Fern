@@ -2,11 +2,11 @@
 apiVersion: cilium.io/v2
 kind: CiliumClusterwideNetworkPolicy
 metadata:
-  name: labelled-allow-ingress-ingress
+  name: labelled-allow-ingress-external-ingress
 spec:
   endpointSelector:
     matchLabels:
-      ingress.samoth.eu/ingress: allow
+      ingress.samoth.eu/external-ingress: allow
   ingress:
-    - fromEntities:
-      - ingress
+    - fromCIDRSet:
+        - cidrGroupRef: group-cloudflare
