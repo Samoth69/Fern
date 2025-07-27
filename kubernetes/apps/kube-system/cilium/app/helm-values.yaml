@@ -12,19 +12,11 @@ cgroup:
 # devices: eno+ eth+
 endpointRoutes:
   enabled: true
-envoy:
-  enabled: true
-  rollOutPods: true
-  prometheus:
-    serviceMonitor:
-      enabled: true
 dashboards:
   enabled: true
   annotations:
     grafana_folder: Cilium
 externalIPs:
-  enabled: true
-gatewayAPI:
   enabled: true
 hostFirewall:
   enabled: true
