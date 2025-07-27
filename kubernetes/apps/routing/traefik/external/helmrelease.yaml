@@ -23,6 +23,8 @@ spec:
       tag: 3.5.0
     deployment:
       replicas: 2
+      podLabels:
+        egress.samoth.eu/kube-apiserver: allow
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
