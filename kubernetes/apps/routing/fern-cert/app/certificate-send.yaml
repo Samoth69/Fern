@@ -2,14 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: "${EXTERNAL_DOMAIN//./-}-production"
+  name: "${SEND_DOMAIN//./-}-production"
 spec:
-  secretName: "${EXTERNAL_DOMAIN//./-}-production-tls"
+  secretName: "${SEND_DOMAIN//./-}-production-tls"
   issuerRef:
     kind: Issuer
     name: letsencrypt-prod
-  commonName: "${EXTERNAL_DOMAIN}"
+  commonName: "${SEND_DOMAIN}"
   dnsNames:
-    - "${EXTERNAL_DOMAIN}"
-    - "*.${EXTERNAL_DOMAIN}"
+    - "${SEND_DOMAIN}"
   renewBefore: 720h #30d

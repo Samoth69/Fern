@@ -8,7 +8,7 @@ spec:
   #   secretName: ${INTERNAL_DOMAIN//./-}-production-tls
   certificates:
     - secretName: ${INTERNAL_DOMAIN//./-}-production-tls
-    - secretName: ${EXTERNAL_DOMAIN//./-}-production-tls
+    - secretName: ${SEND_DOMAIN//./-}-production-tls
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/traefik.io/tlsoption_v1alpha1.json
 apiVersion: traefik.io/v1alpha1
