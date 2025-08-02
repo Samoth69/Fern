@@ -52,6 +52,7 @@ spec:
       websecure:
         # make sure to update the network policy accordingly
         port: 8443
+        exposedPort: 8443
         tls:
           domains:
             - main: "${EXTERNAL_DOMAIN}"
