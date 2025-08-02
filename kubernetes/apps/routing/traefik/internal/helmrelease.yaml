@@ -25,6 +25,7 @@ spec:
       replicas: 2
       podLabels:
         ingress.samoth.eu/prometheus: allow
+        ingress.samoth.eu/kube-apiserver: allow
         egress.samoth.eu/kube-apiserver: allow
     podDisruptionBudget:
       enabled: true
