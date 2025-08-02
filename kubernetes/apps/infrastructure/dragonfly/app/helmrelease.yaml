@@ -69,6 +69,7 @@ spec:
     defaultPodOptions:
       labels:
         ingress.samoth.eu/kube-apiserver: allow
+        ingress.samoth.eu/prometheus: allow
         egress.samoth.eu/dns: allow
         egress.samoth.eu/kube-apiserver: allow
       securityContext:
