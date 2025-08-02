@@ -6,4 +6,4 @@ resources:
   - ./cloudflare-api-token-secret.sops.yaml
   - ./letsencrypt-prod.yaml
   - ./certificate-internal.yaml
-  - ./certificate-external.yaml
+  - ./certificate-send.yaml
