@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: labelled-allow-ingress-dragonfly-operator
+spec:
+  endpointSelector:
+    matchLabels:
+      ingress.samoth.eu/dragonfly-operator: allow
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: infrastructure
+            app.kubernetes.io/instance: dragonfly-operator
+            app.kubernetes.io/name: dragonfly-operator
