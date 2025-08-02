@@ -22,5 +22,5 @@ spec:
               key: api-token
         selector:
           dnsZones:
-            - "${INTERNAL_DOMAIN}"
+            - "${SEND_DOMAIN}"
             - "${EXTERNAL_DOMAIN}"
