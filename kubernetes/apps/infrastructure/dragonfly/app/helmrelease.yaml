@@ -68,7 +68,7 @@ spec:
               capabilities: { drop: ["ALL"] }
     defaultPodOptions:
       labels:
-        ingress.samoth.eu: deny
+        ingress.samoth.eu/kube-apiserver: allow
         egress.samoth.eu/dns: allow
         egress.samoth.eu/kube-apiserver: allow
       securityContext:
