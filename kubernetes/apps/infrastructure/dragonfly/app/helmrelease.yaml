@@ -21,11 +21,6 @@ spec:
       strategy: rollback
       retries: 3
   values:
-    defaultPodOptions:
-      labels:
-        ingress.samoth.eu: deny
-        egress.samoth.eu/dns: allow
-        egress.samoth.eu/kube-apiserver: allow
     controllers:
       dragonfly-operator:
         strategy: RollingUpdate
@@ -72,6 +67,10 @@ spec:
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
     defaultPodOptions:
+      labels:
+        ingress.samoth.eu: deny
+        egress.samoth.eu/dns: allow
+        egress.samoth.eu/kube-apiserver: allow
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
