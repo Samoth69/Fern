@@ -6,11 +6,11 @@ If you want to deploy something similar, have a look [here](https://github.com/o
 
 ## Nodes
 
-| Name   | Type                                  | SchematicId                                                      | CPU | RAM  |
-|--------|---------------------------------------|------------------------------------------------------------------|-----|------|
-| Akame  | VM                                    | c9b3b8505d39208762ec98b18bb676b8081ff4a43db792f45a17909c33f57140 | 8   | 32GB |
-| Felix  | Metal - UM773 Lite                    | eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd | 16  | 64GB |
-| Nagumo | Metal - Intel 7500 on an Asrock board | adc0ed6a968f4959aad19a02424741e1637eccd6987b74dab1a0a9c593d37e48 | 4   | 16GB |
+| Name   | Type               | CPU | RAM  | SchematicId                                                      |
+|--------|--------------------|-----|------|------------------------------------------------------------------|
+| Akame  | VM                 | 8   | 64GB | c9b3b8505d39208762ec98b18bb676b8081ff4a43db792f45a17909c33f57140 |
+| Felix  | Metal - UM773 Lite | 16  | 64GB | eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd |
+| Nagumo | Metal - Intel 7500 | 4   | 16GB | adc0ed6a968f4959aad19a02424741e1637eccd6987b74dab1a0a9c593d37e48 |
 
 ## Akame
 

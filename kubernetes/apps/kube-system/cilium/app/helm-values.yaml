@@ -16,6 +16,8 @@ dashboards:
   enabled: true
   annotations:
     grafana_folder: Cilium
+envoy:
+  enabled: false
 externalIPs:
   enabled: true
 hostFirewall:
