@@ -60,3 +60,4 @@ podDisruptionBudget:
 customLabels:
   helm.toolkit.fluxcd.io/name: coredns
   helm.toolkit.fluxcd.io/namespace: kube-system
+  ingress.samoth.eu/cluster: allow

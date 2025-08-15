@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/cilium.io/ciliumnetworkpolicy_v2.json
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: coredns
+spec:
+  description: Allow coredns to talk to talos dns server
+  endpointSelector:
+    matchLabels:
+      k8s-apps: kube-dns
+  egress:
+    - toCIDR:
+        - 169.254.116.108/32
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+            - port: "53"
+              protocol: TCP
