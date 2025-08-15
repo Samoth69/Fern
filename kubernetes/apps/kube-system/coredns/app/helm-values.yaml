@@ -1,4 +1,3 @@
----
 fullnameOverride: coredns
 k8sAppLabelOverride: kube-dns
 serviceAccount:
@@ -34,6 +33,9 @@ servers:
           fallthrough in-addr.arpa ip6.arpa
       - name: forward
         parameters: . /etc/resolv.conf
+        configBlock: |-
+          policy sequential
+          max_fails 0
       - name: cache
         parameters: 30
       - name: loop

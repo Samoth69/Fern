@@ -9,5 +9,6 @@ resources:
   - ./labelled-allow-ingress-internal-ingress.yaml
   - ./labelled-allow-ingress-internet.yaml
   - ./labelled-allow-ingress-kube-apiserver.yaml
+  - ./labelled-allow-ingress-lan.yaml
   - ./labelled-allow-ingress-prometheus.yaml
   - ./labelled-deny-ingress.yaml
