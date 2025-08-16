@@ -7,15 +7,15 @@ spec:
   description: "Allow the app to communicate with itself and Allow talks to kube-dns"
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/instance: ${INSTANCE_NAME:=$APP}
+      app.kubernetes.io/instance: ${INSTANCE_NAME:=APP}
   ingress:
     - fromEndpoints:
         - matchLabels:
-            app.kubernetes.io/instance: ${INSTANCE_NAME:=$APP}
+            app.kubernetes.io/instance: ${INSTANCE_NAME:=APP}
   egress:
     - toEndpoints:
         - matchLabels:
-            app.kubernetes.io/instance: ${INSTANCE_NAME:=$APP}
+            app.kubernetes.io/instance: ${INSTANCE_NAME:=APP}
     - toEndpoints:
         - matchLabels:
             k8s:io.kubernetes.pod.namespace: kube-system
