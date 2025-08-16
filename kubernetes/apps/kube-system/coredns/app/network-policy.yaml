@@ -8,6 +8,9 @@ spec:
   endpointSelector:
     matchLabels:
       k8s-apps: kube-dns
+  ingress:
+    - fromEntities:
+        - cluster
   egress:
     - toCIDR:
         - 169.254.116.108/32
