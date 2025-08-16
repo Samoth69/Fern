@@ -3,13 +3,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app flux-operator
+  name: &appname flux-operator
   namespace: flux-system
 spec:
   targetNamespace: flux-system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: *app
+      app.kubernetes.io/name: *appname
   path: ./kubernetes/apps/flux-system/flux-operator/app
   prune: false # never should be deleted
   sourceRef:
@@ -18,18 +18,23 @@ spec:
   wait: false
   interval: 30m
   timeout: 5m
+  components:
+    - ../../../../components/app-network-policy/
+  postBuild:
+    substitute:
+      APP: *appname
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app flux-instance
+  name: &appname flux-instance
   namespace: flux-system
 spec:
   targetNamespace: flux-system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: *app
+      app.kubernetes.io/name: *appname
   dependsOn:
     - name: flux-operator
   path: ./kubernetes/apps/flux-system/flux-operator/instance
@@ -40,3 +45,8 @@ spec:
   wait: false
   interval: 30m
   timeout: 5m
+  components:
+    - ../../../../components/app-network-policy/
+  postBuild:
+    substitute:
+      APP: *appname
