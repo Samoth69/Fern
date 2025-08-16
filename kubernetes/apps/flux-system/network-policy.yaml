@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: flux-system-network-policy
+spec:
+  description: "Flux system network policy"
+  endpointSelector: {}
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/instance: flux-instance
+        - matchLabels:
+            app.kubernetes.io/instance: flux-operator
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/instance: flux-instance
+        - matchLabels:
+            app.kubernetes.io/instance: flux-operator
+    - toEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: "ANY"
+          rules:
+            dns:
+              - matchPattern: "*"
