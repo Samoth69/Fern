@@ -20,6 +20,7 @@ spec:
       additionalLabels:
         ingress.samoth.eu/prometheus: allow
         ingress.samoth.eu/kube-apiserver: allow
+        ingress.samoth.eu/internal-ingress: allow
         egress.samoth.eu/kube-apiserver: allow
         egress.samoth.eu/internal-ingress: allow
         egress.samoth.eu/internet-http: allow
