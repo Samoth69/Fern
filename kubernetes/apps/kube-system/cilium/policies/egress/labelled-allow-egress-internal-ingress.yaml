@@ -15,5 +15,8 @@ spec:
             app.kubernetes.io/name: traefik
       toPorts:
         - ports:
+            # Forgejo git SSH
+            - port: "2222"
+              protocol: TCP
             - port: "8443"
               protocol: ANY
