@@ -3,6 +3,8 @@ serviceMonitor:
   create: true
 commonLabels:
   ingress.samoth.eu/prometheus: allow
+  # do not delete this
+  egress.samoth.eu/dns: allow
   egress.samoth.eu/kube-apiserver: allow
   egress.samoth.eu/internet-github: allow
 resources:
