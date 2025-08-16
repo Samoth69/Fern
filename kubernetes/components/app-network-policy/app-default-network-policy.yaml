@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: ${APP}-default-network-policy
+spec:
+  description: "Allow the app to communicate with itself and Allow talks to kube-dns"
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/instance: ${INSTANCE_NAME:=APP}
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/instance: ${INSTANCE_NAME:=APP}
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/instance: ${INSTANCE_NAME:=APP}
+    - toEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: "ANY"
+          rules:
+            dns:
+              - matchPattern: "*"

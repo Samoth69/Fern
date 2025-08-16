@@ -28,7 +28,6 @@ spec:
     podLabels: &labels
       ingress.samoth.eu/prometheus: allow
       ingress.samoth.eu/kube-apiserver: allow
-      egress.samoth.eu/dns: allow
       egress.samoth.eu/kube-apiserver: allow
       egress.samoth.eu/internet: allow
     webhook:
