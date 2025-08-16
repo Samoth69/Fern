@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: crunchy-postgres-operator
+  name: &appname crunchy-postgres-operator
 spec:
   interval: 30m
   chartRef:
@@ -20,7 +20,9 @@ spec:
     install:
       clusterLabels:
         app.kubernetes.io/name: pgo
-    metadata:
-      labels:
+    resources:
+      customPodLabels:
+        app.kubernetes.io/instance: *appname
+        ingress.samoth.eu/kube-apiserver: allow
         egress.samoth.eu/dns: allow
         egress.samoth.eu/kube-apiserver: allow

@@ -18,3 +18,8 @@ spec:
   wait: true
   dependsOn:
     - name: rook-ceph-cluster
+  components:
+    - ../../../../components/app-network-policy/
+  postBuild:
+    substitute:
+      APP: *appname
