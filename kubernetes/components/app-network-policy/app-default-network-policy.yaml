@@ -11,11 +11,11 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            app.kubernetes.io/instance: ${INSTANCE_NAME:=APP}
+            app.kubernetes.io/instance: ${INSTANCE_NAME:=${APP}}
   egress:
     - toEndpoints:
         - matchLabels:
-            app.kubernetes.io/instance: ${INSTANCE_NAME:=APP}
+            app.kubernetes.io/instance: ${INSTANCE_NAME:=${APP}}
     - toEndpoints:
         - matchLabels:
             k8s:io.kubernetes.pod.namespace: kube-system
