@@ -41,6 +41,7 @@ spec:
         mgr:
           mgr/crash/warn_recent_interval: "7200" # 2h
         mds:
+          mon_data_avail_warn: "20" # orig: 30
           # https://github.com/rook/rook/issues/14220#issuecomment-2270086717
           mds_dir_max_commit_size: "80" # orig: 10
           # https://www.suse.com/fr-fr/support/kb/doc/?id=000019740
