@@ -8,7 +8,7 @@ service:
 prometheus:
   service:
     enabled: true
-replicaCount: 2
+replicaCount: 3
 servers:
   - zones:
       - zone: .
@@ -55,7 +55,8 @@ tolerations:
     operator: Exists
     effect: NoSchedule
 podDisruptionBudget:
-  minAvailable: 1
+  minAvailable: 2
+priorityClassName: system-cluster-critical
 # Graceful Helmfile to HelmRelease takeover
 customLabels:
   helm.toolkit.fluxcd.io/name: coredns

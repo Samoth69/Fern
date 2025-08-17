@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kyverno
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: kyverno
+      version: 3.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: kyverno
+  values:
+    global:
+      image:
+        registry: ghcr.io
+    admissionController:
+      replicas: 3
+      priorityClassName: &priorityClass high-priority
+    backgroundController:
+      priorityClassName: *priorityClass
+      replicas: 2
+    cleanupController:
+      priorityClassName: *priorityClass
+      replicas: 2
+    reportsController:
+      priorityClassName: *priorityClass
+      replicas: 2
+    grafana:
+      enabled: true
+      annotations:
+        grafana_folder: kyverno
+    features:
+      mutatingAdmissionPolicyReports:
+        enabled: true
