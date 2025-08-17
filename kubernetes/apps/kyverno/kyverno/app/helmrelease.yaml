@@ -33,6 +33,3 @@ spec:
       enabled: true
       annotations:
         grafana_folder: kyverno
-    features:
-      mutatingAdmissionPolicyReports:
-        enabled: true
