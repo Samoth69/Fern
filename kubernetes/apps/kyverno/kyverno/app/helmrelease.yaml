@@ -31,5 +31,3 @@ spec:
       replicas: 2
     grafana:
       enabled: true
-      annotations:
-        grafana_folder: kyverno
