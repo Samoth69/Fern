@@ -41,7 +41,6 @@ spec:
         mgr:
           mgr/crash/warn_recent_interval: "7200" # 2h
         mds:
-          mon_data_avail_warn: "20" # orig: 30
           # https://github.com/rook/rook/issues/14220#issuecomment-2270086717
           mds_dir_max_commit_size: "80" # orig: 10
           # https://www.suse.com/fr-fr/support/kb/doc/?id=000019740
@@ -50,6 +49,9 @@ spec:
           mds_cache_memory_limit: "4724464025" # orig: 4294967296
           mds_recall_max_caps: "33000" # orig: 30000
           mds_recall_max_decay_rate: "1.350000" # orig: 1.500000
+        osd:
+          # https://docs.ceph.com/en/latest/rados/operations/health-checks/#mon-disk-low
+          mon_data_avail_warn: "20" # orig: 30
       network:
         provider: host
         connections:
