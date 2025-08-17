@@ -18,7 +18,7 @@ spec:
         CephHealthWarning:
           for: "60m"
     toolbox:
-      enabled: false
+      enabled: true
     ingress:
       dashboard:
         host:
@@ -29,6 +29,8 @@ spec:
     cephClusterSpec:
       dashboard:
         ssl: false
+      logCollector:
+        enabled: false
       cephConfig:
         global:
           bdev_enable_discard: "true" # quote
