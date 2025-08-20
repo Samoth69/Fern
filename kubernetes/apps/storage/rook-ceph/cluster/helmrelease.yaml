@@ -27,6 +27,8 @@ spec:
           pathType: Prefix
         ingressClassName: traefik-internal
     cephClusterSpec:
+      cephVersion:
+        image: quay.io/ceph/ceph:v19.2.3
       dashboard:
         ssl: false
       logCollector:
