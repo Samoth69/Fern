@@ -124,6 +124,7 @@ spec:
           stage.static_labels {
               values = {
                 cluster = "fern",
+                node = sys.env("HOSTNAME"),
               }
           }
 
