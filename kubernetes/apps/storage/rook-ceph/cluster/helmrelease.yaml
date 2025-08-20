@@ -71,7 +71,7 @@ spec:
       resources:
         mgr:
           requests:
-            cpu: 100m
+            cpu: 50m
             memory: 512Mi
           limits:
             memory: 2Gi
@@ -93,6 +93,18 @@ spec:
             memory: 128Mi
           limits:
             memory: 256Mi
+        crashcollector:
+          requests:
+            cpu: 1m
+            memory: 10Mi
+          limits:
+            memory: 60Mi
+        exporter:
+          requests:
+            cpu: 5m
+            memory: 20Mi
+          limits:
+            memory: 128Mi
       storage:
         useAllNodes: false
         useAllDevices: false
@@ -165,7 +177,7 @@ spec:
               limits:
                 memory: "4Gi"
               requests:
-                cpu: "10m"
+                cpu: "30m"
                 memory: "128Mi"
         storageClass:
           enabled: true
