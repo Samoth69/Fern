@@ -25,9 +25,6 @@ spec:
     controllers:
       dragonfly-operator:
         strategy: RollingUpdate
-        labels:
-          ingress.samoth.eu/prometheus: allow
-          ingress.samoth.eu/kube-apiserver: allow
         containers:
           app:
             image:
