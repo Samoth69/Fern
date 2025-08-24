@@ -112,14 +112,6 @@ spec:
             secretKeyRef:
               name: postgres-infra-pguser-forgejo
               key: password
-    valkey-cluster:
-      enabled: false
-    valkey:
-      enabled: false
-    postgresql-ha:
-      enabled: false
-    postgresql:
-      enabled: false
     strategy:
       type: Recreate
     extraVolumes:
