@@ -98,6 +98,33 @@
       },
     },
     {
+      description: 'Woodpecker Group',
+      groupName: 'Woodpecker',
+      matchDatasources: [
+        'docker',
+      ],
+      matchPackageNames: [
+        '/woodpeckerci/',
+      ],
+      group: {
+        commitMessageTopic: '{{{groupName}}} group',
+      },
+    },
+    {
+      description: 'Dragonfly Group',
+      groupName: 'Dragonfly',
+      matchDatasources: [
+        'docker',
+        'github-releases',
+      ],
+      matchPackageNames: [
+        '/dragonflydb/',
+      ],
+      group: {
+        commitMessageTopic: '{{{groupName}}} group',
+      },
+    },
+    {
       description: 'Auto-merge GitHub Actions',
       matchManagers: [
         'github-actions',
