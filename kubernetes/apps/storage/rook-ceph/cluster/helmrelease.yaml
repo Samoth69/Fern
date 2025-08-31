@@ -55,7 +55,7 @@ spec:
           mds_cache_memory_limit: "4724464025" # orig: 4294967296
           mds_recall_max_caps: "33000" # orig: 30000
           mds_recall_max_decay_rate: "1.350000" # orig: 1.500000
-        osd:
+        mon:
           # https://docs.ceph.com/en/latest/rados/operations/health-checks/#mon-disk-low
           mon_data_avail_warn: "15" # orig: 30
       network:
