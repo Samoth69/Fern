@@ -53,7 +53,7 @@ spec:
           mds_recall_max_decay_rate: "1.350000" # orig: 1.500000
         osd:
           # https://docs.ceph.com/en/latest/rados/operations/health-checks/#mon-disk-low
-          mon_data_avail_warn: "20" # orig: 30
+          mon_data_avail_warn: "15" # orig: 30
       network:
         provider: host
         connections:
