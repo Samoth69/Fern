@@ -257,6 +257,12 @@
       description: [
         'Auto merge minor / patch update',
       ],
+      matchPackageNames: [
+        '!/rook\/rook-ceph/',
+        '!/rook\/rook-ceph-cluster/',
+        '!/siderolabs\/installer/',
+        '!/siderolabs\/kubelet/'
+      ],
       matchUpdateTypes: [
         'minor',
         'patch',
