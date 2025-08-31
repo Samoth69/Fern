@@ -17,6 +17,8 @@ spec:
       prometheusRuleOverrides:
         CephHealthWarning:
           for: "60m"
+        CephMonDiskspaceLow:
+          disabled: true
     toolbox:
       enabled: true
     ingress:
