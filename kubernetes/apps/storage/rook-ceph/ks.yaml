@@ -37,6 +37,6 @@ spec:
     name: flux-system
   wait: false
   interval: 30m
-  timeout: 5m
+  timeout: 15m
   dependsOn:
     - name: rook-ceph
