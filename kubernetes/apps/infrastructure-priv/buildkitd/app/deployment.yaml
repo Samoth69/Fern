@@ -18,7 +18,7 @@ spec:
       hostUsers: false
       containers:
         - name: buildkitd
-          image: moby/buildkit:v0.23.2
+          image: moby/buildkit:v0.24.0
           args:
             - --addr
             - unix:///run/buildkit/buildkitd.sock
