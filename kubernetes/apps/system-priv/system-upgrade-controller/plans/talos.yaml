@@ -17,25 +17,20 @@ spec:
       ignoreUpdates: true
   serviceAccountName: system-upgrade-controller
   # this does in fact exist : https://github.com/rancher/system-upgrade-controller/blob/master/doc/plan.md#planspec
-  # window:
-  #   days:
-  #     - su
-  #     - mo
-  #     - tu
-  #     - we
-  #     - th
-  #     - fr
-  #     - sa
-  #   startTime: "5:00"
-  #   endTime: "7:00"
-  #   timeZone: Europe/Paris
+  window:
+    days:
+      - su
+      - mo
+      - tu
+      - we
+      - th
+      - fr
+      - sa
+    startTime: "5:00"
+    endTime: "7:00"
+    timeZone: Europe/Paris
   upgrade:
     image: ghcr.io/jfroy/tnu:0.4.3
-    envs:
-      - name: NODE_IP
-        valueFrom:
-          fieldRef:
-            fieldPath: status.hostIP
     args:
       - --node=$(SYSTEM_UPGRADE_NODE_NAME)
       - --tag=$(SYSTEM_UPGRADE_PLAN_LATEST_VERSION)
