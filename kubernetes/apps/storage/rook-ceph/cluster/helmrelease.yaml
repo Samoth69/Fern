@@ -184,7 +184,7 @@ spec:
                 memory: "4Gi"
               requests:
                 cpu: "30m"
-                memory: "128Mi"
+                memory: "512Mi"
         storageClass:
           enabled: true
           isDefault: false
