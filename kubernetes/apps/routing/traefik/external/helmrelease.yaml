@@ -20,7 +20,7 @@ spec:
     image:
       registry: ghcr.io
       repository: traefik/traefik
-      tag: v3.5.1
+      tag: v3.5.2
     deployment:
       replicas: 2
       podLabels:
