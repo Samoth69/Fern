@@ -26,8 +26,8 @@ spec:
       - th
       - fr
       - sa
-    startTime: "5:00"
-    endTime: "7:00"
+    startTime: "05:00"
+    endTime: "07:00"
     timeZone: Europe/Paris
   upgrade:
     image: ghcr.io/jfroy/tnu:0.4.3
