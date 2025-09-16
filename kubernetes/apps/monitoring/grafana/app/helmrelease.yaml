@@ -272,7 +272,9 @@ spec:
           # renovate: depName="Kube State Metrics v2"
           gnetId: 21742
           revision: 1
-          datasource: Prometheus
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
       postgres:
         postgresql:
           # renovate: depName="PostgreSQL Database"
