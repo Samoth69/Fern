@@ -30,7 +30,7 @@ spec:
     endTime: "07:00"
     timeZone: Europe/Paris
   upgrade:
-    image: ghcr.io/jfroy/tnu:0.4.3
+    image: ghcr.io/jfroy/tnu:0.4.4
     args:
       - --node=$(SYSTEM_UPGRADE_NODE_NAME)
       - --tag=$(SYSTEM_UPGRADE_PLAN_LATEST_VERSION)
