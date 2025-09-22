@@ -9,9 +9,14 @@ spec:
   chart:
     spec:
       chart: crunchy-userinit-controller
-      version: 0.0.4
+      version: 1.0.1
       sourceRef:
         kind: HelmRepository
         name: crunchy-userinit
   values:
     fullnameOverride: crunchy-userinit-controller
+    watch:
+      mode: list
+      namespaces:
+        - "app*"
+        - "infrastructure*"

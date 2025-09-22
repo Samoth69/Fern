@@ -78,7 +78,7 @@ spec:
         mgr:
           requests:
             cpu: 50m
-            memory: 512Mi
+            memory: 768Mi
           limits:
             memory: 2Gi
         mon:
@@ -184,7 +184,7 @@ spec:
                 memory: "4Gi"
               requests:
                 cpu: "30m"
-                memory: "512Mi"
+                memory: "1Gi"
         storageClass:
           enabled: true
           isDefault: false
