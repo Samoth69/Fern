@@ -20,14 +20,39 @@ spec:
     admissionController:
       replicas: 3
       priorityClassName: &priorityClass high-priority
+      container:
+        resources:
+          requests:
+            cpu: 10m
+            memory: 128Mi
+          limits:
+            memory: 1024Mi
     backgroundController:
       priorityClassName: *priorityClass
       replicas: 2
+      resources:
+        requests:
+          cpu: 10m
+          memory: 64Mi
+        limits:
+          memory: 512Mi
     cleanupController:
       priorityClassName: *priorityClass
       replicas: 2
+      resources:
+        requests:
+          cpu: 10m
+          memory: 64Mi
+        limits:
+          memory: 512Mi
     reportsController:
       priorityClassName: *priorityClass
       replicas: 2
+      resources:
+        requests:
+          cpu: 10m
+          memory: 64Mi
+        limits:
+          memory: 512Mi
     grafana:
       enabled: true
