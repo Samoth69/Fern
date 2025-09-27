@@ -14,6 +14,16 @@ spec:
     image:
       registry: quay.io
 
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: platform
+              operator: In
+              values:
+              - baremetal
+
     serviceMonitor:
       enabled: true
       relabelings:
