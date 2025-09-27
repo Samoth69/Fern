@@ -27,7 +27,7 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/nocloud-installer-secureboot/c9b3b8505d39208762ec98b18bb676b8081ff4a43db792f45a17909c33f57140
+    talosImageURL: factory.talos.dev/nocloud-installer-secureboot/ef973c8091be093db8b9cf4829e7f430f8e931b744cbe31adb842ec713df9339
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -54,7 +54,7 @@ nodes:
       type: ssd
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/638372b2a4f32c4e45088f26b330f69b3a5128d038a2c120f5f94fea890fdf43
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/35d1f97b3aff9e464c22efbab1b2e71667df933f7bdc57f28321eee35a26ef05
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -77,7 +77,7 @@ nodes:
       type: ssd
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/adc0ed6a968f4959aad19a02424741e1637eccd6987b74dab1a0a9c593d37e48
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/f313c40c3af72e3c22303abeb8faac8d02769e1ef4ef66aa4423bf6744f01e94
     controlPlane: true
     networkInterfaces:
       - deviceSelector:

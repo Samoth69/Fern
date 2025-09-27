@@ -8,9 +8,9 @@ If you want to deploy something similar, have a look [here](https://github.com/o
 
 | Name   | Type               | CPU | RAM  | SchematicId                                                      |
 |--------|--------------------|-----|------|------------------------------------------------------------------|
-| Akame  | VM                 | 8   | 64GB | c9b3b8505d39208762ec98b18bb676b8081ff4a43db792f45a17909c33f57140 |
-| Felix  | Metal - UM773 Lite | 16  | 64GB | eba480ee0288b10f6e409a54fde3e4bc425f18f56efbd12bf2a343a9334517fd |
-| Nagumo | Metal - Intel 7500 | 4   | 16GB | adc0ed6a968f4959aad19a02424741e1637eccd6987b74dab1a0a9c593d37e48 |
+| Akame  | VM                 | 10  | 64GB | ef973c8091be093db8b9cf4829e7f430f8e931b744cbe31adb842ec713df9339 |
+| Felix  | Metal - UM773 Lite | 16  | 64GB | 35d1f97b3aff9e464c22efbab1b2e71667df933f7bdc57f28321eee35a26ef05 |
+| Nagumo | Metal - Intel 7500 | 4   | 16GB | f313c40c3af72e3c22303abeb8faac8d02769e1ef4ef66aa4423bf6744f01e94 |
 
 ## Akame
 
@@ -21,6 +21,7 @@ customization:
     systemExtensions:
         officialExtensions:
             - siderolabs/btrfs
+            - siderolabs/gvisor
             - siderolabs/qemu-guest-agent
             - siderolabs/util-linux-tools
 ```
@@ -36,6 +37,7 @@ customization:
         officialExtensions:
             - siderolabs/amd-ucode
             - siderolabs/amdgpu
+            - siderolabs/gvisor
             - siderolabs/realtek-firmware
             - siderolabs/util-linux-tools
 ```
@@ -49,6 +51,7 @@ customization:
         - ipv6.disable=1
     systemExtensions:
         officialExtensions:
+            - siderolabs/gvisor
             - siderolabs/i915
             - siderolabs/intel-ucode
             - siderolabs/mei
