@@ -24,6 +24,22 @@ spec:
       metadata:
         labels:
           app.kubernetes.io/name: ${APP}-crunchy-postgres-backup
+      sidecars:
+        pgbackrest:
+          resources:
+            requests:
+              cpu: 5m
+              memory: 1Mi
+            limits:
+              memory: 1024Mi
+        pgbackrestConfig:
+          resources:
+            requests:
+              cpu: 5m
+              memory: 1Mi
+            limits:
+              memory: 1024Mi
+
       repos:
         - name: repo1
           s3: &s3
@@ -42,6 +58,12 @@ spec:
       repo:
         name: repo1
         s3: *s3
+      resources:
+        requests:
+          cpu: 50m
+          memory: 64Mi
+        limits:
+          memory: 1024Mi
 
   postgresVersion: 17
 
@@ -61,7 +83,6 @@ spec:
           - hostnossl all all 127.0.0.1/8 md5 # port forwarding without ssl
           - hostssl all all all md5
 
-
   instances:
     - name: pg-instance
       metadata:
@@ -75,12 +96,20 @@ spec:
         resources:
           requests:
             storage: ${POSTGRES_DATA_SIZE:-1Gi}
+      sidecars:
+        replicaCertCopy:
+          resources:
+            requests:
+              cpu: 1m
+              memory: 2Mi
+            limits:
+              memory: 512Mi
       resources:
         requests:
           cpu: 10m
-          memory: 64M
+          memory: 128Mi
         limits:
-          memory: 1024M
+          memory: 1024Mi
 
   users:
     # Superuser
@@ -102,6 +131,6 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 64M
+            memory: 64Mi
           limits:
-            memory: 512M
+            memory: 512Mi
