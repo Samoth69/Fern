@@ -7,18 +7,20 @@ metadata:
 spec:
   staticConfigs:
     - targets:
-        - 192.168.0.5:9633
-        - 192.168.0.6:9633
+        - &akame-host 192.168.0.5:9633
+        - &lynka-host 192.168.0.6:9633
   metricsPath: /metrics
   relabelings:
     - action: replace
       targetLabel: job
       replacement: *name
     - action: replace
-      regex: (192.168.0.5.*)
+      sourceLabels: ["__address__"]
+      regex: *akame-host
       replacement: akame
       targetLabel: instance
     - action: replace
-      regex: (192.168.0.6.*)
+      sourceLabels: ["__address__"]
+      regex: *lynka-host
       replacement: lynka
       targetLabel: instance
