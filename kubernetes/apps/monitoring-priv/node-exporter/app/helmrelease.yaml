@@ -41,6 +41,10 @@ spec:
             targetLabel: instance
           - action: labeldrop
             regex: (pod)
+          - action: drop
+            sourceLabels:
+              - device
+            regex: (lxc.*)
 
     resources:
       requests:
