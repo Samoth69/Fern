@@ -30,7 +30,25 @@ spec:
       ingress.samoth.eu/kube-apiserver: allow
       egress.samoth.eu/kube-apiserver: allow
       egress.samoth.eu/internet: allow
+    resources:
+      requests:
+        cpu: 1m
+        memory: 80Mi
+      limits:
+        memory: 512Mi
     webhook:
       podLabels: *labels
+      resources:
+        requests:
+          cpu: 1m
+          memory: 64Mi
+        limits:
+          memory: 512Mi
     cainjector:
       podLabels: *labels
+      resources:
+        requests:
+          cpu: 1m
+          memory: 100Mi
+        limits:
+          memory: 512Mi
