@@ -39,6 +39,8 @@ spec:
             sourceLabels:
               - kubernetes_node
             targetLabel: instance
+          - action: labeldrop
+            regex: (pod)
 
     resources:
       requests:
