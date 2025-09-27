@@ -222,7 +222,9 @@ spec:
           # renovate: depName="etcd"
           gnetId: 22236
           revision: 4
-          datasource: Prometheus
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
         kubernetes-hubble-podflows-ns:
           # renovate: depName="Kubernetes / Networking / Retina (Hubble) / Pod Flows (Namespace)"
           gnetId: 22899
