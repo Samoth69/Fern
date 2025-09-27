@@ -15,10 +15,10 @@ spec:
       targetLabel: job
       replacement: *name
     - action: replace
-      regex: (192\.168\.0\.5.*)
+      regex: (192.168.0.5.*)
       replacement: akame
       targetLabel: instance
     - action: replace
-      regex: (192\.168\.0\.6.*)
+      regex: (192.168.0.6.*)
       replacement: lynka
       targetLabel: instance
