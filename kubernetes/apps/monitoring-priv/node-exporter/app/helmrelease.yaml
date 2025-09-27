@@ -47,4 +47,4 @@ spec:
       limits:
         memory: 64M
 
-    hostNetwork: false
+    hostNetwork: true
