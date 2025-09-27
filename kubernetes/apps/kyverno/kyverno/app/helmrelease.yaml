@@ -20,6 +20,8 @@ spec:
     admissionController:
       replicas: 3
       priorityClassName: &priorityClass high-priority
+      podDisruptionBudget:
+        enabled: true
       container:
         resources:
           requests:
@@ -30,6 +32,8 @@ spec:
     backgroundController:
       priorityClassName: *priorityClass
       replicas: 2
+      podDisruptionBudget:
+        enabled: true
       resources:
         requests:
           cpu: 10m
@@ -39,6 +43,8 @@ spec:
     cleanupController:
       priorityClassName: *priorityClass
       replicas: 2
+      podDisruptionBudget:
+        enabled: true
       resources:
         requests:
           cpu: 10m
@@ -48,6 +54,8 @@ spec:
     reportsController:
       priorityClassName: *priorityClass
       replicas: 2
+      podDisruptionBudget:
+        enabled: true
       resources:
         requests:
           cpu: 10m
