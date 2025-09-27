@@ -218,6 +218,11 @@ spec:
           url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
           datasource: Prometheus
       kubernetes:
+        etcd 2:
+          # renovate: depName="etcd"
+          gnetId: 22236
+          revision: 4
+          datasource: Prometheus
         kubernetes-hubble-podflows-ns:
           # renovate: depName="Kubernetes / Networking / Retina (Hubble) / Pod Flows (Namespace)"
           gnetId: 22899
