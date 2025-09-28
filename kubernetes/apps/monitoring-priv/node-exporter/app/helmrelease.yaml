@@ -11,6 +11,10 @@ spec:
   values:
     fullnameOverride: node-exporter
 
+    extraArgs:
+      - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/.+|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
+      - --collector.netdev.device-exclude=^(lxc.*)$
+
     image:
       registry: quay.io
       repository: prometheus/node-exporter
@@ -23,10 +27,6 @@ spec:
         relabelings:
           - action: labeldrop
             regex: (pod)
-          - action: drop
-            sourceLabels:
-              - device
-            regex: (lxc.*)
           - action: replace
             regex: (.*)
             replacement: $1
