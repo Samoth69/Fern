@@ -12,7 +12,7 @@ spec:
     fullnameOverride: node-exporter
 
     extraArgs:
-      - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/.+|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
+      - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/containerd/.+)($|/)
       - --collector.netdev.device-exclude=^(lxc.*)$
 
     image:
