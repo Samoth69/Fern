@@ -21,6 +21,12 @@ spec:
         jobLabel: app.kubernetes.io/instance
 
         relabelings:
+          - action: labeldrop
+            regex: (pod)
+          - action: drop
+            sourceLabels:
+              - device
+            regex: (lxc.*)
           - action: replace
             regex: (.*)
             replacement: $1
@@ -39,12 +45,6 @@ spec:
             sourceLabels:
               - kubernetes_node
             targetLabel: instance
-          - action: labeldrop
-            regex: (pod)
-          - action: drop
-            sourceLabels:
-              - device
-            regex: (lxc.*)
 
     resources:
       requests:
