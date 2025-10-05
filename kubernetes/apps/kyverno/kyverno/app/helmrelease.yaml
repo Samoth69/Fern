@@ -22,6 +22,8 @@ spec:
       priorityClassName: &priorityClass high-priority
       podDisruptionBudget:
         enabled: true
+      serviceMonitor:
+        enabled: true
       container:
         resources:
           requests:
@@ -34,6 +36,8 @@ spec:
       replicas: 2
       podDisruptionBudget:
         enabled: true
+      serviceMonitor:
+        enabled: true
       resources:
         requests:
           cpu: 10m
@@ -45,6 +49,8 @@ spec:
       replicas: 2
       podDisruptionBudget:
         enabled: true
+      serviceMonitor:
+        enabled: true
       resources:
         requests:
           cpu: 10m
@@ -55,6 +61,8 @@ spec:
       priorityClassName: *priorityClass
       replicas: 2
       podDisruptionBudget:
+        enabled: true
+      serviceMonitor:
         enabled: true
       resources:
         requests:
