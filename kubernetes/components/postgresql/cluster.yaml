@@ -5,65 +5,65 @@ kind: PostgresCluster
 metadata:
   name: ${APP}
 spec:
-  # backups:
-  #   pgbackrest:
-  #     configuration: &customBackrestConfig
-  #       - secret:
-  #           name: ${APP}-s3-database-backup
-  #     global: &globalBackrestConfig
-  #       repo1-s3-uri-style: path
-  #       repo1-path: /pgbackrest/postgres-operator/fern/${APP}
-  #       repo1-retention-full: "14"
-  #       repo1-retention-full-type: count
-  #     jobs:
-  #       ttlSecondsAfterFinished: 60
-  #     manual:
-  #       repoName: repo1
-  #       options:
-  #        - --type=full
-  #     metadata:
-  #       labels:
-  #         app.kubernetes.io/name: ${APP}-crunchy-postgres-backup
-  #     sidecars:
-  #       pgbackrest:
-  #         resources:
-  #           requests:
-  #             cpu: 5m
-  #             memory: 1Mi
-  #           limits:
-  #             memory: 1024Mi
-  #       pgbackrestConfig:
-  #         resources:
-  #           requests:
-  #             cpu: 5m
-  #             memory: 1Mi
-  #           limits:
-  #             memory: 1024Mi
+  backups:
+    pgbackrest:
+      configuration: &customBackrestConfig
+        - secret:
+            name: ${APP}-s3-database-backup
+      global: &globalBackrestConfig
+        repo1-s3-uri-style: path
+        repo1-path: /pgbackrest/postgres-operator/fern/${APP}
+        repo1-retention-full: "14"
+        repo1-retention-full-type: count
+      jobs:
+        ttlSecondsAfterFinished: 60
+      manual:
+        repoName: repo1
+        options:
+         - --type=full
+      metadata:
+        labels:
+          app.kubernetes.io/name: ${APP}-crunchy-postgres-backup
+      sidecars:
+        pgbackrest:
+          resources:
+            requests:
+              cpu: 5m
+              memory: 1Mi
+            limits:
+              memory: 1024Mi
+        pgbackrestConfig:
+          resources:
+            requests:
+              cpu: 5m
+              memory: 1Mi
+            limits:
+              memory: 1024Mi
 
-  #     repos:
-  #       - name: repo1
-  #         s3: &s3
-  #           bucket: crunchy-postgres-backups
-  #           endpoint: https://truenas.samoth.eu:9000
-  #           region: us-east-1
-  # #         schedules:
-  # #           full: "30 1 * * *" # every day at 01:00
-  # #           differential: "20 */3 * * *" # every 3 hours
-  # #           incremental: "10 * * * *" # every hours
-  # dataSource:
-  #   pgbackrest:
-  #     stanza: db
-  #     configuration: *customBackrestConfig
-  #     global: *globalBackrestConfig
-  #     repo:
-  #       name: repo1
-  #       s3: *s3
-  #     resources:
-  #       requests:
-  #         cpu: 50m
-  #         memory: 64Mi
-  #       limits:
-  #         memory: 1024Mi
+      repos:
+        - name: repo1
+          s3: &s3
+            bucket: crunchy-postgres-backups
+            endpoint: https://truenas.samoth.eu:9000
+            region: us-east-1
+  #         schedules:
+  #           full: "30 1 * * *" # every day at 01:00
+  #           differential: "20 */3 * * *" # every 3 hours
+  #           incremental: "10 * * * *" # every hours
+  dataSource:
+    pgbackrest:
+      stanza: db
+      configuration: *customBackrestConfig
+      global: *globalBackrestConfig
+      repo:
+        name: repo1
+        s3: *s3
+      resources:
+        requests:
+          cpu: 50m
+          memory: 64Mi
+        limits:
+          memory: 1024Mi
 
   postgresVersion: 17
 
