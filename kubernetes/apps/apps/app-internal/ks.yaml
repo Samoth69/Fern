@@ -23,7 +23,7 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      POSTGRES_DATA_SIZE: 20Gi
+      POSTGRES_DATA_SIZE: 50Gi
   patches:
     - patch: |
         - op: remove
