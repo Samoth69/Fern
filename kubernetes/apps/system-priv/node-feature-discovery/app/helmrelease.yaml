@@ -17,16 +17,16 @@ spec:
     master:
       resources:
         limits:
-          memory: 1Gi
+          memory: 512Mi
         requests:
-          cpu: 10m
-          memory: 128Mi
+          cpu: 5m
+          memory: 16Mi
     worker:
       resources:
         limits:
           memory: 512Mi
         requests:
-          cpu: 10m
-          memory: 128Mi
+          cpu: 5m
+          memory: 16Mi
     prometheus:
       enable: true
