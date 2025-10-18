@@ -149,9 +149,6 @@ spec:
           gnetId: 16003
           revision: 2
           datasource: Prometheus
-        miniflux:
-          url: https://raw.githubusercontent.com/miniflux/v2/main/contrib/grafana/dashboard.json
-          datasource: Prometheus
         smartctl-exporter:
           # renovate: dashboardName="SMARTctl Exporter Dashboard"
           gnetId: 22604
