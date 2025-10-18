@@ -38,3 +38,10 @@ spec:
 
     prometheusRules:
       enabled: false
+
+    resources:
+      limits:
+        memory: 128Mi
+      requests:
+        cpu: 1m
+        memory: 8Mi

@@ -151,6 +151,8 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         enableAdminAPI: true
         walCompression: true
+        replicas: 2
+        podAntiAffinity: hard
         scrapeInterval: 1m # Must match interval in Grafana Helm chart
         enableFeatures:
           - memory-snapshot-on-shutdown
