@@ -8,6 +8,7 @@ resources:
   - ./eso-rb.yaml
   - ./crunchy-postgres-operator/ks.yaml
   - ./dragonfly/ks.yaml
+  - ./elastic-operator/ks.yaml
   - ./userinit-controller/ks.yaml
   - ./postgres-infra/ks.yaml
   - ./keycloak/ks.yaml
