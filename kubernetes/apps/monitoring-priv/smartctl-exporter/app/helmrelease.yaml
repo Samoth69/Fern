@@ -19,10 +19,10 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
-            - key: platform
-              operator: In
+            - key: feature.node.kubernetes.io/cpu-cpuid.HYPERVISOR
+              operator: NotIn
               values:
-              - baremetal
+              - "true"
 
     serviceMonitor:
       enabled: true

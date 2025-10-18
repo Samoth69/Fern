@@ -43,8 +43,6 @@ nodes:
           ip: "192.168.0.43"
     kernelModules:
       - name: btrfs
-    nodeLabels:
-      platform: virtual
     patches:
       - "@./patches/fern-akame/machine-pods.yaml"
   - hostname: fern-felix
@@ -68,8 +66,6 @@ nodes:
         mtu: 1500
         vip:
           ip: "192.168.0.43"
-    nodeLabels:
-      platform: baremetal
   - hostname: fern-nagumo
     ipAddress: "192.168.0.42"
     installDiskSelector:
@@ -91,8 +87,6 @@ nodes:
         mtu: 1500
         vip:
           ip: "192.168.0.43"
-    nodeLabels:
-      platform: baremetal
 
 # Global patches
 patches:
