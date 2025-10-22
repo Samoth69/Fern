@@ -36,7 +36,11 @@ spec:
         ingressClassName: traefik-internal
         hosts: ["alertmanager.fern.samoth.eu"]
         pathType: Prefix
+      podDisruptionBudget:
+        enabled: true
       alertmanagerSpec:
+        replicas: 2
+        podAntiAffinity: hard
         alertmanagerConfiguration:
           name: alertmanager
           global:
