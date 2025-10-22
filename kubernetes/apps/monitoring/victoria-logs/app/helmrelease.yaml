@@ -31,6 +31,12 @@ spec:
             port: http
       serviceMonitor:
         enabled: true
+      resources:
+        limits:
+          memory: 1024Mi
+        requests:
+          cpu: 15m
+          memory: 150Mi
     dashboards:
       enabled: true
       annotations:

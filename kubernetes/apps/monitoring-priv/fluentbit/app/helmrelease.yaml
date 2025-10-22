@@ -117,3 +117,9 @@ spec:
     tolerations:
       - operator: Exists
         effect: NoSchedule
+    resources:
+      limits:
+        memory: 64Mi
+      requests:
+        cpu: 10m
+        memory: 16Mi

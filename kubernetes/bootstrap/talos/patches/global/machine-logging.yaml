@@ -1,0 +1,7 @@
+machine:
+  logging:
+    destinations:
+      - endpoint: "tcp://host:12345/"
+        format: "json_lines"
+        extraTags:
+          app: talos-service
