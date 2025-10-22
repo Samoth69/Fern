@@ -68,16 +68,26 @@ spec:
           rename k_labels_app app
           rename k_labels_k8s-app app
 
+      customParsers: |-
+        [PARSER]
+          name containerd
+          format regex
+          regex ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<log>.*)$
+          time_key time
+          time_format %Y-%m-%dT%H:%M:%S.%L%z
+
       outputs: |-
         [OUTPUT]
           Name http
           Match kubernetes.*
           host victoria-logs-server.monitoring.svc.cluster.local
           port 9428
+          Buffer_Size 64KB
           uri /insert/jsonline?_stream_fields=stream,k_namespace_name,k_pod_name,app&_msg_field=log&_time_field=date
           format json_lines
           json_date_format iso8601
           compress gzip
+          log_response_payload false
     serviceMonitor:
       enabled: true
     dashboards:
