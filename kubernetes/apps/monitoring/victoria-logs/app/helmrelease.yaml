@@ -16,7 +16,7 @@ spec:
       minAvailable: 1
     server:
       enabled: true
-      replicaCount: 2
+      replicaCount: 1
       retentionPeriod: 14d
       retentionDiskSpaceUsage: 20GB
       persistentVolume:
@@ -34,6 +34,6 @@ spec:
     dashboards:
       enabled: true
       annotations:
-        grafana_folder: victoria-logs
+        grafana_folder: Observability
       labels:
         grafana_dashboard: "1"
