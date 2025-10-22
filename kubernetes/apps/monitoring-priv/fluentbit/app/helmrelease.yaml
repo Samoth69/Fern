@@ -13,6 +13,12 @@ spec:
         kind: HelmRepository
         name: fluent
   values:
+    extraPorts:
+      - port: 12345
+        containerPort: 12345
+        protocol: TCP
+        name: talos
+
     config:
       service: |-
         [SERVICE]
@@ -27,6 +33,13 @@ spec:
           health_check on
 
       inputs: |-
+        [INPUT]
+          Name tcp
+          Listen 0.0.0.0
+          Port 12345
+          Format json
+          Tag talos.*
+
         [INPUT]
           name tail
           alias kubernetes
@@ -71,6 +84,12 @@ spec:
 
       customParsers: |-
         [PARSER]
+          Name audit
+          Format json
+          Time_Key requestReceivedTimestamp
+          Time_Format %Y-%m-%dT%H:%M:%S.%L%z
+
+        [PARSER]
           name containerd
           format regex
           regex ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<log>.*)$
@@ -80,7 +99,7 @@ spec:
       outputs: |-
         [OUTPUT]
           Name http
-          Match kubernetes.*
+          Match *
           host victoria-logs-server.monitoring.svc.cluster.local
           port 9428
           uri /insert/jsonline?_stream_fields=stream,k_namespace_name,k_pod_name,app&_msg_field=log&_time_field=date
@@ -95,3 +114,6 @@ spec:
       annotations:
         grafana_folder: Observability
     logLevel: warn
+    tolerations:
+      - operator: Exists
+        effect: NoSchedule
