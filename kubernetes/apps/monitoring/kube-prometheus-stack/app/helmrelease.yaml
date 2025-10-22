@@ -19,11 +19,6 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-  dependsOn:
-    - name: prometheus-operator-crds
-      namespace: monitoring
-    - name: rook-ceph-cluster
-      namespace: storage
   values:
     crds:
       enabled: false
