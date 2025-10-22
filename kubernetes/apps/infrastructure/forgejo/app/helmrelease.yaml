@@ -32,6 +32,7 @@ spec:
       claimName: forgejo
     gitea:
       admin:
+        password: notUsed
         passwordMode: initialOnlyNoReset
       metrics:
         enabled: true
