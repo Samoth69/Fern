@@ -5,13 +5,14 @@ configMapGenerator:
 - name: grafana-dashboards
   files:
   - pgbackrest.json
+  - pgbouncer_direct.json
   - pod_details.json
-  - postgresql_overview.json
   - postgresql_details.json
+  - postgresql_overview.json
   - postgresql_service_health.json
   - prometheus_alerts.json
   - query_statistics.json
-  - pgbouncer_direct.json
+  - supervision_flux.json
 
 generatorOptions:
   disableNameSuffixHash: true
