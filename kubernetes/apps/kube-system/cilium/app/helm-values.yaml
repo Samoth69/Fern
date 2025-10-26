@@ -27,9 +27,9 @@ hubble:
   metrics:
     enabled:
       - dns:query;ignoreAAAA;sourceContext=workload|pod|dns|ip
-      - drop:sourceContext=workload|pod|dns|ip;destinationContext=workload|pod|dns|ip
-      - flow:sourceContext=workload|pod|dns|ip;destinationContext=workload|pod|dns|ip
-      - flows-to-world:any-drop;port;syn-only;sourceContext=workload|pod|dns|ip;destinationContext=dns|ip
+      - drop:sourceContext=workload|pod|dns|ip;destinationContext=workload|pod|dns|ip;labelsContext=source_workload_kind,destination_workload_kind
+      - flow:sourceContext=workload|pod|dns|ip;destinationContext=workload|pod|dns|ip;labelsContext=source_workload_kind,destination_workload_kind
+      - flows-to-world:any-drop;port;syn-only;sourceContext=workload|pod|dns|ip;destinationContext=dns|ip;labelsContext=source_workload_kind
     serviceMonitor:
       enabled: true
     dashboards:
