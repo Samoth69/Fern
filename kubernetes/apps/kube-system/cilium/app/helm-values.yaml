@@ -26,12 +26,10 @@ hubble:
   enabled: true
   metrics:
     enabled:
-      - dns:query;ignoreAAAA
-      - drop
-      - tcp
-      - flow
-      - port-distribution
-      - icmp
+      - dns:query;ignoreAAAA;sourceContext=workload|pod|dns|ip
+      - drop:sourceContext=workload|pod|dns|ip;destinationContext=workload|pod|dns|ip
+      - flow:sourceContext=workload|pod|dns|ip;destinationContext=workload|pod|dns|ip
+      - flows-to-world:any-drop;port;syn-only;sourceContext=workload|pod|dns|ip;destinationContext=dns|ip
     serviceMonitor:
       enabled: true
     dashboards:
