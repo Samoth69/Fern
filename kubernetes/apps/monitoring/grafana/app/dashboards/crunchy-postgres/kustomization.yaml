@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+configMapGenerator:
+- name: grafana-dashboards-crunchy-postgres
+  files:
+  - pgbackrest.json
+  - pgbouncer_direct.json
+  - pod_details.json
+  - postgresql_details.json
+  - postgresql_overview.json
+  - postgresql_service_health.json
+  - prometheus_alerts.json
+  - query_statistics.json
+
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
+    grafana_folder: Postgres
+  labels:
+    grafana_dashboard: "true"
