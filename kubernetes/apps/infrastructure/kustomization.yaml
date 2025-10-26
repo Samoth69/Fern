@@ -14,7 +14,8 @@ resources:
   - ./keycloak/ks.yaml
   - ./harbor/ks.yaml
   - ./forgejo/ks.yaml
-  - ./woodpecker/ks.yaml
+  # TODO à réactiver si ça sert un jour
+  # - ./woodpecker/ks.yaml
   - ./rabbitmq-operator/ks.yaml
   - ./argocd/ks.yaml
   - ./vaultwarden/ks.yaml
