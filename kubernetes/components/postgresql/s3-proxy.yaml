@@ -1,0 +1,44 @@
+# see https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${APP}-proxy-svc
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 3900
+      targetPort: 3900
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: ${APP}-proxy-svc-slice
+  labels:
+    # You should set the "kubernetes.io/service-name" label.
+    # Set its value to match the name of the Service
+    kubernetes.io/service-name: ${APP}-proxy-svc
+addressType: IPv4
+ports:
+  - name: http # should match with the name of the service port defined above
+    appProtocol: http
+    protocol: TCP
+    port: 3900
+endpoints:
+  - addresses:
+    - '192.168.0.22'
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/traefik.io/ingressroute_v1alpha1.json
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ${APP}-proxy-ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`${APP}-proxy.fern.samoth.eu`)
+      services:
+        - name: ${APP}-proxy-svc
+          port: 3900
