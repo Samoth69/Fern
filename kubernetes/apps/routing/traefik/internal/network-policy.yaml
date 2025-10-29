@@ -31,3 +31,9 @@ spec:
   egress:
     - toEntities:
       - cluster
+    - toCIDRSet:
+        - cidrGroupRef: group-truenas
+      toPorts:
+        - ports:
+            - port: "3900"
+              protocol: TCP
