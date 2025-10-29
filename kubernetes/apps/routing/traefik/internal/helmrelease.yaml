@@ -41,7 +41,7 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-        matchRule: Host('dashboard.fern.samoth.eu') && ( PathPrefix(`/dashboard`) || PathPrefix(`/api`) )
+        matchRule: Host(`dashboard.fern.samoth.eu`) && ( PathPrefix(`/dashboard`) || PathPrefix(`/api`) )
         entryPoints:
           - websecure
         labels:
