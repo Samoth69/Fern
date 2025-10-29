@@ -75,3 +75,10 @@ spec:
           enabled: true
         serviceMonitor:
           enabled: true
+    logs:
+      access:
+        enabled: true
+        format: json
+        filters:
+          statuscodes:
+            - "500-599"
