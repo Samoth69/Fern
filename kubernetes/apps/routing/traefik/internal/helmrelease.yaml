@@ -80,4 +80,4 @@ spec:
         enabled: true
         format: json
         filters:
-          statuscodes: "['500-599']"
+          statuscodes: 500-599
