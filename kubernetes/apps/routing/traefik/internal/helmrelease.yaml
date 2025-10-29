@@ -37,6 +37,8 @@ spec:
     providers:
       kubernetesIngress:
         ingressClass: *igname
+      kubernetesCRD:
+        allowExternalNameServices: true
     globalArguments: []
     ingressRoute:
       dashboard:
