@@ -47,7 +47,7 @@ kind: Ingress
 metadata:
   name: ${APP}-proxy-ingress
 spec:
-  ingressClassName: traefik-ingress
+  ingressClassName: traefik-internal
   rules:
   - host: "${APP}-proxy.fern.samoth.eu"
     http:
