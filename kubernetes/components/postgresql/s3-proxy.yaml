@@ -29,6 +29,8 @@ ports:
 endpoints:
   - addresses:
     - '192.168.0.22'
+    conditions:
+      ready: true
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/traefik.io/ingressroute_v1alpha1.json
 apiVersion: traefik.io/v1alpha1
