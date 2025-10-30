@@ -38,14 +38,6 @@ spec:
       kubernetesIngress:
         ingressClass: *igname
     globalArguments: []
-    ingressRoute:
-      dashboard:
-        enabled: true
-        matchRule: Host(`dashboard.fern.samoth.eu`) && ( PathPrefix(`/dashboard`) || PathPrefix(`/api`) )
-        entryPoints:
-          - websecure
-        labels:
-          internal.traefik.samoth.eu/ingress: allow
     ports:
       web:
         # make sure to update the network policy accordingly
