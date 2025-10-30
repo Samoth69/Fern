@@ -36,10 +36,7 @@ spec:
       name: &igname traefik-internal
     providers:
       kubernetesIngress:
-        allowEmptyServices: false
         ingressClass: *igname
-      kubernetesCRD:
-        allowEmptyServices: false
     globalArguments: []
     ports:
       web:
