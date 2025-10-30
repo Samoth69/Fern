@@ -44,7 +44,7 @@ spec:
         - name: repo1
           s3: &s3
             bucket: crunchy-postgres-backups
-            endpoint: https://${APP}-proxy.fern.samoth.eu
+            endpoint: https://garage-proxy.fern.samoth.eu
             region: garage
           schedules:
             full: "30 1 * * *" # every day at 01:00
