@@ -50,6 +50,15 @@ spec:
           skip_empty_lines on
           skip_long_lines on
 
+        [INPUT]
+          Name tail
+          Alias audit
+          Path /var/log/audit/kube/*.log
+          Parser audit
+          Tag audit.*
+          skip_empty_lines on
+          skip_long_lines on
+
       filters: |-
         # Kubernetes
         [FILTER]
@@ -94,7 +103,21 @@ spec:
           rename talos-level level
           rename talos-time date
 
+        # Audit
+        [FILTER]
+          name modify
+          match audit.*
+          rename msg log
+          rename requestReceivedTimestamp date
+          add app audit
+
       customParsers: |-
+        [PARSER]
+          Name audit
+          Format json
+          Time_Key requestReceivedTimestamp
+          Time_Format %Y-%m-%dT%H:%M:%S.%L%z
+
         [PARSER]
           name containerd
           format regex
@@ -106,8 +129,6 @@ spec:
         [OUTPUT]
           Name http
           Match *
-          # host victoria-logs-server.monitoring.svc.cluster.local
-          # port 9428
           host victoria-logs.fern.samoth.eu
           port 443
           tls on
