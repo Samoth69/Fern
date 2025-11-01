@@ -84,6 +84,12 @@ spec:
           rename k_labels_app app
           rename k_labels_k8s-app app
 
+        # notre config attend les messages sous la clé "log"
+        [FILTER]
+          name modify
+          match talos.*
+          rename msg log
+
       customParsers: |-
         [PARSER]
           Name audit
