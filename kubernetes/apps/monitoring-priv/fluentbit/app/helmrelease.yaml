@@ -89,6 +89,7 @@ spec:
           name modify
           match talos.*
           rename msg log
+          rename talos-service app
 
       customParsers: |-
         [PARSER]

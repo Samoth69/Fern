@@ -4,4 +4,4 @@ machine:
       - endpoint: "tcp://127.0.0.1:12345/"
         format: "json_lines"
         extraTags:
-          app: talos-service
+          source: talos-services
