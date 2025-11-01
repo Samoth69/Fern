@@ -209,4 +209,47 @@ spec:
       name: csi-ceph-filesystem
       isDefault: true
       deletionPolicy: Delete
-    cephObjectStores: []
+    cephObjectStores:
+      - name: "ceph-objectstore"
+        spec:
+          metadataPool:
+            failureDomain: host
+            replicated:
+              size: 3
+          dataPool:
+            failureDomain: host
+            erasureCoded:
+              dataChunks: 2
+              codingChunks: 1
+          preservePoolsOnDelete: true
+          gateway:
+            hostNetwork: false
+            port: 80
+            instances: 2
+            placement:
+              podAntiAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  - labelSelector:
+                      matchExpressions:
+                      - key: role
+                        operator: In
+                        values:
+                        - rgw-node
+                    topologyKey: "kubernetes.io/hostname"
+            healthCheck:
+              bucket:
+                interval: 60s
+            resources:
+              limits:
+                memory: 2Gi
+              requests:
+                cpu: 5m
+                memory: 256Mi
+        storageClass:
+          enabled: true
+          name: ceph-bucket
+          reclaimPolicy: Delete
+          parameters:
+            region: us-east-1
+        ingress:
+          enabled: false
