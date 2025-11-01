@@ -85,6 +85,13 @@ spec:
           rename k_labels_app app
           rename k_labels_k8s-app app
 
+        [FILTER]
+          name grep
+          match kubernetes.*
+          logical_op or
+          exclude log ^.+GET (\/\S+)?\/healthz?.+$
+          exclude log ^.+\/metrics.+$
+
         # Talos
         [FILTER]
           name modify
