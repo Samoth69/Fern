@@ -14,7 +14,7 @@ machine:
                 - |
                   mkdir -p /host/var/mnt/hdd1
                   mount -N1 -o autodefrag,compress-force=zstd:9,noatime /dev/sdc1 /var/mnt/hdd1
-              image: debian:bookworm-slim
+              image: debian:trixie-slim
               name: mounter
               securityContext:
                 privileged: true

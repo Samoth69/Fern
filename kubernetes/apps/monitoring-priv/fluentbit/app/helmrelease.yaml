@@ -13,6 +13,7 @@ spec:
         kind: HelmRepository
         name: fluent
   values:
+    hostNetwork: true
     extraPorts:
       - port: 12345
         containerPort: 12345
