@@ -118,7 +118,7 @@ spec:
       enabled: true
       annotations:
         grafana_folder: Observability
-    logLevel: info
+    logLevel: warn
     tolerations:
       - operator: Exists
         effect: NoSchedule
