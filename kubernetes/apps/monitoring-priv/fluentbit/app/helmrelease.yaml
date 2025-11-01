@@ -111,6 +111,14 @@ spec:
           rename requestReceivedTimestamp date
           add app audit
 
+        [FILTER]
+          name modify
+          match audit.*
+          condition Key_does_not_exist log
+          condition Key_exists annotations.authorization.k8s.io/reason
+          rename annotations.authorization.k8s.io/reason log
+          rename annotations.authorization.k8s.io/decision decision
+
       customParsers: |-
         [PARSER]
           Name audit
