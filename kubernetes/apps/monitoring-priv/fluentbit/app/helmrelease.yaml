@@ -51,6 +51,7 @@ spec:
           skip_long_lines on
 
       filters: |-
+        # Kubernetes
         [FILTER]
           name kubernetes
           match kubernetes.*
@@ -84,20 +85,16 @@ spec:
           rename k_labels_app app
           rename k_labels_k8s-app app
 
-        # notre config attend les messages sous la clé "log"
+        # Talos
         [FILTER]
           name modify
           match talos.*
           rename msg log
           rename talos-service app
+          rename talos-level level
+          rename talos-time date
 
       customParsers: |-
-        [PARSER]
-          Name audit
-          Format json
-          Time_Key requestReceivedTimestamp
-          Time_Format %Y-%m-%dT%H:%M:%S.%L%z
-
         [PARSER]
           name containerd
           format regex
