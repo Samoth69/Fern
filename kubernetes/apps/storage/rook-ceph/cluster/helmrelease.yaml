@@ -173,11 +173,8 @@ spec:
               podAntiAffinity:
                 requiredDuringSchedulingIgnoredDuringExecution:
                   - labelSelector:
-                      matchExpressions:
-                      - key: app
-                        operator: In
-                        values:
-                        - rook-ceph-mds
+                      matchLabels:
+                        app: rook-ceph-mds
                     topologyKey: "kubernetes.io/hostname"
             resources:
               limits:
@@ -231,10 +228,8 @@ spec:
                 requiredDuringSchedulingIgnoredDuringExecution:
                   - labelSelector:
                       matchExpressions:
-                      - key: app
-                        operator: In
-                        values:
-                        - rook-ceph-rgw
+                        matchLabels:
+                          app: rook-ceph-rgw
                     topologyKey: "kubernetes.io/hostname"
             healthCheck:
               bucket:
