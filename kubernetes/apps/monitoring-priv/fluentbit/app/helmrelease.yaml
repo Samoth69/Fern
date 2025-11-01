@@ -91,6 +91,8 @@ spec:
           logical_op or
           exclude log ^.+GET (\/\S+)?\/healthz?.+$
           exclude log ^.+\/metrics.+$
+          exclude log ^system:0$
+          exclude log ^.+kube-probe\/\d+\.\d+["']$
 
         # Talos
         [FILTER]
