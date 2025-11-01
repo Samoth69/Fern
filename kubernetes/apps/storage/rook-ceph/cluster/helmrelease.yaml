@@ -231,10 +231,10 @@ spec:
                 requiredDuringSchedulingIgnoredDuringExecution:
                   - labelSelector:
                       matchExpressions:
-                      - key: role
+                      - key: app
                         operator: In
                         values:
-                        - rgw-node
+                        - rook-ceph-rgw
                     topologyKey: "kubernetes.io/hostname"
             healthCheck:
               bucket:

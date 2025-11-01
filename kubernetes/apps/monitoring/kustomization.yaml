@@ -7,4 +7,5 @@ resources:
   - ./prometheus-operator-crds/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
   - ./victoria-logs/ks.yaml
+  - ./loki/ks.yaml
   - ./grafana/ks.yaml
