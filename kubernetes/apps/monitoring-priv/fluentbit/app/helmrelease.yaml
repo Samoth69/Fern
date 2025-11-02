@@ -125,7 +125,7 @@ spec:
         [FILTER]
           name modify
           match talos.*
-          add k_host {{`${NODENAME}`}}
+          add k_host ${NODENAME}
           rename msg log
           rename talos-service app
           rename talos-level level
@@ -135,7 +135,7 @@ spec:
         [FILTER]
           name modify
           match kernel.*
-          add k_host {{`${NODENAME}`}}
+          add k_host ${NODENAME}
           add app kernel
           rename msg log
 
