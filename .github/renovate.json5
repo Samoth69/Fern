@@ -259,6 +259,7 @@
       matchPackageNames: [
         '!/rook\/rook-ceph/',
         '!/rook\/rook-ceph-cluster/',
+        '!/ceph\/ceph/',
         '!/siderolabs\/installer/',
         '!/siderolabs\/kubelet/'
       ],
