@@ -19,6 +19,10 @@ spec:
         containerPort: 12345
         protocol: TCP
         name: talos
+      - port: 12346
+        containerPort: 12346
+        protocol: TCP
+        name: kernel
 
     config:
       service: |-
@@ -40,6 +44,13 @@ spec:
           Port 12345
           Format json
           Tag talos.*
+
+        [INPUT]
+          Name tcp
+          Listen 0.0.0.0
+          Port 12346
+          Format json
+          Tag kernel.*
 
         [INPUT]
           name tail
@@ -102,6 +113,13 @@ spec:
           rename talos-service app
           rename talos-level level
           rename talos-time date
+
+        # Kernel
+        [FILTER]
+          name modify
+          match talos.*
+          add app kernel
+          rename msg log
 
       customParsers: |-
         [PARSER]
