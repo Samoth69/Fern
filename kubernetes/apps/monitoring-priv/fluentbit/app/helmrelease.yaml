@@ -14,6 +14,11 @@ spec:
         name: fluent
   values:
     hostNetwork: true
+    env:
+      - name: HOSTNAME
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeName
     extraPorts:
       - port: 12345
         containerPort: 12345
@@ -109,6 +114,7 @@ spec:
         [FILTER]
           name modify
           match talos.*
+          add k_host $HOSTNAME
           rename msg log
           rename talos-service app
           rename talos-level level
@@ -118,6 +124,7 @@ spec:
         [FILTER]
           name modify
           match kernel.*
+          add k_host $HOSTNAME
           add app kernel
           rename msg log
 
