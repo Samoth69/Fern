@@ -268,7 +268,8 @@
         'patch',
       ],
       automerge: true,
-      minimumReleaseAge: "3 days"
+      minimumReleaseAge: "3 days",
+      minimumReleaseAgeBehaviour: "timestamp-optional"
     },
   ],
   customManagers: [
