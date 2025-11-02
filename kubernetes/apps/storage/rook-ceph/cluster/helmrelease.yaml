@@ -227,9 +227,8 @@ spec:
               podAntiAffinity:
                 requiredDuringSchedulingIgnoredDuringExecution:
                   - labelSelector:
-                      matchExpressions:
-                        matchLabels:
-                          app: rook-ceph-rgw
+                      matchLabels:
+                        app: rook-ceph-rgw
                     topologyKey: "kubernetes.io/hostname"
             healthCheck:
               bucket:
