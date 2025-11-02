@@ -117,7 +117,7 @@ spec:
         # Kernel
         [FILTER]
           name modify
-          match talos.*
+          match kernel.*
           add app kernel
           rename msg log
 
