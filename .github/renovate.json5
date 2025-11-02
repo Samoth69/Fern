@@ -4,7 +4,6 @@
     'config:recommended',
     'docker:enableMajor',
     'helpers:pinGitHubActionDigests',
-    ':automergeBranch',
     ':dependencyDashboard',
     ':disableRateLimiting',
     ':semanticCommits',
