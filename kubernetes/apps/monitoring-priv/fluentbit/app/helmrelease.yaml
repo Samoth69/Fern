@@ -3,6 +3,8 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: fluent-bit
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
 spec:
   interval: 30m
   chart:
@@ -19,6 +21,15 @@ spec:
         valueFrom:
           fieldRef:
             fieldPath: spec.nodeName
+
+    securityContext:
+      capabilities:
+        drop:
+        - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+
     extraPorts:
       - port: 12345
         containerPort: 12345
