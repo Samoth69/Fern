@@ -8,6 +8,10 @@ spec:
   replicas: 2
   annotations:
     reloader.stakater.com/auto: "true"
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - topologyKey: "kubernetes.io/hostname"
   authentication:
     passwordFromSecret:
       key: REDIS_PASSWORD
