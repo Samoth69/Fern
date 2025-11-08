@@ -69,7 +69,10 @@ nodes:
         mtu: 1500
         vip:
           ip: "192.168.0.43"
-    extraManifests: *extraManifests
+    extraManifests: &extraManifests
+      - ./patches/global/kernel-logs.yaml
+      # watchdog isn't reliable on this node
+      # - ./patches/global/watchdog.yaml
   - hostname: fern-nagumo
     ipAddress: "192.168.0.42"
     installDiskSelector:
