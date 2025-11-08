@@ -14,11 +14,13 @@ spec:
     global:
       extraEnvFrom:
         - secretRef:
-            name: loki-chunks
+            name: &bucketSecretName loki-chunks
 
     deploymentMode: SimpleScalable
 
     loki:
+      annotations: &annotations
+        secret.reloader.stakater.com/reload: *bucketSecretName
       schemaConfig:
         configs:
           - from: "2025-11-01"
@@ -60,13 +62,16 @@ spec:
 
     backend:
       replicas: 2
+      annotations: *annotations
       extraArgs: &args
         - -config.expand-env=true
     read:
       replicas: 2
+      annotations: *annotations
       extraArgs: *args
     write:
       replicas: 3 # To ensure data durability with replication
+      annotations: *annotations
       extraArgs: *args
 
     ruler:
