@@ -71,6 +71,8 @@ spec:
       replicas: 3 # To ensure data durability with replication
       extraArgs: *args
 
+    lokiCanary:
+      enabled: false
     ruler:
       enabled: false
 
