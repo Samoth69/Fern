@@ -14,7 +14,7 @@ spec:
     global:
       extraEnvFrom:
         - secretRef:
-            name: loki-bucket
+            name: loki-chunks
 
     deploymentMode: SimpleScalable
 
