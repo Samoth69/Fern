@@ -46,6 +46,11 @@ spec:
           cpu: 10m
           memory: 256Mi
     # TODO switch to HA DRAGONFLY
+    redis:
+      type: external
+      external:
+        addr: harbor-dragonfly
+        existingSecret: harbor-redis-secret
     core:
       replicas: 2
       affinity: &affinity
