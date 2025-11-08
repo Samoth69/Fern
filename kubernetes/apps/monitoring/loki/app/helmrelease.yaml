@@ -73,6 +73,8 @@ spec:
 
     lokiCanary:
       enabled: false
+    test:
+      enabled: false
     ruler:
       enabled: false
 
