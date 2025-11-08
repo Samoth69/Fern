@@ -18,7 +18,8 @@ spec:
       strategy: rollback
       retries: 3
   values:
-    replicas: 2
+    # TODO make Grafana HA
+    replicas: 1
     downloadDashboardsImage:
       tag: 8.12.0
     admin:
