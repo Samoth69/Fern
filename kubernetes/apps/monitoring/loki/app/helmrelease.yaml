@@ -20,13 +20,14 @@ spec:
 
     loki:
       schemaConfig:
-        - from: "2025-11-01"
-          index:
-            period: 24h
-            prefix: index_
-          object_store: s3
-          schema: v13
-          store: tsdb
+        configs:
+          - from: "2025-11-01"
+            index:
+              period: 24h
+              prefix: index_
+            object_store: s3
+            schema: v13
+            store: tsdb
       analytics:
         reporting_enabled: false
       auth_enabled: false
@@ -60,12 +61,15 @@ spec:
       replicas: 2
       extraArgs: &args
         - -config.expand-env=true
+      persistence: &persistence
+        volumeClaimsEnabled: false
     read:
       replicas: 2
       extraArgs: *args
     write:
       replicas: 3 # To ensure data durability with replication
       extraArgs: *args
+      persistence: *persistence
 
     ruler:
       enabled: false
