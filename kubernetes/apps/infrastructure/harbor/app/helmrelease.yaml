@@ -49,7 +49,7 @@ spec:
     redis:
       type: external
       external:
-        addr: harbor-dragonfly
+        addr: harbor-dragonfly:6379
         existingSecret: harbor-redis-secret
     core:
       replicas: 2
