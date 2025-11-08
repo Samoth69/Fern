@@ -61,15 +61,12 @@ spec:
       replicas: 2
       extraArgs: &args
         - -config.expand-env=true
-      persistence: &persistence
-        volumeClaimsEnabled: false
     read:
       replicas: 2
       extraArgs: *args
     write:
       replicas: 3 # To ensure data durability with replication
       extraArgs: *args
-      persistence: *persistence
 
     ruler:
       enabled: false
