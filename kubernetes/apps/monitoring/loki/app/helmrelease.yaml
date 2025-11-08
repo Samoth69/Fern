@@ -19,7 +19,7 @@ spec:
     deploymentMode: SimpleScalable
 
     loki:
-      annotations: &annotations
+      annotations:
         secret.reloader.stakater.com/reload: *bucketSecretName
       schemaConfig:
         configs:
@@ -62,16 +62,13 @@ spec:
 
     backend:
       replicas: 2
-      annotations: *annotations
       extraArgs: &args
         - -config.expand-env=true
     read:
       replicas: 2
-      annotations: *annotations
       extraArgs: *args
     write:
       replicas: 3 # To ensure data durability with replication
-      annotations: *annotations
       extraArgs: *args
 
     ruler:
