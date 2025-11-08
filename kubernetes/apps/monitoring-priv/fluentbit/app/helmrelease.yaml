@@ -138,6 +138,8 @@ spec:
           add k_host ${NODENAME}
           add app kernel
           rename msg log
+          rename talos-level level
+          rename talos-time date
 
       customParsers: |-
         [PARSER]

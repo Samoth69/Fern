@@ -45,6 +45,9 @@ nodes:
       - name: btrfs
     patches:
       - "@./patches/fern-akame/machine-pods.yaml"
+    extraManifests: &extraManifests
+      - ./patches/global/kernel-logs.yaml
+      - ./patches/global/watchdog.yaml
   - hostname: fern-felix
     ipAddress: "192.168.0.41"
     installDiskSelector:
@@ -66,6 +69,7 @@ nodes:
         mtu: 1500
         vip:
           ip: "192.168.0.43"
+    extraManifests: *extraManifests
   - hostname: fern-nagumo
     ipAddress: "192.168.0.42"
     installDiskSelector:
@@ -87,6 +91,7 @@ nodes:
         mtu: 1500
         vip:
           ip: "192.168.0.43"
+    extraManifests: *extraManifests
 
 # Global patches
 patches:
@@ -104,9 +109,3 @@ controlPlane:
   patches:
     - "@./patches/controller/admission-controller-patch.yaml"
     - "@./patches/controller/cluster.yaml"
-
-inlineManifests:
-  - name: kernel-logs
-    contents: "@./patches/global/kernel-logs.yaml"
-  - name: watchdog
-    contents: "@./patches/global/watchdog.yaml"
