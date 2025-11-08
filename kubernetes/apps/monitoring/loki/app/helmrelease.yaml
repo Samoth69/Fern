@@ -36,7 +36,7 @@ spec:
         allow_structured_metadata: true
         volume_enabled: true
       commonConfig:
-        path_prefix: /loki
+        path_prefix: /var/loki
         replication_factor: 1
       ingester:
         chunk_encoding: snappy
