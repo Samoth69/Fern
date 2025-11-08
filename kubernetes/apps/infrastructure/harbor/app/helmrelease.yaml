@@ -45,6 +45,7 @@ spec:
         requests:
           cpu: 10m
           memory: 256Mi
+    # TODO switch to HA DRAGONFLY
     core:
       replicas: 2
       affinity: &affinity
