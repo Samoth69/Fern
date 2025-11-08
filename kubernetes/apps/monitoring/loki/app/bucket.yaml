@@ -4,7 +4,7 @@ kind: ObjectBucketClaim
 metadata:
   name: loki-chunks
 spec:
-  bucketName: loki
+  bucketName: loki-chunks
   storageClassName: ceph-bucket
   additionalConfig:
     maxSize: 21G
