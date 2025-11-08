@@ -78,7 +78,7 @@ spec:
       enabled: true
       ingressClassName: traefik-internal
       hosts:
-        - loki.samoth.eu
+        - loki.fern.samoth.eu
 
     monitoring:
       dashboards:
