@@ -52,7 +52,6 @@ spec:
           chunks: loki-chunks
         type: s3
         s3:
-          s3forcepathstyle: true
           endpoint: rook-ceph-rgw-ceph-objectstore.storage.svc
           region: us-east-1
           accessKeyId: ${AWS_ACCESS_KEY_ID}
