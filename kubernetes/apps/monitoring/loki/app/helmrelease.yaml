@@ -79,3 +79,13 @@ spec:
       ingressClassName: traefik-internal
       hosts:
         - loki.samoth.eu
+
+    monitoring:
+      dashboards:
+        enabled: true
+        annotations:
+          grafana_folder: "Loki"
+      rules:
+        enabled: true
+      serviceMonitor:
+        enabled: true
