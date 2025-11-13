@@ -29,3 +29,4 @@ spec:
       VOLSYNC_CAPACITY: 50Gi
       VOLSYNC_STORAGECLASS: ceph-filesystem
       VOLSYNC_SNAPSHOTCLASS: csi-ceph-filesystem
+      VOLSYNC_PAUSE_BACKUP: "true"
