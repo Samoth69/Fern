@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 0,
+  "id": 53,
   "links": [],
   "panels": [
     {
@@ -82,7 +82,7 @@
           "reverse": false
         }
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": {
@@ -193,11 +193,16 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "",
+        "definition": "label_values(hubble_flows_processed_total,verdict)",
+        "includeAll": true,
         "multi": true,
         "name": "verdict",
         "options": [],
-        "query": "",
+        "query": {
+          "qryType": 1,
+          "query": "label_values(hubble_flows_processed_total,verdict)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "type": "query"
@@ -212,5 +217,5 @@
   "timezone": "browser",
   "title": "Supervision flux",
   "uid": "th8j2cq",
-  "version": 3
+  "version": 1
 }
