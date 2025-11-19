@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: argo-cd
-      version: 9.1.2
+      version: 9.1.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
