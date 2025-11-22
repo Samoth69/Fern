@@ -16,15 +16,6 @@ spec:
         name: bjw-s
         namespace: flux-system
   values:
-    defaultPodOptions:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - topologyKey: "kubernetes.io/hostname"
-      labels:
-        ingress.samoth.eu/internal-ingress: allow
-        egress.samoth.eu/dns: allow
-        egress.samoth.eu/pg-infrastructure: allow
 
     controllers:
       keycloak:
@@ -99,7 +90,15 @@ spec:
                 memory: 666Mi
               limits:
                 memory: 4096Mi
-
+    defaultPodOptions:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: "kubernetes.io/hostname"
+      labels:
+        ingress.samoth.eu/internal-ingress: allow
+        egress.samoth.eu/dns: allow
+        egress.samoth.eu/pg-infrastructure: allow
     service:
       keycloak:
         controller: keycloak
