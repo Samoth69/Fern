@@ -69,7 +69,7 @@ spec:
             paths:
               - path: /
                 service:
-                  identifier: qui
+                  identifier: app
                   port: *port
     persistence:
       config:
