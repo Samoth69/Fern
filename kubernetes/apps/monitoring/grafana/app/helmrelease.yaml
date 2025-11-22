@@ -9,14 +9,6 @@ spec:
   chartRef:
     kind: OCIRepository
     name: grafana
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      strategy: rollback
-      retries: 3
   values:
     # TODO make Grafana HA
     replicas: 1

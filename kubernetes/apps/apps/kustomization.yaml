@@ -7,3 +7,4 @@ resources:
   - ./eso-rb.yaml
   - ./app-internal/ks.yaml
   - ./ips-harbor-fern.sops.yaml
+  - ./qui/ks.yaml
