@@ -6,6 +6,7 @@ resources:
   - ./labelled-allow-ingress-cluster.yaml
   - ./labelled-allow-ingress-dragonfly-operator.yaml
   - ./labelled-allow-ingress-external-ingress.yaml
+  - ./labelled-allow-ingress-host.yaml
   - ./labelled-allow-ingress-internal-ingress.yaml
   - ./labelled-allow-ingress-internet.yaml
   - ./labelled-allow-ingress-kube-apiserver.yaml

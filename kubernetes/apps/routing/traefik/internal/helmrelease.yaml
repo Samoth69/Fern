@@ -59,12 +59,10 @@ spec:
           #   - main: "${INTERNAL_DOMAIN}"
           #     sans: ["*.${INTERNAL_DOMAIN}"]
     service:
-      # required for dsr to work properly
       single: false
       annotations:
         lbipam.cilium.io/sharing-key: traefik-internal
         lbipam.cilium.io/ips: 192.168.0.44
-        service.cilium.io/forwarding-mode: dsr
     priorityClassName: high-priority
     metrics:
       prometheus:
