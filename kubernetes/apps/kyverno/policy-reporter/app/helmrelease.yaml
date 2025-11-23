@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: policy-reporter
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: policy-reporter
+      version: 3.5.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: policy-reporter
+  values:
+    ui:
+      enabled: true
+      ingress:
+        enabled: true
+      hosts:
+        - host: kyverno-ui.fern.samoth.eu
+          paths:
+            - path: /
+              pathType: ImplementationSpecific

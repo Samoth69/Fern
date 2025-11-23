@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kyverno.io/clusterpolicy_v1.json
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-netpool-labels
+  annotations:
+    policies.kyverno.io/title: Require netpool labels
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/minversion: 1.6.0
+    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      Check if at least one label startwith ingress.samoth.eu and another one startwith egress.samoth.eu
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: require-netpool-labels
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: label starting with ingress.samoth.eu and egress.samoth.eu must be defined
+        pattern:
+          metadata:
+            labels:
+              ingress.samoth.eu/*: "allow|deny"
+              egress.samoth.eu/*: "allow|deny"
