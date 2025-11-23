@@ -4,6 +4,7 @@ bpf:
   masquerade: true
   # Ref: https://github.com/siderolabs/talos/issues/10002
   hostLegacyRouting: true
+  disableExternalIPMitigation: true
 cgroup:
   automount:
     enabled: false
