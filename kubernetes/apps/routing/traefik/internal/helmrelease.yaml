@@ -54,9 +54,11 @@ spec:
         tls:
           enabled: false
     service:
+      # required for dsr to work properly
+      single: false
       annotations:
         lbipam.cilium.io/ips: 192.168.0.44
-        service.cilium.io/forwarding-mode: hybrid
+        service.cilium.io/forwarding-mode: dsr
     priorityClassName: high-priority
     metrics:
       prometheus:
@@ -69,6 +71,6 @@ spec:
     logs:
       access:
         enabled: true
-        format: json
+        format: null
         filters:
           statuscodes: 500-599
