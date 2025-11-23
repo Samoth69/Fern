@@ -54,7 +54,9 @@ spec:
         expose:
           default: true
         tls:
-          enabled: false
+          domains:
+            - main: "${INTERNAL_DOMAIN}"
+              sans: ["*.${INTERNAL_DOMAIN}"]
     service:
       # required for dsr to work properly
       single: false
