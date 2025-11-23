@@ -55,6 +55,7 @@ spec:
     service:
       annotations:
         "lbipam.cilium.io/ips": "192.168.0.44"
+      externalTrafficPolicy: Local
     priorityClassName: high-priority
     metrics:
       prometheus:
