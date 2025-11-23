@@ -18,8 +18,9 @@ spec:
       replicas: 2
       podLabels:
         ingress.samoth.eu/prometheus: allow
-        ingress.samoth.eu/kube-apiserver: allow
-        egress.samoth.eu/kube-apiserver: allow
+        ingress.samoth.eu/lan: allow
+        ingress.samoth.eu/cluster: allow
+        egress.samoth.eu/cluster: allow
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
