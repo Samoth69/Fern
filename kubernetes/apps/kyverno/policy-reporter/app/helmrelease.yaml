@@ -18,8 +18,8 @@ spec:
       enabled: true
       ingress:
         enabled: true
-      hosts:
-        - host: kyverno-ui.fern.samoth.eu
-          paths:
-            - path: /
-              pathType: ImplementationSpecific
+        hosts:
+          - host: kyverno-ui.fern.samoth.eu
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
