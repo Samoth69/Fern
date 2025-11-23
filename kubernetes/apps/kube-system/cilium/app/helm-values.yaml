@@ -65,9 +65,6 @@ l2announcements:
   enabled: true
 loadBalancer:
   algorithm: maglev
-  # allow preserving source ip on incoming trafic, pod should see the client ip instead of node ip
-  # note that load balancer services should have a port entry for TCP and another one for UDP to correctly open both protocols
-  mode: dsr
 localRedirectPolicy: true
 operator:
   replicas: 2
