@@ -5,6 +5,7 @@ metadata:
   name: require-netpool-labels
   annotations:
     policies.kyverno.io/title: Require netpool labels
+    policies.kyverno.io/category: Security
     policies.kyverno.io/severity: medium
     policies.kyverno.io/minversion: 1.6.0
     policies.kyverno.io/subject: Pod

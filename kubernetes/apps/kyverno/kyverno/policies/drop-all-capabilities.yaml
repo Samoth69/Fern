@@ -5,7 +5,7 @@ metadata:
   name: drop-all-capabilities
   annotations:
     policies.kyverno.io/title: Drop All Capabilities
-    policies.kyverno.io/category: Best Practices
+    policies.kyverno.io/category: Security
     policies.kyverno.io/severity: medium
     policies.kyverno.io/minversion: 1.6.0
     policies.kyverno.io/subject: Pod
