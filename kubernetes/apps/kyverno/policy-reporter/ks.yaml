@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: kyverno
-  path: ./kubernetes/apps/kyverno/policy-reporter/policies
+  path: ./kubernetes/apps/kyverno/policy-reporter/app
   prune: false # never should be deleted
   sourceRef:
     kind: GitRepository
