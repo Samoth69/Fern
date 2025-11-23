@@ -4,6 +4,7 @@ bpf:
   masquerade: true
   # Ref: https://github.com/siderolabs/talos/issues/10002
   hostLegacyRouting: true
+  lbModeAnnotation: true
 cgroup:
   automount:
     enabled: false
@@ -64,6 +65,7 @@ l2announcements:
   enabled: true
 loadBalancer:
   algorithm: maglev
+  mode: snat
 localRedirectPolicy: true
 operator:
   replicas: 2
