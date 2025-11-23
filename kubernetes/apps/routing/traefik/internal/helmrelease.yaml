@@ -41,6 +41,8 @@ spec:
       websecure:
         # make sure to update the network policy accordingly
         port: 8443
+        http3:
+          enabled: true
         tls:
           domains:
             - main: "${INTERNAL_DOMAIN}"
