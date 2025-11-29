@@ -1,0 +1,132 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app glance
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: *app
+  interval: 1h
+  values:
+    controllers:
+      glance:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          glance:
+            image:
+              repository: glanceapp/glance
+              tag: v0.8.4
+            env:
+              TZ: &tz Europe/Paris
+            resources:
+              requests:
+                cpu: 10m
+                memory: 64Mi
+              limits:
+                memory: 512Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: {drop: ["ALL"]}
+          k8s-extension:
+            image:
+              repository: ghcr.io/lukasdietrich/glance-k8s/glance-k8s
+              tag: v0.4.1
+            env:
+              TZ: *tz
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources: {}
+            probes:
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthz
+                    port: 8080
+              readiness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthz
+                    port: 8080
+    defaultPodOptions:
+      labels:
+        ingress.samoth.eu/internal-ingress: allow
+        ingress.samoth.eu/kube-apiserver: allow
+        egress.samoth.eu/dns: allow
+        egress.samoth.eu/internal-ingress: allow
+        egress.samoth.eu/internet-http: allow
+        egress.samoth.eu/kube-apiserver: allow
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+    service:
+      glance:
+        controller: *app
+        ports:
+          http:
+            port: &port 80
+      k8s-extension:
+        controller: *app
+        ports:
+          http:
+            port: 8080
+    ingress:
+      qui:
+        hosts:
+          - host: glance.fern.samoth.eu
+            paths:
+              - path: /
+                service:
+                  identifier: *app
+                  port: *port
+    persistence:
+      config-file:
+        type: configMap
+        name: glance-configmap
+        globalMounts:
+          - path: /app/config/glance.yml
+            subPath: glance.yml
+            readOnly: true
+    serviceAccount:
+      glance:
+        enabled: true
+    rbac:
+      roles:
+        list:
+          type: ClusterRole
+          forceRename: *app
+          rules:
+            - apiGroups: ["", "metrics.k8s.io"]
+              resources: ["nodes"]
+              verbs: ["list"]
+            - apiGroups: [""]
+              resources: ["services"]
+              verbs: ["list"]
+            - apiGroups: ["networking.k8s.io"] # networking.k8s.io/v1
+              resources: ["ingresses", "ingressclasses"]
+              verbs: ["list"]
+            - apiGroups: ["apps"]
+              resources: ["deployments", "statefulsets", "daemonsets"]
+              verbs: ["list"]
+      bindings:
+        list:
+          type: ClusterRoleBinding
+          forceRename: *app
+          roleRef:
+            kind: ClusterRole
+            name: *app
+          subjects:
+            - kind: ServiceAccount
+              name: *app
+              namespace: "{{ .Release.Namespace }}"

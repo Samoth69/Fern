@@ -1,0 +1,86 @@
+server:
+  port: 80
+  proxied: true
+theme:
+  background-color: 240 21 15
+  contrast-multiplier: 1.2
+  primary-color: 217 92 83
+  positive-color: 115 54 76
+  negative-color: 347 70 65
+pages:
+  - name: Home
+    columns:
+      - size: small
+        widgets:
+          - type: clock
+            hour-format: 24h
+            timezones:
+              - timezone: Europe/Paris
+                label: Paris
+          - type: calendar
+            first-day-of-week: monday
+
+          - type: rss
+            limit: 10
+            collapse-after: 3
+            cache: 3h
+            feeds:
+              - url: https://ciechanow.ski/atom.xml
+              - url: https://www.joshwcomeau.com/rss.xml
+                title: Josh Comeau
+              - url: https://samwho.dev/rss.xml
+              - url: https://awesomekling.github.io/feed.xml
+              - url: https://ishadeed.com/feed.xml
+                title: Ahmad Shadeed
+
+          - type: twitch-channels
+            channels:
+              - jeanmassiet
+              - zerator
+              - antoinedaniel
+
+      - size: full
+        widgets:
+          - type: extension
+            url: http://glance-k8s-extension:8080/extension/nodes
+            allow-potentially-dangerous-html: true
+            cache: 1s
+            parameters:
+              # namespace, name annotations
+              show-if: |
+                namespace != kube-system &&
+                ("glance/hide" not in annotations || annotations["glance/hide"] != "true")
+          - type: hacker-news
+
+          - type: videos
+            channels:
+              - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
+              - UCv6J_jJa8GJqFwQNgNrMuww # ServeTheHome
+              - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
+
+          - type: reddit
+            subreddit: selfhosted
+
+      - size: small
+        widgets:
+          - type: weather
+            units: metric
+            location: Lyon,	Auvergne-Rhône-Alpes, France
+            hour-format: 24h
+          - type: repository
+            repository: Samoth69/Fern
+            pull-requests-limit: 5
+            issues-limit: 3
+          - type: monitor
+            cache: 1m
+            title: Services
+            style: compact
+            sites:
+              - title: Pihole Alpha
+                url: https://192.168.0.2
+                allow-insecure: true
+              - title: Pihole Beta
+                url: https://192.168.0.3
+                allow-insecure: true
+              - title: Home Assistant
+                url: http://192.168.0.31:8123

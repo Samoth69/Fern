@@ -8,3 +8,4 @@ resources:
   - ./app-internal/ks.yaml
   - ./ips-harbor-fern.sops.yaml
   - ./qui/ks.yaml
+  - ./glance/ks.yaml
