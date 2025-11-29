@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: labelled-allow-egress-lan
+spec:
+  endpointSelector:
+    matchLabels:
+      egress.samoth.eu/lan: allow
+  egress:
+    - toCIDRSet:
+        - cidrGroupRef: group-lan

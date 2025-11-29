@@ -12,6 +12,7 @@ resources:
   - ./labelled-allow-egress-internet-http.yaml
   - ./labelled-allow-egress-internet.yaml
   - ./labelled-allow-egress-kube-apiserver.yaml
+  - ./labelled-allow-egress-lan.yaml
   - ./labelled-allow-egress-pg-infrastructure.yaml
   - ./labelled-allow-egress-truenas-minio-api.yaml
   - ./labelled-deny-egress.yaml

@@ -64,6 +64,7 @@ spec:
         egress.samoth.eu/internal-ingress: allow
         egress.samoth.eu/internet-http: allow
         egress.samoth.eu/kube-apiserver: allow
+        egress.samoth.eu/lan: allow
       securityContext:
         runAsNonRoot: true
         runAsUser: 568
