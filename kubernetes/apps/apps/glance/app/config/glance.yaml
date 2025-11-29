@@ -17,8 +17,15 @@ pages:
             timezones:
               - timezone: Europe/Paris
                 label: Paris
+
           - type: calendar
             first-day-of-week: monday
+
+          - type: twitch-channels
+            channels:
+              - jeanmassiet
+              - zerator
+              - antoinedaniel
 
           - type: rss
             limit: 10
@@ -33,12 +40,6 @@ pages:
               - url: https://ishadeed.com/feed.xml
                 title: Ahmad Shadeed
 
-          - type: twitch-channels
-            channels:
-              - jeanmassiet
-              - zerator
-              - antoinedaniel
-
       - size: full
         widgets:
           - type: extension
@@ -50,6 +51,7 @@ pages:
               show-if: |
                 namespace != kube-system &&
                 ("glance/hide" not in annotations || annotations["glance/hide"] != "true")
+
           - type: hacker-news
 
           - type: videos
@@ -77,10 +79,10 @@ pages:
             style: compact
             sites:
               - title: Pihole Alpha
-                url: https://192.168.0.2
+                url: https://192.168.0.2/admin
                 allow-insecure: true
               - title: Pihole Beta
-                url: https://192.168.0.3
+                url: https://192.168.0.3/admin
                 allow-insecure: true
               - title: Home Assistant
                 url: http://192.168.0.31:8123
