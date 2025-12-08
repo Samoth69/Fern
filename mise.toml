@@ -11,7 +11,7 @@ description = "Install dependencies"
 run = "uv pip install -r requirements.txt"
 
 [tools]
-python = "3.14.1"
+python = "3.14.2"
 uv = "latest"
 "aqua:budimanjojo/talhelper" = "latest"
 "aqua:cloudflare/cloudflared" = "latest"
