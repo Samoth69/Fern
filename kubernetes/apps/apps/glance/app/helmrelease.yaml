@@ -33,7 +33,7 @@ spec:
           k8s-extension:
             image:
               repository: ghcr.io/lukasdietrich/glance-k8s/glance-k8s
-              tag: v0.4.1
+              tag: v0.4.3
             env:
               TZ: *tz
             securityContext:
