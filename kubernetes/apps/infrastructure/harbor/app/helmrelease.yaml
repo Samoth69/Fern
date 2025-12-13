@@ -15,7 +15,6 @@ spec:
         name: harbor
       interval: 5m
   values:
-    imagePullPolicy: Always
     externalURL: https://harbor.fern.samoth.eu
     expose:
       ingress:
@@ -45,7 +44,6 @@ spec:
         requests:
           cpu: 10m
           memory: 256Mi
-    # TODO switch to HA DRAGONFLY
     redis:
       type: external
       external:

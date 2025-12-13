@@ -65,7 +65,8 @@ l2announcements:
   enabled: true
 loadBalancer:
   algorithm: maglev
-localRedirectPolicy: true
+localRedirectPolicies:
+  enabled: true
 operator:
   replicas: 2
   rollOutPods: true
