@@ -82,8 +82,6 @@ flux-local test --path kubernetes/flux/cluster --enable-helm --all-namespaces -v
 flux reconcile source git flux-system
 # get flux objects status
 flux get all -A --status-selector ready=false
-# token for the dashboard
-kubectl -n kubernetes-dashboard create token admin-user
 # to connect to primary database
 while true; do kubectl -n database port-forward "$(kubectl -n database get pods -l postgres-operator.crunchydata.com/role=master -o name)" 15432:5432; done
 # hubble
