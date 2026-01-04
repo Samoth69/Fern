@@ -73,6 +73,10 @@ pages:
             repository: Samoth69/Fern
             pull-requests-limit: 5
             issues-limit: 3
+          - type: repository
+            repository: Samoth69/HomeOps
+            pull-requests-limit: 5
+            issues-limit: 3
           - type: monitor
             cache: 1m
             title: Services
