@@ -6,15 +6,15 @@ If you want to deploy something similar, have a look [here](https://github.com/o
 
 ## Nodes
 
-| Name   | Type               | CPU | RAM  | SchematicId                                                      |
-|--------|--------------------|-----|------|------------------------------------------------------------------|
-| Akame  | VM                 | 10  | 64GB | ef973c8091be093db8b9cf4829e7f430f8e931b744cbe31adb842ec713df9339 |
-| Felix  | Metal - UM773 Lite | 16  | 64GB | 35d1f97b3aff9e464c22efbab1b2e71667df933f7bdc57f28321eee35a26ef05 |
-| Nagumo | Metal - Intel 7500 | 4   | 16GB | f313c40c3af72e3c22303abeb8faac8d02769e1ef4ef66aa4423bf6744f01e94 |
+| Name   | Type                                                  | CPU | RAM  | SchematicId                                                      |
+|--------|-------------------------------------------------------|-----|------|------------------------------------------------------------------|
+| Akame  | Proxmox VM                                            | 10  | 64GB | ef973c8091be093db8b9cf4829e7f430f8e931b744cbe31adb842ec713df9339 |
+| Felix  | Metal - Minisforum minipc (do not buy, it's unstable) | 16  | 64GB | 96a01579ce3f00298d564ad4380d2277127208a447d6f8be3a7730eec56ef0cf |
+| Nagumo | Metal - Intel core i5 7500                            | 4   | 16GB | f313c40c3af72e3c22303abeb8faac8d02769e1ef4ef66aa4423bf6744f01e94 |
 
 ## Akame
 
-```
+```yaml
 customization:
     extraKernelArgs:
         - ipv6.disable=1
@@ -28,11 +28,14 @@ customization:
 
 ## Felix
 
-```
+```yaml
 customization:
     extraKernelArgs:
-        - cpufreq.default_governor=performance
         - ipv6.disable=1
+        # This is mandatory otherwise the computer crash in a matter of minutes
+        - cpufreq.default_governor=performance
+        # The hardware clock isn't reliable so we are telling the kernel upfront about it
+        - tsc=unstable
     systemExtensions:
         officialExtensions:
             - siderolabs/amd-ucode
@@ -44,7 +47,7 @@ customization:
 
 ## Nagumo
 
-```
+```yaml
 customization:
     extraKernelArgs:
         - cpufreq.default_governor=performance

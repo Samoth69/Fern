@@ -2,7 +2,7 @@
 # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
 talosVersion: v1.11.6
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.35.0
+kubernetesVersion: v1.34.3
 
 clusterName: fern
 endpoint: https://192.168.0.43:6443
@@ -55,7 +55,7 @@ nodes:
       type: ssd
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/35d1f97b3aff9e464c22efbab1b2e71667df933f7bdc57f28321eee35a26ef05
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/96a01579ce3f00298d564ad4380d2277127208a447d6f8be3a7730eec56ef0cf
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
