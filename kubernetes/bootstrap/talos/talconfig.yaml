@@ -55,7 +55,7 @@ nodes:
       type: ssd
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/96a01579ce3f00298d564ad4380d2277127208a447d6f8be3a7730eec56ef0cf
+    talosImageURL: factory.talos.dev/metal-installer-secureboot/cb36a870f2bcf37a14a760c7ce41688f4a3bd373de218e5c489c88d570e287d0
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
