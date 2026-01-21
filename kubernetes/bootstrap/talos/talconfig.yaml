@@ -45,9 +45,10 @@ nodes:
       - name: btrfs
     patches:
       - "@./patches/fern-akame/machine-pods.yaml"
-    extraManifests: &extraManifests
+    extraManifests:
       - ./patches/global/kernel-logs.yaml
       - ./patches/global/watchdog.yaml
+      - ./patches/global/raw-volumes.yaml
   - hostname: fern-felix
     ipAddress: "192.168.0.41"
     installDiskSelector:
@@ -71,8 +72,7 @@ nodes:
           ip: "192.168.0.43"
     extraManifests: &extraManifests
       - ./patches/global/kernel-logs.yaml
-      # watchdog isn't reliable on this node
-      # - ./patches/global/watchdog.yaml
+      - ./patches/global/raw-volumes.yaml
   - hostname: fern-nagumo
     ipAddress: "192.168.0.42"
     installDiskSelector:

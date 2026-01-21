@@ -1,0 +1,16 @@
+apiVersion: v1alpha1
+kind: RawVolumeConfig
+name: lvm-data
+provisioning:
+  diskSelector:
+    match: disk.model.startsWith("Micron_7450")
+  minSize: 250GiB
+  maxSize: 250GiB
+---
+apiVersion: v1alpha1
+kind: RawVolumeConfig
+name: ceph-data
+provisioning:
+  diskSelector:
+    match: disk.model.startsWith("Micron_7450")
+  minSize: 250GiB
