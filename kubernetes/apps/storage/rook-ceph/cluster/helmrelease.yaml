@@ -129,8 +129,7 @@ spec:
             devices:
               - name: "nvme0n1"
           - name: "fern-nagumo"
-            devices:
-              - name: "/dev/disk/by-partlabel/r-ceph-data"
+            devicePathFilter: "/dev/disk/by-partlabel/r-ceph-data"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
