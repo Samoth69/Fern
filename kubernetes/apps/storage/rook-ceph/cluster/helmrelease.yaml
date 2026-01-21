@@ -31,6 +31,7 @@ spec:
           pathType: Prefix
         ingressClassName: traefik-internal
     cephClusterSpec:
+      continueUpgradeAfterChecksEvenIfNotHealthy: true
       cephVersion:
         image: quay.io/ceph/ceph:v19.2.3
       dashboard:
