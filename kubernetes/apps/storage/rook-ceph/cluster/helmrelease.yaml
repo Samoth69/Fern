@@ -117,8 +117,6 @@ spec:
       storage:
         useAllNodes: false
         useAllDevices: false
-        # config:
-        #   osdsPerDevice: "1"
         nodes:
           - name: "fern-akame"
             devices:
@@ -130,7 +128,7 @@ spec:
               - name: "nvme0n1"
           - name: "fern-nagumo"
             devices:
-              - name: "/dev/disk/by-partlabel/r-ceph-data"
+              - name: "/dev/disk/by-partlabel/r-rook-data"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
