@@ -32,6 +32,7 @@ spec:
         ingressClassName: traefik-internal
     cephClusterSpec:
       continueUpgradeAfterChecksEvenIfNotHealthy: true
+      removeOSDsIfOutAndSafeToRemove: true
       cephVersion:
         image: quay.io/ceph/ceph:v19.2.3
       dashboard:
