@@ -108,7 +108,7 @@ spec:
           host loki.fern.samoth.eu
           port 443
           tls on
-          label_keys app_kubernetes_io_name, app_kubernetes_io_instance
+          label_keys $app_kubernetes_io_name, $app_kubernetes_io_instance
     serviceMonitor:
       enabled: true
     dashboards:
