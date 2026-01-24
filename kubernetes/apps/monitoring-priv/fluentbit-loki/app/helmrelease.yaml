@@ -1,0 +1,119 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: fluent-bit-loki
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: fluent-bit
+      version: 0.54.0
+      sourceRef:
+        kind: HelmRepository
+        name: fluent-loki
+  values:
+    hostNetwork: true
+    env:
+      - name: NODENAME
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeName
+
+    securityContext:
+      capabilities:
+        drop:
+        - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+
+    # extraPorts:
+    #   - port: 12345
+    #     containerPort: 12345
+    #     protocol: TCP
+    #     name: talos
+    #   - port: 12346
+    #     containerPort: 12346
+    #     protocol: TCP
+    #     name: kernel
+
+    config:
+      service: |-
+        [SERVICE]
+          daemon off
+          flush {{ .Values.flush }}
+          log_level {{ .Values.logLevel }}
+          parsers_file /fluent-bit/etc/parsers.conf
+          parsers_file /fluent-bit/etc/conf/custom_parsers.conf
+          http_server on
+          http_listen 0.0.0.0
+          http_port {{ .Values.metricsPort }}
+          health_check on
+
+      inputs: |-
+        [INPUT]
+          name tail
+          alias kubernetes
+          path /var/log/containers/*.log
+          parser containerd
+          tag kubernetes.*
+          skip_empty_lines on
+          skip_long_lines on
+
+      filters: |-
+        # Kubernetes
+        [FILTER]
+          name kubernetes
+          match kubernetes.*
+          kube_url https://192.168.0.43:6443
+          kube_tag_prefix kubernetes.var.log.containers.
+          merge_log on
+          k8s-logging.parser on
+          k8s-logging.exclude off
+          labels on
+          annotations off
+          Buffer_Size 64KB
+
+        [FILTER]
+          name grep
+          match kubernetes.*
+          logical_op or
+          exclude log ^.+GET (\/\S+)?\/healthz?.+$
+          exclude log ^.+\/metrics.+$
+          exclude log ^system:0$
+          exclude log ^.+kube-probe\/\d+\.\d+["']$
+
+      customParsers: |-
+        [PARSER]
+          name containerd
+          format regex
+          regex ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<log>.*)$
+          time_key time
+          time_format %Y-%m-%dT%H:%M:%S.%L%z
+
+      outputs: |-
+        [OUTPUT]
+          Name loki
+          Match *
+          host loki.fern.samoth.eu
+          port 443
+          tls on
+    serviceMonitor:
+      enabled: true
+    dashboards:
+      enabled: false
+      # annotations:
+      #   grafana_folder: Observability
+    logLevel: warn
+    tolerations:
+      - operator: Exists
+        effect: NoSchedule
+    resources:
+      limits:
+        memory: 256Mi
+      requests:
+        cpu: 10m
+        memory: 16Mi
