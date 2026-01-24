@@ -13,6 +13,8 @@ spec:
     localpv-provisioner:
       localpv:
         enabled: false
+      hostpathClass:
+        enabled: false
     zfs-localpv:
       enabled: false
       crds:
