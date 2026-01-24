@@ -78,6 +78,11 @@ spec:
           Buffer_Size 64KB
 
         [FILTER]
+          name modify
+          match kubernetes.*
+          remove_regex /(ingress|egress)_samoth_eu.*/
+
+        [FILTER]
           name grep
           match kubernetes.*
           logical_op or
