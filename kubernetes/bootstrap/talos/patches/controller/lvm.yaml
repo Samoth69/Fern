@@ -1,0 +1,39 @@
+machine:
+  pods:
+    - apiVersion: v1
+      kind: Pod
+      metadata:
+        name: openebs-lvm-formatter
+        namespace: kube-system
+      spec:
+        hostNetwork: true
+        hostPID: true
+        restartPolicy: Never
+        containers:
+          - image: openebs/lvm-driver
+            name: formatter
+            securityContext:
+              privileged: true
+            command:
+              - sh
+              - -c
+              - |
+                if pvdisplay | grep -q '/dev/disk/by-partlabel/r-lvm-data'; then
+                  echo 'PV exist'
+                else
+                  echo 'PV doesnt exist, creating...'
+                  pvcreate /dev/disk/by-partlabel/r-lvm-data
+                fi
+                if vgdisplay | grep -q 'openebs-vg'; then
+                  echo 'VG exist'
+                else
+                  echo 'VG doesnt exist, creating...'
+                  vgcreate openebs-vg /dev/disk/by-partlabel/r-lvm-data
+                fi
+            volumeMounts:
+              - mountPath: /host
+                name: host-root
+        volumes:
+            - hostPath:
+                path: /
+              name: host-root

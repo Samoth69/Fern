@@ -1,7 +1,6 @@
 cluster:
   allowSchedulingOnControlPlanes: true
   apiServer:
-    disablePodSecurityPolicy: true
     admissionControl:
       - name: PodSecurity # Name is the name of the admission controller.
         # Configuration is an embedded configuration object to be used as the plugin's
@@ -17,7 +16,6 @@ cluster:
           exemptions:
             namespaces:
               - apps-priv
-              - kube-system
               - monitoring-priv
               - storage
               - system-priv

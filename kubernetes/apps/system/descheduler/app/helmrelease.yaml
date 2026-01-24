@@ -56,6 +56,9 @@ spec:
                   exclude:
                     - games
                     - storage
+            - name: RemoveFailedPods
+              args:
+
           plugins:
             balance:
               enabled:
