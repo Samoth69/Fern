@@ -31,7 +31,7 @@ spec:
           pathType: Prefix
         ingressClassName: traefik-internal
     cephClusterSpec:
-      skipUpgradeChecks: true
+      # skipUpgradeChecks: true
       removeOSDsIfOutAndSafeToRemove: true
       cephVersion:
         image: quay.io/ceph/ceph:v19.2.3
