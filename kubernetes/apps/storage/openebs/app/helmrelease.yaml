@@ -27,6 +27,7 @@ spec:
           ingress.samoth.eu/kube-apiserver: allow
           egress.samoth.eu/kube-apiserver: allow
       lvmController:
+        replicas: 2
         podLabels: *labels
       crds:
         csi:

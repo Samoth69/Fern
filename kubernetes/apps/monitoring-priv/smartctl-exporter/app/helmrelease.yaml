@@ -14,15 +14,8 @@ spec:
     image:
       registry: quay.io
 
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: feature.node.kubernetes.io/cpu-cpuid.HYPERVISOR
-              operator: NotIn
-              values:
-              - "true"
+    config:
+      device_exclude: /dev/scsi.*
 
     serviceMonitor:
       enabled: true
