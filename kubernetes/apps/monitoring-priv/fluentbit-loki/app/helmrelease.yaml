@@ -78,12 +78,6 @@ spec:
           Buffer_Size 64KB
 
         [FILTER]
-          name nest
-          match kubernetes.*
-          operation lift
-          nested_under kubernetes
-
-        [FILTER]
           name grep
           match kubernetes.*
           logical_op or
@@ -107,13 +101,14 @@ spec:
           host loki.fern.samoth.eu
           port 443
           tls on
+          auto_kubernetes_labels on
     serviceMonitor:
       enabled: true
     dashboards:
       enabled: false
       # annotations:
       #   grafana_folder: Observability
-    logLevel: warn
+    logLevel: info
     metricsPort: 2021
     tolerations:
       - operator: Exists
