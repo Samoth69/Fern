@@ -1,0 +1,53 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &appname openebs
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: *appname
+  interval: 1h
+  values:
+    localpv-provisioner:
+      localpv:
+        enabled: false
+    zfs-localpv:
+      enabled: false
+      crds:
+        zfsLocalPv:
+          enabled: false
+    lvm-localpv:
+      analytics:
+        enabled: false
+      lvmNode:
+        podLabels: &labels
+          app.kubernetes.io/instance: *appname
+          ingress.samoth.eu/kube-apiserver: allow
+          egress.samoth.eu/kube-apiserver: allow
+      lvmController:
+        podLabels: *labels
+      crds:
+        csi:
+          volumeSnapshots:
+            enabled: true
+    mayastor:
+      enabled: false
+    engines:
+      local:
+        zfs:
+          enabled: false
+        rawfile:
+          enabled: false
+      replicated:
+        mayastor:
+          enabled: false
+    loki:
+      enabled: false
+    alloy:
+      enabled: false
+    minio:
+      enabled: false
+    preUpgradeHook:
+      enabled: false
