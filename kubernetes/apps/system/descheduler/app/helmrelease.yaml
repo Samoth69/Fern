@@ -58,7 +58,14 @@ spec:
                     - storage
             - name: RemoveFailedPods
               args:
-
+                reasons:
+                  - "NodeAffinity"
+                exitCodes:
+                  - 1
+                includingInitContainers: true
+                excludeOwnerKinds:
+                  - "Job"
+                minPodLifetimeSeconds: 3600
           plugins:
             balance:
               enabled:
@@ -66,6 +73,7 @@ spec:
                 - LowNodeUtilization
             deschedule:
               enabled:
+                - RemoveFailedPods
                 - RemovePodsViolatingInterPodAntiAffinity
                 - RemovePodsViolatingNodeAffinity
                 - RemovePodsViolatingNodeTaints
