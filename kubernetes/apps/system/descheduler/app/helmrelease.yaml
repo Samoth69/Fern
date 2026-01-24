@@ -59,11 +59,9 @@ spec:
             - name: RemoveFailedPods
               args:
                 reasons:
-                  - Error
+                  - Completed
                   - ContainerStatusUnknown
-                exitCodes:
-                  - 1
-                  - 137
+                  - Error
                 includingInitContainers: true
                 excludeOwnerKinds:
                   - "Job"
