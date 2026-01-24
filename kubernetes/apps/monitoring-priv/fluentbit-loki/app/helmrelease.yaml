@@ -78,6 +78,12 @@ spec:
           Buffer_Size 64KB
 
         [FILTER]
+          name nest
+          match kubernetes.*
+          operation lift
+          nested_under kubernetes
+
+        [FILTER]
           name grep
           match kubernetes.*
           logical_op or
