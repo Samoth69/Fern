@@ -5,7 +5,6 @@ machine:
       maxPods: 150
       featureGates:
         UserNamespacesSupport: true
-        UserNamespacesPodSecurityStandards: true
     nodeIP:
       validSubnets:
         - 192.168.0.0/24

@@ -53,19 +53,23 @@ spec:
                   memory: 40
                   pods: 40
                 evictableNamespaces:
-                  exclude:
+                  exclude: &excludedNamespaces
                     - games
                     - storage
             - name: RemoveFailedPods
               args:
                 reasons:
-                  - "NodeAffinity"
+                  - Error
+                  - ContainerStatusUnknown
                 exitCodes:
                   - 1
+                  - 137
                 includingInitContainers: true
                 excludeOwnerKinds:
                   - "Job"
-                minPodLifetimeSeconds: 3600
+                minPodLifetimeSeconds: 300
+                namespaces:
+                  exclude: *excludedNamespaces
           plugins:
             balance:
               enabled:
