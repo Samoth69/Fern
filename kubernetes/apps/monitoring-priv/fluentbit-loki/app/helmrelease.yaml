@@ -108,6 +108,8 @@ spec:
       # annotations:
       #   grafana_folder: Observability
     logLevel: warn
+    service:
+      port: 2021
     tolerations:
       - operator: Exists
         effect: NoSchedule
