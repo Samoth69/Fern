@@ -31,9 +31,9 @@ machine:
                   vgcreate openebs-vg /dev/disk/by-partlabel/r-lvm-data
                 fi
             volumeMounts:
-              - mountPath: /host
+              - mountPath: /dev
                 name: host-root
         volumes:
             - hostPath:
-                path: /
+                path: /dev
               name: host-root
