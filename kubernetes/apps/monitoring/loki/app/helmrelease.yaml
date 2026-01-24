@@ -16,6 +16,9 @@ spec:
         - secretRef:
             name: &bucketSecretName loki-chunks
 
+    # must be equal to kubernetes cluster name
+    clusterLabelOverride: fern
+
     deploymentMode: SimpleScalable
 
     loki:

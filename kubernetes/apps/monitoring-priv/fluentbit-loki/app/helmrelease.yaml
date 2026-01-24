@@ -78,9 +78,11 @@ spec:
           Buffer_Size 64KB
 
         [FILTER]
-          name modify
+          name record_modifier
           match kubernetes.*
-          remove_regex /(ingress|egress)_samoth_eu.*/
+          allowlist_key app_kubernetes_io_name
+          allowlist_key app_kubernetes_io_instance
+          allowlist_key kubernetes_namespace
 
         [FILTER]
           name grep
@@ -106,7 +108,7 @@ spec:
           host loki.fern.samoth.eu
           port 443
           tls on
-          auto_kubernetes_labels on
+          label_keys app_kubernetes_io_name, app_kubernetes_io_instance
     serviceMonitor:
       enabled: true
     dashboards:
