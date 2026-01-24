@@ -7,4 +7,3 @@ resources:
   - ./node-exporter/ks.yaml
   - ./smartctl-exporter/ks.yaml
   - ./fluentbit/ks.yaml
-  - ./fluentbit-loki/ks.yaml
