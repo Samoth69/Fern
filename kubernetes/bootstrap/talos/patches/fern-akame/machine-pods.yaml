@@ -13,7 +13,7 @@ machine:
                 - -c
                 - |
                   mkdir -p /host/var/mnt/hdd1
-                  mount -N1 -o autodefrag,compress-force=zstd:9,noatime /dev/sdc1 /var/mnt/hdd1
+                  mount -N1 -o autodefrag,compress-force=zstd:9,noatime /dev/disk/by-partuuid/a4ba9dde-ccc6-0a4b-bc1d-ae88dd925b3d /var/mnt/hdd1
               image: debian:trixie-slim
               name: mounter
               securityContext:
@@ -23,7 +23,7 @@ machine:
                   name: host-root
         hostNetwork: true
         hostPID: true
-        restartPolicy: Never
+        restartPolicy: OnFailure
         volumes:
             - hostPath:
                 path: /
