@@ -50,6 +50,10 @@ customization:
     extraKernelArgs:
         - cpufreq.default_governor=performance
         - ipv6.disable=1
+        - nvme_core.default_ps_max_latency_us=0
+        # TODO disable PCIE ASPM in BIOS
+        - pcie_aspm=off
+        - pcie_port_pm=off
     systemExtensions:
         officialExtensions:
             - siderolabs/gvisor
@@ -58,6 +62,7 @@ customization:
             - siderolabs/mei
             - siderolabs/realtek-firmware
             - siderolabs/util-linux-tools
+    bootloader: sd-boot
 ```
 
 ## Init
