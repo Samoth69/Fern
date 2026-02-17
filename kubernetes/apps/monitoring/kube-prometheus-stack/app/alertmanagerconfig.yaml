@@ -39,6 +39,57 @@ spec:
     - name: "null"
     - name: webhook
       discordConfigs:
-        - apiURL:
+        - sendResolved: true
+          apiURL:
             name: discord-webhook-secret
             key: url
+          # yoinked below from onedr0p, blame him if something doesn't work
+          # TODO: add severity text to emoji function to reuse in message
+          title: >-
+            {{- if eq .Status "firing" }}🚨:{{ .Alerts.Firing | len }}{{- else if eq .Status "resolved" }}✅{{- end }}
+            {{ .GroupLabels.alertname }}
+            {{- if ne .GroupLabels.namespace "" }} - {{ .GroupLabels.namespace }}{{- end }}
+            {{- if ne .CommonLabels.namespace "" }} - {{ .CommonLabels.namespace }}{{- end }}
+            {{- if ne .CommonLabels.severity "" }} ({{ .CommonLabels.severity }}){{- end }}
+            ({{ .GroupLabels.cluster }})
+          content: ""
+          message: |-
+            {{- $root := . }}
+            {{- $rm := stringSlice "instance" "kubernetes_node" "endpoint" "prometheus" "service" "cluster" "container" "job" "severity" "alertgroup" "namespace" }}
+            {{- $common := ( ( .CommonLabels.Remove $root.GroupLabels.Names ).Remove $rm ) }}
+            {{- if gt (len $common.SortedPairs) 0 }}
+            ## Common Labels
+            {{- range $common.SortedPairs }}
+            > {{ .Name }}: `{{ .Value }}`
+            {{- end }}
+            {{- end }}
+            {{- if ne .CommonAnnotations.summary "" }}
+            ## Summary
+            {{ .CommonAnnotations.summary }}
+            {{- end }}
+            {{- if gt (len .Alerts) 0 }}
+            ## Alerts
+            {{- end }}
+            {{- range .Alerts }}
+              {{- if ne .Annotations.description "" }}
+            - **{{ .Annotations.description }}**
+              {{- else if ne .Annotations.summary "" }}
+            - **{{ .Annotations.summary }}**
+              {{- else if ne .Annotations.message "" }}
+            - **{{ .Annotations.message }}**
+              {{- else }}
+            - **Alert description not available**
+              {{- end }}
+              {{- if eq .Status "firing" }}
+              ⌚️ Since: <t:{{ .StartsAt.Unix }}:F> (<t:{{ .StartsAt.Unix }}:R>)
+              {{- else }}
+
+              ✅ Ended: <t:{{ .EndsAt.Unix }}:F> (<t:{{ .EndsAt.Unix }}:R>) for {{ .StartsAt | since | humanizeDuration }}
+              {{- end }}
+              {{- $uniq := ( ( .Labels.Remove $root.GroupLabels.Names ).Remove $root.CommonLabels.Names ) }}
+              {{- if gt (len $uniq.SortedPairs) 0 }}
+                {{- range $uniq.SortedPairs }}
+              > {{ .Name }}: `{{ .Value }}`
+                {{- end }}
+              {{- end }}
+            {{- end }}
