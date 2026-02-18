@@ -6,4 +6,3 @@ resources:
   - ./namespace.yaml
   - ./generic-device-plugin/ks.yaml
   - ./node-feature-discovery/ks.yaml
-  - ./system-upgrade-controller/ks.yaml
