@@ -260,6 +260,7 @@
         '!/rook\/rook-ceph/',
         '!/rook\/rook-ceph-cluster/',
         '!/ceph\/ceph/',
+        '!/cilium\/cilium/',
         '!/siderolabs\/installer/',
         '!/siderolabs\/kubelet/'
       ],
