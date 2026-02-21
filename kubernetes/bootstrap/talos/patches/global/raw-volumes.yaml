@@ -4,7 +4,7 @@ kind: RawVolumeConfig
 name: lvm-data
 provisioning:
   diskSelector:
-    match: disk.model.startsWith("Micron_7450")
+    match: disk.model.contains("MTFDKBA960TF")
   minSize: 250GiB
   maxSize: 250GiB
 ---
@@ -14,5 +14,5 @@ kind: RawVolumeConfig
 name: rook-data
 provisioning:
   diskSelector:
-    match: disk.model.startsWith("Micron_7450")
+    match: disk.model.contains("MTFDKBA960TF")
   minSize: 250GiB
