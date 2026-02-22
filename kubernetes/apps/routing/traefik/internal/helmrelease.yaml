@@ -43,21 +43,17 @@ spec:
         port: 8443
         http3:
           enabled: true
-        tls:
-          domains:
-            - main: "${INTERNAL_DOMAIN}"
-              sans: ["*.${INTERNAL_DOMAIN}"]
+        http:
+          tls:
+            domains:
+              - main: "${INTERNAL_DOMAIN}"
+                sans: ["*.${INTERNAL_DOMAIN}"]
       gittcp:
         port: 2222
         exposedPort: 2222
         protocol: TCP
         expose:
           default: true
-        tls:
-          enabled: false
-          # domains:
-          #   - main: "${INTERNAL_DOMAIN}"
-          #     sans: ["*.${INTERNAL_DOMAIN}"]
     service:
       single: false
       annotations:
