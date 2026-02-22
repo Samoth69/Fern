@@ -31,7 +31,6 @@ spec:
     providers:
       kubernetesIngress:
         ingressClass: *igname
-    globalArguments: []
     ports:
       web:
         # make sure to update the network policy accordingly
