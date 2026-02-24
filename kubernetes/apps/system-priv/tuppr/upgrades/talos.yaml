@@ -9,6 +9,7 @@ spec:
     version: v1.12.4
   policy:
     rebootMode: powercycle
+    timeout: 10m
   healthChecks:
     - apiVersion: ceph.rook.io/v1
       kind: CephCluster
