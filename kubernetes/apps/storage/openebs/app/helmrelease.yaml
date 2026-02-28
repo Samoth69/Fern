@@ -18,6 +18,8 @@ spec:
       localpv:
         image:
           registry: quay.io/
+        nodeSelector:
+          kubernetes.io/hostname: "fern-akame"
         basePath: &hostPath /var/mnt/local-hostpath
       hostpathClass:
         enabled: true
