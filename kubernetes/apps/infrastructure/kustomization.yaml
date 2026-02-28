@@ -13,6 +13,5 @@ resources:
   - ./keycloak/ks.yaml
   - ./harbor/ks.yaml
   - ./forgejo/ks.yaml
-  - ./rabbitmq-operator/ks.yaml
   - ./argocd/ks.yaml
   - ./vaultwarden/ks.yaml
