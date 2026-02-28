@@ -7,10 +7,10 @@ metadata:
 spec:
   backups:
     pgbackrest:
-      configuration: &customBackrestConfig
+      configuration:
         - secret:
             name: ${APP}-s3-database-backup
-      global: &globalBackrestConfig
+      global:
         repo1-s3-uri-style: path
         repo1-path: /pgbackrest/postgres-operator/fern-local/${APP}
         repo1-retention-full: "14"
@@ -51,22 +51,25 @@ spec:
             differential: "20 */3 * * *" # every 3 hours
             incremental: "10 * * * *" # every hours
   dataSource:
-    postgresCluster:
-      repoName: repo1
-      clusterName: ${APP}
-    # pgbackrest:
-    #   stanza: db
-    #   configuration: *customBackrestConfig
-    #   global: *globalBackrestConfig
-    #   repo:
-    #     name: repo1
-    #     s3: *s3
-    #   resources:
-    #     requests:
-    #       cpu: 50m
-    #       memory: 64Mi
-    #     limits:
-    #       memory: 1024Mi
+    pgbackrest:
+      stanza: db
+      configuration:
+        - secret:
+            name: ${APP}-s3-database-backup
+      global:
+        repo1-s3-uri-style: path
+        repo1-path: /pgbackrest/postgres-operator/fern/${APP}
+        repo1-retention-full: "14"
+        repo1-retention-full-type: count
+      repo:
+        name: repo1
+        s3: *s3
+      resources:
+        requests:
+          cpu: 50m
+          memory: 64Mi
+        limits:
+          memory: 1024Mi
 
   postgresVersion: 17
 
