@@ -6,10 +6,10 @@ metadata:
 spec:
   accessModes:
     - "${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"
-  # dataSourceRef:
-  #   kind: ReplicationDestination
-  #   apiGroup: volsync.backube
-  #   name: "${APP}-volsync-bootstrap"
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: "${APP}-volsync-bootstrap"
   resources:
     requests:
       storage: "${VOLSYNC_CAPACITY:-1Gi}"
