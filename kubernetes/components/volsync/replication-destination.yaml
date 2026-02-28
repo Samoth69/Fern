@@ -26,6 +26,6 @@ spec:
       runAsGroup: ${APP_GID:-2000}
       fsGroup: ${APP_GID:-2000}
     repository: "${APP}-s3-volsync"
-    destinationPVC: ${APP}-test
+    # destinationPVC: ${APP}
     storageClassName: "${VOLSYNC_STORAGECLASS:-openebs-hostpath}"
     volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:-openebs-sc-snapclass}"
