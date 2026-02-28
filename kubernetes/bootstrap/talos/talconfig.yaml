@@ -45,6 +45,7 @@ nodes:
       - name: btrfs
     patches:
       - "@./patches/fern-akame/machine-pods.yaml"
+      - "@./patches/fern-akame/local-hostpath.yaml"
       - "@./patches/global/kernel-logs.yaml"
       - "@./patches/global/raw-volumes.yaml"
       - "@./patches/global/watchdog.yaml"

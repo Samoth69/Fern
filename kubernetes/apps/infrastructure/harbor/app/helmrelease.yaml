@@ -50,14 +50,9 @@ spec:
         addr: harbor-dragonfly:6379
         existingSecret: harbor-redis-secret
     core:
-      replicas: 2
-      affinity: &affinity
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-           - topologyKey: "kubernetes.io/hostname"
+      replicas: 1
     registry:
-      replicas: 2
-      affinity: *affinity
+      replicas: 1
     persistence:
       persistentVolumeClaim:
         registry:

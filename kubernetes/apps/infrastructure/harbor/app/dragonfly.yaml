@@ -5,7 +5,7 @@ metadata:
   name: harbor-dragonfly
 spec:
   image: ghcr.io/dragonflydb/dragonfly:v1.37.0
-  replicas: 2
+  replicas: 1
   annotations:
     reloader.stakater.com/auto: "true"
   affinity:

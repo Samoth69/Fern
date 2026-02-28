@@ -28,8 +28,7 @@ spec:
       podDisruptionBudget:
         enabled: true
       alertmanagerSpec:
-        replicas: 2
-        podAntiAffinity: hard
+        replicas: 1
         alertmanagerConfiguration:
           name: alertmanager
           global:
@@ -144,7 +143,7 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         enableAdminAPI: true
         walCompression: true
-        replicas: 2
+        replicas: 1
         podAntiAffinity: hard
         scrapeInterval: 1m # Must match interval in Grafana Helm chart
         enableFeatures:
