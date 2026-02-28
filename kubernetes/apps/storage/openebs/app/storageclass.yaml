@@ -1,15 +1,6 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: openebs-lvmsc
-allowVolumeExpansion: true
-parameters:
-  volgroup: "openebs-vg"
-provisioner: local.csi.openebs.io
----
 kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
 metadata:
-  name: openebs-lvmsc-snapclass
+  name: openebs-sc-snapclass
 driver: local.csi.openebs.io
 deletionPolicy: Delete
