@@ -59,8 +59,6 @@ spec:
       global:
         repo1-s3-uri-style: path
         repo1-path: /pgbackrest/postgres-operator/fern/${APP}
-        repo1-retention-full: "14"
-        repo1-retention-full-type: count
       repo:
         name: repo1
         s3: *s3
