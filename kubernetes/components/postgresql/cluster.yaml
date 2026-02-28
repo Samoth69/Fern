@@ -5,51 +5,51 @@ kind: PostgresCluster
 metadata:
   name: ${APP}-local
 spec:
-  # backups:
-  #   pgbackrest:
-  #     configuration:
-  #       - secret:
-  #           name: ${APP}-s3-database-backup
-  #     global:
-  #       repo1-s3-uri-style: path
-  #       repo1-path: /pgbackrest/postgres-operator/fern-local/${APP}
-  #       repo1-retention-full: "14"
-  #       repo1-retention-full-type: count
-  #     jobs:
-  #       ttlSecondsAfterFinished: 60
-  #     manual:
-  #       repoName: repo1
-  #       options:
-  #        - --type=full
-  #     metadata:
-  #       labels:
-  #         app.kubernetes.io/name: ${APP}-local-crunchy-postgres-backup
-  #     sidecars:
-  #       pgbackrest:
-  #         resources:
-  #           requests:
-  #             cpu: 5m
-  #             memory: 1Mi
-  #           limits:
-  #             memory: 1024Mi
-  #       pgbackrestConfig:
-  #         resources:
-  #           requests:
-  #             cpu: 5m
-  #             memory: 1Mi
-  #           limits:
-  #             memory: 1024Mi
+  backups:
+    pgbackrest:
+      configuration:
+        - secret:
+            name: ${APP}-s3-database-backup
+      global:
+        repo1-s3-uri-style: path
+        repo1-path: /pgbackrest/postgres-operator/fern-local/${APP}
+        repo1-retention-full: "14"
+        repo1-retention-full-type: count
+      jobs:
+        ttlSecondsAfterFinished: 60
+      manual:
+        repoName: repo1
+        options:
+         - --type=full
+      metadata:
+        labels:
+          app.kubernetes.io/name: ${APP}-local-crunchy-postgres-backup
+      sidecars:
+        pgbackrest:
+          resources:
+            requests:
+              cpu: 5m
+              memory: 1Mi
+            limits:
+              memory: 1024Mi
+        pgbackrestConfig:
+          resources:
+            requests:
+              cpu: 5m
+              memory: 1Mi
+            limits:
+              memory: 1024Mi
 
-  #     repos:
-  #       - name: repo1
-  #         s3: &s3
-  #           bucket: crunchy-postgres-backups
-  #           endpoint: https://garage-proxy.fern.samoth.eu
-  #           region: garage
-  #         schedules:
-  #           full: "30 1 * * *" # every day at 01:00
-  #           differential: "20 */3 * * *" # every 3 hours
-  #           incremental: "10 * * * *" # every hours
+      repos:
+        - name: repo1
+          s3: &s3
+            bucket: crunchy-postgres-backups
+            endpoint: https://garage-proxy.fern.samoth.eu
+            region: garage
+          schedules:
+            full: "30 1 * * *" # every day at 01:00
+            differential: "20 */3 * * *" # every 3 hours
+            incremental: "10 * * * *" # every hours
   dataSource:
     pgbackrest:
       stanza: db
@@ -61,10 +61,7 @@ spec:
         repo1-path: /pgbackrest/postgres-operator/fern/${APP}
       repo:
         name: repo1
-        s3:
-          bucket: crunchy-postgres-backups
-          endpoint: https://garage-proxy.fern.samoth.eu
-          region: garage
+        s3: *s3
       resources:
         requests:
           cpu: 50m

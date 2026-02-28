@@ -26,8 +26,8 @@ spec:
       POSTGRES_DATA_SIZE: 55Gi
   patches:
     - patch: |
-        - op: remove
-          path: /spec/dataSource
+        # - op: remove
+        #   path: /spec/dataSource
         - op: replace
           path: /spec/users/1
           value:
