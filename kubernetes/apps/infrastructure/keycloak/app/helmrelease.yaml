@@ -35,7 +35,7 @@ spec:
               KC_DB_URL:
                 valueFrom:
                   secretKeyRef:
-                    name: postgres-infra-pguser-keycloak
+                    name: postgres-infra-local-pguser-keycloak
                     key: jdbc-uri
               KC_HOSTNAME: https://keycloak.fern.samoth.eu
               KC_HOSTNAME_STRICT: "true"

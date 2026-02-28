@@ -3,7 +3,7 @@
 apiVersion: postgres-operator.crunchydata.com/v1beta1
 kind: PostgresCluster
 metadata:
-  name: ${APP}
+  name: ${APP}-local
 spec:
   backups:
     pgbackrest:
@@ -12,7 +12,7 @@ spec:
             name: ${APP}-s3-database-backup
       global: &globalBackrestConfig
         repo1-s3-uri-style: path
-        repo1-path: /pgbackrest/postgres-operator/fern/${APP}
+        repo1-path: /pgbackrest/postgres-operator/fern-local/${APP}
         repo1-retention-full: "14"
         repo1-retention-full-type: count
       jobs:
@@ -23,7 +23,7 @@ spec:
          - --type=full
       metadata:
         labels:
-          app.kubernetes.io/name: ${APP}-crunchy-postgres-backup
+          app.kubernetes.io/name: ${APP}-local-crunchy-postgres-backup
       sidecars:
         pgbackrest:
           resources:
@@ -51,19 +51,22 @@ spec:
             differential: "20 */3 * * *" # every 3 hours
             incremental: "10 * * * *" # every hours
   dataSource:
-    pgbackrest:
-      stanza: db
-      configuration: *customBackrestConfig
-      global: *globalBackrestConfig
-      repo:
-        name: repo1
-        s3: *s3
-      resources:
-        requests:
-          cpu: 50m
-          memory: 64Mi
-        limits:
-          memory: 1024Mi
+    postgresCluster:
+      repoName: repo1
+      clusterName: ${APP}
+    # pgbackrest:
+    #   stanza: db
+    #   configuration: *customBackrestConfig
+    #   global: *globalBackrestConfig
+    #   repo:
+    #     name: repo1
+    #     s3: *s3
+    #   resources:
+    #     requests:
+    #       cpu: 50m
+    #       memory: 64Mi
+    #     limits:
+    #       memory: 1024Mi
 
   postgresVersion: 17
 
@@ -87,12 +90,12 @@ spec:
     - name: pg-instance
       metadata:
         labels:
-          app.kubernetes.io/name: ${APP}-crunchy-postgres
+          app.kubernetes.io/name: ${APP}-local-crunchy-postgres
       replicas: 1
       dataVolumeClaimSpec:
         accessModes:
         - "ReadWriteOnce"
-        storageClassName: ceph-block
+        storageClassName: openebs-hostpath
         resources:
           requests:
             storage: ${POSTGRES_DATA_SIZE:-1Gi}

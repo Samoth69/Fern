@@ -30,10 +30,10 @@ spec:
     database:
       type: external
       external:
-        host: postgres-infra-primary
+        host: postgres-infra-local-primary
         username: harbor
         coreDatabase: harbor
-        existingSecret: postgres-infra-pguser-harbor
+        existingSecret: postgres-infra-local-pguser-harbor
         sslmode: require
     metrics:
       enabled: true

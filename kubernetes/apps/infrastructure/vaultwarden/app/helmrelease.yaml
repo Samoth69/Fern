@@ -39,7 +39,7 @@ spec:
               DATABASE_URL:
                 valueFrom:
                   secretKeyRef:
-                    name: postgres-infra-pguser-vaultwarden
+                    name: postgres-infra-local-pguser-vaultwarden
                     key: uri
             probes:
               startup:

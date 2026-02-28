@@ -55,7 +55,7 @@ spec:
           SSH_SERVER_HOST_KEYS: /ssh/forgejo
         database:
           DB_TYPE: postgres
-          HOST: postgres-infra-primary
+          HOST: postgres-infra-local-primary
           NAME: forgejo
           USER: forgejo
           MAX_OPEN_CONNS: 10
@@ -111,7 +111,7 @@ spec:
         - name: FORGEJO__DATABASE__PASSWD
           valueFrom:
             secretKeyRef:
-              name: postgres-infra-pguser-forgejo
+              name: postgres-infra-local-pguser-forgejo
               key: password
     strategy:
       type: Recreate

@@ -11,7 +11,7 @@ spec:
     - toEndpoints:
         - matchLabels:
             k8s:io.kubernetes.pod.namespace: infrastructure
-            postgres-operator.crunchydata.com/cluster: postgres-infra
+            postgres-operator.crunchydata.com/cluster: postgres-infra-local
       toPorts:
         - ports:
             - port: "5432"
