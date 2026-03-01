@@ -122,5 +122,4 @@ spec:
     extraContainerVolumeMounts:
       - name: ssh-key
         readOnly: true
-        defaultMode: 0400
         mountPath: /ssh
