@@ -30,6 +30,9 @@ spec:
       create: false
       mount: true
       claimName: forgejo
+    podSecurityContext:
+      fsGroup: 1000
+      fsGroupChangePolicy: "OnRootMismatch"
     gitea:
       admin:
         password: notUsed
