@@ -25,7 +25,4 @@ spec:
     substitute:
       APP: *appname
       VOLSYNC_CLAIM: harbor-registry
-      VOLSYNC_ACCESSMODES: ReadWriteMany
       VOLSYNC_CAPACITY: 50Gi
-      VOLSYNC_STORAGECLASS: ceph-filesystem
-      VOLSYNC_SNAPSHOTCLASS: csi-ceph-filesystem
