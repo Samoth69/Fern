@@ -17,7 +17,7 @@ spec:
     name: flux-system
   wait: true
   dependsOn:
-    - name: rook-ceph-cluster
+    - name: openebs
   components:
     - ../../../../components/app-network-policy/
   postBuild:
