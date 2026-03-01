@@ -49,55 +49,55 @@ nodes:
       - "@./patches/global/kernel-logs.yaml"
       - "@./patches/global/raw-volumes.yaml"
       - "@./patches/global/watchdog.yaml"
-  - hostname: fern-felix
-    ipAddress: "192.168.0.41"
-    installDiskSelector:
-      model: Crucial*
-      type: ssd
-    machineSpec:
-      secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/cb36a870f2bcf37a14a760c7ce41688f4a3bd373de218e5c489c88d570e287d0
-    controlPlane: true
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "24:4b:fe:c8:b1:30"
-        dhcp: false
-        addresses:
-          - "192.168.0.41/24"
-        routes:
-          - network: "0.0.0.0/0"
-            gateway: "192.168.0.1"
-        mtu: 1500
-        vip:
-          ip: "192.168.0.43"
-    patches:
-      - "@./patches/global/kernel-logs.yaml"
-      - "@./patches/global/raw-volumes.yaml"
-  - hostname: fern-nagumo
-    ipAddress: "192.168.0.42"
-    installDiskSelector:
-      size: <= 512GiB # we want to target the smallerish disk
-      type: ssd
-    machineSpec:
-      secureboot: true
-    talosImageURL: factory.talos.dev/metal-installer-secureboot/3bbbbbd42fa65fa84a5d2a2505a737b7b022b6612bf02a50011e6fb405cae37d
-    controlPlane: true
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "c4:62:37:09:7c:bd"
-        dhcp: false
-        addresses:
-          - "192.168.0.42/24"
-        routes:
-          - network: "0.0.0.0/0"
-            gateway: "192.168.0.1"
-        mtu: 1500
-        vip:
-          ip: "192.168.0.43"
-    patches:
-      - "@./patches/global/kernel-logs.yaml"
-      - "@./patches/global/raw-volumes.yaml"
-      - "@./patches/global/watchdog.yaml"
+  # - hostname: fern-felix
+  #   ipAddress: "192.168.0.41"
+  #   installDiskSelector:
+  #     model: Crucial*
+  #     type: ssd
+  #   machineSpec:
+  #     secureboot: true
+  #   talosImageURL: factory.talos.dev/metal-installer-secureboot/cb36a870f2bcf37a14a760c7ce41688f4a3bd373de218e5c489c88d570e287d0
+  #   controlPlane: true
+  #   networkInterfaces:
+  #     - deviceSelector:
+  #         hardwareAddr: "24:4b:fe:c8:b1:30"
+  #       dhcp: false
+  #       addresses:
+  #         - "192.168.0.41/24"
+  #       routes:
+  #         - network: "0.0.0.0/0"
+  #           gateway: "192.168.0.1"
+  #       mtu: 1500
+  #       vip:
+  #         ip: "192.168.0.43"
+  #   patches:
+  #     - "@./patches/global/kernel-logs.yaml"
+  #     - "@./patches/global/raw-volumes.yaml"
+  # - hostname: fern-nagumo
+  #   ipAddress: "192.168.0.42"
+  #   installDiskSelector:
+  #     size: <= 512GiB # we want to target the smallerish disk
+  #     type: ssd
+  #   machineSpec:
+  #     secureboot: true
+  #   talosImageURL: factory.talos.dev/metal-installer-secureboot/3bbbbbd42fa65fa84a5d2a2505a737b7b022b6612bf02a50011e6fb405cae37d
+  #   controlPlane: true
+  #   networkInterfaces:
+  #     - deviceSelector:
+  #         hardwareAddr: "c4:62:37:09:7c:bd"
+  #       dhcp: false
+  #       addresses:
+  #         - "192.168.0.42/24"
+  #       routes:
+  #         - network: "0.0.0.0/0"
+  #           gateway: "192.168.0.1"
+  #       mtu: 1500
+  #       vip:
+  #         ip: "192.168.0.43"
+  #   patches:
+  #     - "@./patches/global/kernel-logs.yaml"
+  #     - "@./patches/global/raw-volumes.yaml"
+  #     - "@./patches/global/watchdog.yaml"
 
 # Global patches
 patches:
