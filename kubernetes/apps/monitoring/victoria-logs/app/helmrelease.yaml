@@ -21,6 +21,7 @@ spec:
       retentionDiskSpaceUsage: 20GB
       persistentVolume:
         size: 21Gi
+        storageClassName: openebs-hostpath
       ingress:
         enabled: true
         ingressClassName: traefik-internal
