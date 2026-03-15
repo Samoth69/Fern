@@ -28,7 +28,7 @@ spec:
       podDisruptionBudget:
         enabled: true
       alertmanagerSpec:
-        replicas: 1
+        replicas: 0
         alertmanagerConfiguration:
           name: alertmanager
           global:
